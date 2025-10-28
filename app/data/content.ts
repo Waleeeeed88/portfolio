@@ -30,10 +30,10 @@ export const education = {
 
 export const experiences = [
   {
-    title: "Full Stack Developer",
+    title: "Full Stack Developer Co-op",
     company: "Government of Ontario",
     location: "Toronto, ON",
-    period: "Jan 2025 – Present",
+    period: "September 2025 – Present",
     points: [
       "Developed responsive UI components using Angular and TypeScript, improving user experience and interface consistency.",
       "Implemented automated testing frameworks with Cypress, reducing manual testing effort and improving code reliability.",
