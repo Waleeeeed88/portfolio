@@ -1,6 +1,6 @@
 export const personalInfo = {
   name: "Mohammad Waliduddin",
-  title: "Software Developer & Engineer",
+  title: "Software Developer & Engineer | Football Enthusiast",
   contact: [
     { text: "437-260-8096", href: "tel:437-260-8096" },
     { text: "walid40@my.yorku.ca", href: "mailto:walid40@my.yorku.ca" },

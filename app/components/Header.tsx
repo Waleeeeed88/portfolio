@@ -2,114 +2,179 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { personalInfo } from "../data/content";
+import { personalInfo, education } from "../data/content";
+import MW2019Logo from "./MW2019Logo";
 
 const Header = () => {
+  const interests = [
+    { label: "Coding", colorClass: "text-electric-green border-electric-green/30 hover:border-electric-green/60 hover:shadow-[0_0_15px_rgba(0,255,65,0.3)]" },
+    { label: "Gaming", colorClass: "text-electric-blue border-electric-blue/30 hover:border-electric-blue/60 hover:shadow-[0_0_15px_rgba(0,217,255,0.3)]" },
+    { label: "Football", colorClass: "text-accent-cyan border-accent-cyan/30 hover:border-accent-cyan/60 hover:shadow-[0_0_15px_rgba(0,229,255,0.3)]" },
+    { label: "Technology", colorClass: "text-accent-purple border-accent-purple/30 hover:border-accent-purple/60 hover:shadow-[0_0_15px_rgba(112,0,255,0.3)]" },
+    { label: "Learning", colorClass: "text-neon-green border-neon-green/30 hover:border-neon-green/60 hover:shadow-[0_0_15px_rgba(57,255,20,0.3)]" },
+    { label: "Problem Solving", colorClass: "text-accent-magenta border-accent-magenta/30 hover:border-accent-magenta/60 hover:shadow-[0_0_15px_rgba(240,0,255,0.3)]" },
+  ];
+
+  const educationList = Array.isArray(education) ? education : education ? [education] : [];
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.offsetTop - offset;
+      window.scrollTo({ top: elementPosition, behavior: "smooth" });
+    }
+  };
+
   return (
-    <header className="flex flex-col sm:flex-row items-center justify-between mb-16 gap-8">
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="text-center sm:text-left flex-1"
-      >
-        <motion.h1
-          className="text-5xl font-light tracking-wider text-accent-cyan"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          style={{
-            textShadow: "0 0 30px rgba(0, 229, 255, 0.8), 0 0 60px rgba(0, 229, 255, 0.4)",
-          }}
-        >
-          {personalInfo.name}
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="mt-4 text-lg text-electric-blue font-light tracking-wide"
-        >
-          {personalInfo.title}
-        </motion.p>
+    <header className="flex flex-col gap-8 w-full">
+      {/* Main Header Section */}
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-6 w-full">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.6 }}
-          className="mt-6 flex flex-wrap justify-center sm:justify-start gap-4 text-sm font-light"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center lg:text-left flex-1"
         >
-          {personalInfo.contact.map((link, index) => (
-            <motion.a
-              key={link.text}
-              href={link.href}
-              target={link.href.startsWith("http") ? "_blank" : undefined}
-              rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="text-secondary-text hover:text-electric-blue transition-colors px-3 py-1.5 rounded-lg border border-border-color hover:border-electric-blue/50 bg-black/20"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 + index * 0.1 }}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {link.text}
-            </motion.a>
-          ))}
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.3, type: "spring", stiffness: 100 }}
-        className="relative"
-      >
-        <motion.div
-          className="w-48 h-64 rounded-2xl bg-gradient-to-br from-accent-cyan via-electric-blue to-accent-magenta p-0.5 shadow-2xl"
-          whileHover={{
-            scale: 1.05,
-            boxShadow: "0 0 40px rgba(0, 229, 255, 0.6), 0 0 80px rgba(0, 229, 255, 0.3)",
-          }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="w-full h-full rounded-2xl bg-dark-bg overflow-hidden relative">
-            <Image src="/profile.jpg" alt={personalInfo.name} fill className="object-cover" priority />
+          <div className="mb-4 flex justify-center lg:justify-start">
+            <MW2019Logo />
           </div>
+
+          <motion.h2
+            className="text-3xl sm:text-4xl font-light tracking-wide mb-2"
+            style={{
+              background: "linear-gradient(90deg, #00ff41 0%, #00d9ff 50%, #00e5ff 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
+            {personalInfo.name}
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="text-base sm:text-lg text-electric-blue font-light mb-4 max-w-md"
+          >
+            Software Developer & Engineer
+          </motion.p>
+
+          {/* Interests & Hobbies */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="mb-4"
+          >
+            <p className="text-sm text-electric-green mb-2 font-light">Interests & Hobbies:</p>
+            <div className="flex flex-wrap justify-center lg:justify-start gap-2">
+              {interests.map((interest, index) => (
+                <motion.div
+                  key={interest.label}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.5 + index * 0.05 }}
+                  className={`px-3 py-1.5 bg-black/30 border rounded-md text-sm font-light transition-all duration-300 cursor-default ${interest.colorClass}`}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                >
+                  {interest.label}
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Quick Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className="flex flex-wrap justify-center lg:justify-start gap-3 text-sm mb-4"
+          >
+            <button onClick={() => scrollToSection("projects")} className="text-electric-blue hover:text-electric-green transition-colors underline decoration-electric-blue/50 hover:decoration-electric-green/50">
+              Projects
+            </button>
+            <span className="text-accent-cyan">•</span>
+            <button onClick={() => scrollToSection("skills")} className="text-electric-blue hover:text-electric-green transition-colors underline decoration-electric-blue/50 hover:decoration-electric-green/50">
+              Skills
+            </button>
+            <span className="text-accent-cyan">•</span>
+            <button onClick={() => scrollToSection("experience")} className="text-electric-blue hover:text-electric-green transition-colors underline decoration-electric-blue/50 hover:decoration-electric-green/50">
+              Experience
+            </button>
+          </motion.div>
+
+          {/* Contact Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.5 }}
+            className="flex flex-wrap justify-center lg:justify-start gap-3 text-sm"
+          >
+            {personalInfo.contact.map((link, index) => (
+              <motion.a
+                key={`${link.text}-${index}`}
+                href={link.href}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="text-accent-cyan hover:text-electric-green transition-colors underline decoration-accent-cyan/50 hover:decoration-electric-green/50"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 + index * 0.05 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                {link.text}
+              </motion.a>
+            ))}
+          </motion.div>
         </motion.div>
 
-        <motion.div
-          className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-accent-cyan rounded-tl-lg"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
-        />
-        <motion.div
-          className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-electric-blue rounded-br-lg"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9, duration: 0.5 }}
-        />
-
-        {[...Array(4)].map((_, i) => (
+        {/* Profile Image */}
+        <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.2 }} className="relative">
           <motion.div
-            key={i}
-            className="absolute w-1.5 h-1.5 bg-electric-blue rounded-full"
+            className="w-32 h-44 sm:w-40 sm:h-52 rounded-lg p-0.5"
             style={{
-              top: `${10 + i * 25}%`,
-              left: i % 2 === 0 ? "-8px" : "auto",
-              right: i % 2 === 1 ? "-8px" : "auto",
+              background: "linear-gradient(135deg, rgba(0,255,65,0.4) 0%, rgba(0,217,255,0.4) 50%, rgba(0,229,255,0.4) 100%)",
             }}
-            animate={{
-              y: [-8, 8, -8],
-              opacity: [0.3, 0.8, 0.3],
-            }}
-            transition={{
-              duration: 2 + i * 0.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.3,
-            }}
-          />
-        ))}
+            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0,255,65,0.5), 0 0 60px rgba(0,217,255,0.3)" }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="w-full h-full rounded-lg bg-dark-bg overflow-hidden relative">
+              <Image src="/profile.jpg" alt={personalInfo.name} fill className="object-cover" priority sizes="(max-width: 640px) 128px, 160px" />
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Education Section */}
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.5 }} className="w-full">
+        <h3 className="text-xl font-light tracking-wide mb-3 text-electric-green" style={{ textShadow: "0 0 20px rgba(0,255,65,0.5)" }}>
+          Education
+        </h3>
+        <div className="space-y-3">
+          {educationList.map((edu, index) => (
+            <motion.div
+              key={`${edu.degree}-${edu.institution}-${index}`}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1 + index * 0.1 }}
+              className="p-4 rounded-lg border border-electric-green/20 bg-black/20 backdrop-blur-sm hover:border-electric-green/60 hover:shadow-[0_0_20px_rgba(0,255,65,0.2)] transition-all duration-300"
+            >
+              <div className="flex justify-between items-start mb-2">
+                <div>
+                  <h4 className="text-base font-normal text-primary-text">{edu.degree}</h4>
+                  <p className="text-sm text-electric-blue font-light">{edu.institution}</p>
+                </div>
+                <span className="text-xs text-accent-cyan">{edu.period}</span>
+              </div>
+              {edu.gpa && <p className="text-sm text-electric-green font-light">GPA: {edu.gpa}</p>}
+            </motion.div>
+          ))}
+        </div>
       </motion.div>
     </header>
   );

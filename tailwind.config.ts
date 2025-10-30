@@ -1,17 +1,33 @@
 import type { Config } from "tailwindcss";
 
-const config: Config = {
+export default {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    'text-electric-green',
+    'text-electric-blue',
+    'text-accent-cyan',
+    'text-accent-purple',
+    'text-neon-green',
+    'text-accent-magenta',
+    'border-electric-green/30',
+    'border-electric-blue/30',
+    'border-accent-cyan/30',
+    'border-accent-purple/30',
+    'border-neon-green/30',
+    'border-accent-magenta/30',
+    'hover:border-electric-green/60',
+    'hover:border-electric-blue/60',
+    'hover:border-accent-cyan/60',
+    'hover:border-accent-purple/60',
+    'hover:border-neon-green/60',
+    'hover:border-accent-magenta/60',
+  ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ["var(--font-geist-sans)"],
-        mono: ["var(--font-geist-mono)"],
-      },
       colors: {
         'dark-bg': '#0a0a0a',
         'primary-text': '#e5e5e5',
@@ -20,43 +36,23 @@ const config: Config = {
         'accent-blue': '#0066ff',
         'electric-blue': '#00d9ff',
         'neon-blue': '#00ffff',
+        'electric-green': '#00ff41',
+        'neon-green': '#39ff14',
+        'lime-glow': '#ccff00',
         'accent-magenta': '#f000ff',
         'accent-purple': '#7000ff',
         'border-color': '#262626',
       },
-      animation: {
-        'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
-        'float': 'float 3s ease-in-out infinite',
-        'slide-in': 'slide-in 0.5s ease-out',
-      },
-      keyframes: {
-        'glow-pulse': {
-          '0%, 100%': { 
-            boxShadow: '0 0 20px rgba(0, 229, 255, 0.5)',
-          },
-          '50%': { 
-            boxShadow: '0 0 40px rgba(0, 229, 255, 0.8), 0 0 60px rgba(0, 229, 255, 0.4)',
-          },
-        },
-        'float': {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
-        'slide-in': {
-          '0%': { transform: 'translateX(-100%)', opacity: '0' },
-          '100%': { transform: 'translateX(0)', opacity: '1' },
-        },
-      },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "grid-pattern": "linear-gradient(rgba(0, 229, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 229, 255, 0.1) 1px, transparent 1px)",
+        'grid-pattern': 'linear-gradient(to right, rgba(0, 255, 65, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 255, 65, 0.1) 1px, transparent 1px)',
       },
       backgroundSize: {
         'grid': '50px 50px',
       },
+      fontFamily: {
+        'display': ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
+      },
     },
   },
   plugins: [],
-};
-export default config;
+} satisfies Config;

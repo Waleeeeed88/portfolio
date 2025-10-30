@@ -15,10 +15,7 @@ const ProjectsSection = () => {
         transition={{ duration: 0.6 }}
       >
         <h2
-          className="text-3xl font-light tracking-wider mb-6 text-accent-purple uppercase"
-          style={{
-            textShadow: "0 0 20px rgba(112, 0, 255, 0.8), 0 0 40px rgba(112, 0, 255, 0.4)",
-          }}
+          className="text-2xl font-light tracking-wide mb-4 text-primary-text"
         >
           Projects
         </h2>

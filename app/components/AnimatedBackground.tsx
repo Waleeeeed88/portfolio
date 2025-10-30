@@ -76,6 +76,19 @@ const AnimatedBackground = () => {
           ease: "easeInOut",
         }}
       />
+      <motion.div
+        className="absolute top-1/4 right-1/4 w-64 h-64 bg-electric-green/20 rounded-full blur-3xl"
+        animate={{
+          x: [0, 50, 0],
+          y: [0, -80, 0],
+          scale: [1, 1.4, 1],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
     </div>
   );
 };
