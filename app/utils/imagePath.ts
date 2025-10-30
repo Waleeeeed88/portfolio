@@ -1,5 +1,5 @@
 const isProd = process.env.NODE_ENV === 'production';
-const repoName = 'portfolio'; // Your GitHub repo name
+const repoName = 'portfolip';
 
 export const getImagePath = (path: string): string => {
   // Remove leading slash if present

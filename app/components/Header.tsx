@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { personalInfo, education } from "../data/content";
 import MW2019Logo from "./MW2019Logo";
+import { getImagePath } from "../utils/imagePath";
 
 const Header = () => {
   const interests = [
@@ -27,7 +28,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex flex-col gap-8 w-full">
+    <header className="flex flex-col gap-8 w-full relative z-10">
       {/* Main Header Section */}
       <div className="flex flex-col lg:flex-row items-center justify-between gap-6 w-full">
         <motion.div
@@ -79,8 +80,11 @@ const Header = () => {
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5 + index * 0.05 }}
-                  className={`px-4 py-2 bg-black/30 border rounded-md text-base font-light transition-all duration-300 cursor-default ${interest.colorClass}`}
+                  className={`px-4 py-2 bg-electric-blue/10 border rounded-md text-base font-light transition-all duration-300 cursor-default ${interest.colorClass}`}
                   whileHover={{ scale: 1.05, y: -2 }}
+                  style={{
+                    background: "linear-gradient(135deg, rgba(0, 217, 255, 0.08), rgba(0, 255, 65, 0.08))"
+                  }}
                 >
                   {interest.label}
                 </motion.div>
@@ -133,24 +137,50 @@ const Header = () => {
           </motion.div>
         </motion.div>
 
-        {/* Profile Image */}
+        {/* MW Logo Image with electric blue background */}
         <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.2 }} className="relative">
           <motion.div
-            className="w-40 h-52 sm:w-48 sm:h-64 rounded-lg p-0.5"
+            className="w-40 h-52 sm:w-48 sm:h-64 rounded-lg p-0.5 flex items-center justify-center"
             style={{
-              background: "linear-gradient(135deg, rgba(0,255,65,0.4) 0%, rgba(0,217,255,0.4) 50%, rgba(0,229,255,0.4) 100%)",
+              background: "linear-gradient(135deg, rgba(0,217,255,0.4) 0%, rgba(0,255,65,0.3) 50%, rgba(0,229,255,0.4) 100%)",
             }}
-            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0,255,65,0.5), 0 0 60px rgba(0,217,255,0.3)" }}
-            transition={{ duration: 0.3 }}
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 0 40px rgba(0,217,255,0.6), 0 0 80px rgba(0,255,65,0.3)",
+              transition: { duration: 0.3 }
+            }}
           >
-            <div className="w-full h-full rounded-lg bg-dark-bg overflow-hidden relative">
-              <Image src="/profile.jpg" alt={personalInfo.name} fill className="object-cover" priority sizes="(max-width: 640px) 160px, 192px" />
+            <div className="w-full h-full rounded-lg overflow-hidden relative flex items-center justify-center p-8"
+              style={{
+                background: "linear-gradient(135deg, rgba(0,217,255,0.15), rgba(10,10,10,0.9))"
+              }}
+            >
+              <motion.div
+                animate={{ 
+                  rotate: [0, 360],
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                className="w-full h-full flex items-center justify-center"
+              >
+                <img
+                  src={getImagePath("mw-logo.png")}
+                  alt="MW Logo"
+                  className="w-full h-full object-contain"
+                  style={{
+                    filter: "drop-shadow(0 0 20px rgba(0,255,65,0.5)) drop-shadow(0 0 40px rgba(0,217,255,0.3))"
+                  }}
+                />
+              </motion.div>
             </div>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Education Section */}
+      {/* Education Section with electric blue backgrounds */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.5 }} className="w-full">
         <h3 className="text-2xl font-light tracking-wide mb-3 text-electric-green" style={{ textShadow: "0 0 20px rgba(0,255,65,0.5)" }}>
           Education
@@ -162,7 +192,10 @@ const Header = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1 + index * 0.1 }}
-              className="p-5 rounded-lg border border-electric-green/20 bg-black/20 backdrop-blur-sm hover:border-electric-green/60 hover:shadow-[0_0_20px_rgba(0,255,65,0.2)] transition-all duration-300"
+              className="p-5 rounded-lg border border-electric-green/20 backdrop-blur-sm hover:border-electric-green/60 hover:shadow-[0_0_20px_rgba(0,255,65,0.2)] transition-all duration-300"
+              style={{
+                background: "linear-gradient(135deg, rgba(0,217,255,0.08), rgba(0,255,65,0.05), rgba(10,10,10,0.4))"
+              }}
             >
               <div className="flex justify-between items-start mb-2">
                 <div>
