@@ -41,7 +41,7 @@ const Header = () => {
           </div>
 
           <motion.h2
-            className="text-3xl sm:text-4xl font-light tracking-wide mb-2"
+            className="text-4xl sm:text-5xl font-light tracking-wide mb-2"
             style={{
               background: "linear-gradient(90deg, #00ff41 0%, #00d9ff 50%, #00e5ff 100%)",
               WebkitBackgroundClip: "text",
@@ -59,7 +59,7 @@ const Header = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="text-base sm:text-lg text-electric-blue font-light mb-4 max-w-md"
+            className="text-xl sm:text-2xl text-electric-blue font-light mb-4 max-w-md"
           >
             Software Developer & Engineer
           </motion.p>
@@ -71,7 +71,7 @@ const Header = () => {
             transition={{ delay: 0.4, duration: 0.5 }}
             className="mb-4"
           >
-            <p className="text-sm text-electric-green mb-2 font-light">Interests & Hobbies:</p>
+            <p className="text-base text-electric-green mb-2 font-light">Interests & Hobbies:</p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-2">
               {interests.map((interest, index) => (
                 <motion.div
@@ -79,7 +79,7 @@ const Header = () => {
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5 + index * 0.05 }}
-                  className={`px-3 py-1.5 bg-black/30 border rounded-md text-sm font-light transition-all duration-300 cursor-default ${interest.colorClass}`}
+                  className={`px-4 py-2 bg-black/30 border rounded-md text-base font-light transition-all duration-300 cursor-default ${interest.colorClass}`}
                   whileHover={{ scale: 1.05, y: -2 }}
                 >
                   {interest.label}
@@ -93,7 +93,7 @@ const Header = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="flex flex-wrap justify-center lg:justify-start gap-3 text-sm mb-4"
+            className="flex flex-wrap justify-center lg:justify-start gap-3 text-base mb-4"
           >
             <button onClick={() => scrollToSection("projects")} className="text-electric-blue hover:text-electric-green transition-colors underline decoration-electric-blue/50 hover:decoration-electric-green/50">
               Projects
@@ -113,7 +113,7 @@ const Header = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.5 }}
-            className="flex flex-wrap justify-center lg:justify-start gap-3 text-sm"
+            className="flex flex-wrap justify-center lg:justify-start gap-3 text-base"
           >
             {personalInfo.contact.map((link, index) => (
               <motion.a
@@ -136,7 +136,7 @@ const Header = () => {
         {/* Profile Image */}
         <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.2 }} className="relative">
           <motion.div
-            className="w-32 h-44 sm:w-40 sm:h-52 rounded-lg p-0.5"
+            className="w-40 h-52 sm:w-48 sm:h-64 rounded-lg p-0.5"
             style={{
               background: "linear-gradient(135deg, rgba(0,255,65,0.4) 0%, rgba(0,217,255,0.4) 50%, rgba(0,229,255,0.4) 100%)",
             }}
@@ -144,7 +144,7 @@ const Header = () => {
             transition={{ duration: 0.3 }}
           >
             <div className="w-full h-full rounded-lg bg-dark-bg overflow-hidden relative">
-              <Image src="/profile.jpg" alt={personalInfo.name} fill className="object-cover" priority sizes="(max-width: 640px) 128px, 160px" />
+              <Image src="/profile.jpg" alt={personalInfo.name} fill className="object-cover" priority sizes="(max-width: 640px) 160px, 192px" />
             </div>
           </motion.div>
         </motion.div>
@@ -152,7 +152,7 @@ const Header = () => {
 
       {/* Education Section */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.5 }} className="w-full">
-        <h3 className="text-xl font-light tracking-wide mb-3 text-electric-green" style={{ textShadow: "0 0 20px rgba(0,255,65,0.5)" }}>
+        <h3 className="text-2xl font-light tracking-wide mb-3 text-electric-green" style={{ textShadow: "0 0 20px rgba(0,255,65,0.5)" }}>
           Education
         </h3>
         <div className="space-y-3">
@@ -162,16 +162,16 @@ const Header = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1 + index * 0.1 }}
-              className="p-4 rounded-lg border border-electric-green/20 bg-black/20 backdrop-blur-sm hover:border-electric-green/60 hover:shadow-[0_0_20px_rgba(0,255,65,0.2)] transition-all duration-300"
+              className="p-5 rounded-lg border border-electric-green/20 bg-black/20 backdrop-blur-sm hover:border-electric-green/60 hover:shadow-[0_0_20px_rgba(0,255,65,0.2)] transition-all duration-300"
             >
               <div className="flex justify-between items-start mb-2">
                 <div>
-                  <h4 className="text-base font-normal text-primary-text">{edu.degree}</h4>
-                  <p className="text-sm text-electric-blue font-light">{edu.institution}</p>
+                  <h4 className="text-lg font-normal text-primary-text">{edu.degree}</h4>
+                  <p className="text-base text-electric-blue font-light">{edu.institution}</p>
                 </div>
-                <span className="text-xs text-accent-cyan">{edu.period}</span>
+                <span className="text-sm text-accent-cyan">{edu.period}</span>
               </div>
-              {edu.gpa && <p className="text-sm text-electric-green font-light">GPA: {edu.gpa}</p>}
+              {edu.gpa && <p className="text-base text-electric-green font-light">GPA: {edu.gpa}</p>}
             </motion.div>
           ))}
         </div>

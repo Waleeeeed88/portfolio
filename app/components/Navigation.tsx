@@ -19,188 +19,211 @@ const Navigation = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      const sections = navItems.map(item => document.getElementById(item.id));
-      const scrollPosition = window.scrollY + 150;
+      // Get all sections
+      const sections = navItems
+        .map((item) => {
+          const element = document.getElementById(item.id);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            return {
+              id: item.id,
+              top: rect.top,
+              bottom: rect.bottom,
+              offsetTop: element.offsetTop,
+            };
+          }
+          return null;
+        })
+        .filter(Boolean);
+
+      // Find active section based on viewport center
+      const viewportCenter = window.innerHeight / 2;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(navItems[i].id);
+        if (
+          section &&
+          section.top <= viewportCenter &&
+          section.bottom >= viewportCenter
+        ) {
+          setActiveSection(section.id);
           break;
         }
       }
+
+      // Fallback: if at bottom of page, set to last section
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 100
+      ) {
+        setActiveSection(sections[sections.length - 1]?.id || "skills");
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Run on mount
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80;
-      const elementPosition = element.offsetTop - offset;
+      const offset = 100; // Increased offset for better positioning
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - offset;
+
       window.scrollTo({
-        top: elementPosition,
+        top: offsetPosition,
         behavior: "smooth",
       });
+
+      setActiveSection(id);
+      setIsMobileMenuOpen(false);
     }
-    setIsMobileMenuOpen(false);
   };
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-dark-bg/95 backdrop-blur-md border-b border-electric-green/20 shadow-lg"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-5xl mx-auto px-6 py-2.5">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <motion.button
-            onClick={() => scrollToSection("header")}
-            className="relative group"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <span
-              className="text-xl font-black tracking-tighter"
+    <>
+      {/* Desktop Navigation */}
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "bg-dark-bg/80 backdrop-blur-md shadow-[0_4px_20px_rgba(0,217,255,0.1)]"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <motion.button
+              onClick={() => scrollToSection("header")}
+              className="text-2xl font-bold tracking-wider"
               style={{
-                color: "#3a3a3a",
-                textShadow: "0 0 10px rgba(0, 0, 0, 0.5), 0 2px 5px rgba(0, 0, 0, 0.5)",
-                fontFamily: "'Arial Black', sans-serif",
+                background: "linear-gradient(90deg, #00ff41 0%, #00d9ff 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
               }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               MW
-            </span>
-          </motion.button>
+            </motion.button>
 
-          {/* Desktop Navigation - Moved to Right */}
-          <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item, index) => (
-              <motion.button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05, duration: 0.3 }}
-                className={`relative px-4 py-2 rounded-md font-light text-sm transition-all duration-300 ${
-                  activeSection === item.id
-                    ? "text-electric-green"
-                    : "text-secondary-text"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+            {/* Desktop Nav Items */}
+            <div className="hidden md:flex items-center space-x-1">
+              {navItems.map((item) => (
+                <motion.button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`relative px-4 py-2 text-sm font-light tracking-wide rounded-lg transition-all duration-300 ${
+                    activeSection === item.id
+                      ? "text-electric-blue"
+                      : "text-secondary-text hover:text-electric-green"
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {activeSection === item.id && (
+                    <motion.div
+                      className="absolute inset-0 rounded-lg"
+                      style={{
+                        background:
+                          "linear-gradient(90deg, rgba(0, 217, 255, 0.15) 0%, rgba(0, 255, 65, 0.15) 100%)",
+                        border: "1px solid rgba(0, 217, 255, 0.3)",
+                      }}
+                      layoutId="activeNav"
+                      initial={false}
+                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{item.label}</span>
+                </motion.button>
+              ))}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 text-electric-blue"
+              whileTap={{ scale: 0.95 }}
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                {item.label}
-                
-                {/* Active indicator */}
-                {activeSection === item.id && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full"
-                    style={{
-                      background: "linear-gradient(90deg, #00e5ff 0%, #00ff41 100%)",
-                      boxShadow: "0 0 10px rgba(0, 229, 255, 0.8), 0 0 20px rgba(0, 255, 65, 0.6)",
-                    }}
-                    initial={false}
-                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                  />
+                {isMobileMenuOpen ? (
+                  <path d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path d="M4 6h16M4 12h16M4 18h16" />
                 )}
-
-                {/* Hover effect */}
-                <motion.div
-                  className="absolute inset-0 rounded-md -z-10"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ 
-                    opacity: 1,
-                    background: "linear-gradient(135deg, rgba(0, 229, 255, 0.1) 0%, rgba(0, 255, 65, 0.1) 100%)",
-                    boxShadow: "0 0 20px rgba(0, 229, 255, 0.3)",
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.button>
-            ))}
+              </svg>
+            </motion.button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <motion.button
-            className="md:hidden text-electric-green p-1.5"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {isMobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </motion.button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden mt-3 pb-3 space-y-1"
+            className="md:hidden bg-dark-bg/95 backdrop-blur-md border-t border-electric-blue/20"
           >
-            {navItems.map((item, index) => (
-              <motion.button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.05 }}
-                className={`w-full px-3 py-2 rounded-md font-light text-sm transition-all text-left relative overflow-hidden ${
-                  activeSection === item.id
-                    ? "text-electric-green"
-                    : "text-secondary-text"
-                }`}
-                whileTap={{ scale: 0.98 }}
-              >
-                {/* Mobile active/hover background */}
-                {activeSection === item.id && (
-                  <motion.div
-                    className="absolute inset-0 rounded-md"
-                    style={{
-                      background: "linear-gradient(90deg, rgba(0, 229, 255, 0.15) 0%, rgba(0, 255, 65, 0.15) 100%)",
-                      borderLeft: "2px solid #00ff41",
-                    }}
-                    layoutId="mobileActive"
-                    initial={false}
-                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10">{item.label}</span>
-              </motion.button>
-            ))}
+            <div className="px-4 py-4 space-y-2">
+              {navItems.map((item) => (
+                <motion.button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`relative w-full text-left px-4 py-3 rounded-lg text-base font-light transition-all duration-300 ${
+                    activeSection === item.id
+                      ? "text-electric-blue"
+                      : "text-secondary-text"
+                  }`}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {activeSection === item.id && (
+                    <motion.div
+                      className="absolute inset-0 rounded-lg"
+                      style={{
+                        background:
+                          "linear-gradient(90deg, rgba(0, 217, 255, 0.15) 0%, rgba(0, 255, 65, 0.15) 100%)",
+                        borderLeft: "2px solid #00ff41",
+                      }}
+                      layoutId="mobileActive"
+                      initial={false}
+                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{item.label}</span>
+                </motion.button>
+              ))}
+            </div>
           </motion.div>
         )}
-      </div>
 
-      {/* Bottom border animation with gradient */}
-      {isScrolled && (
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 h-[1px]"
-          style={{
-            background: "linear-gradient(90deg, transparent 0%, rgba(0, 229, 255, 0.5) 20%, rgba(0, 255, 65, 0.5) 80%, transparent 100%)",
-          }}
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.5 }}
-        />
-      )}
-    </motion.nav>
+        {/* Bottom border animation with gradient */}
+        {isScrolled && (
+          <motion.div
+            className="absolute bottom-0 left-0 right-0 h-[1px]"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent 0%, rgba(0, 217, 255, 0.5) 20%, rgba(0, 255, 65, 0.5) 80%, transparent 100%)",
+            }}
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.5 }}
+          />
+        )}
+      </motion.nav>
+    </>
   );
 };
 

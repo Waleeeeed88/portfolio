@@ -1,33 +1,24 @@
 import type { Config } from "tailwindcss";
 
-export default {
+const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  safelist: [
-    'text-electric-green',
-    'text-electric-blue',
-    'text-accent-cyan',
-    'text-accent-purple',
-    'text-neon-green',
-    'text-accent-magenta',
-    'border-electric-green/30',
-    'border-electric-blue/30',
-    'border-accent-cyan/30',
-    'border-accent-purple/30',
-    'border-neon-green/30',
-    'border-accent-magenta/30',
-    'hover:border-electric-green/60',
-    'hover:border-electric-blue/60',
-    'hover:border-accent-cyan/60',
-    'hover:border-accent-purple/60',
-    'hover:border-neon-green/60',
-    'hover:border-accent-magenta/60',
-  ],
   theme: {
     extend: {
+      fontSize: {
+        xs: ['0.875rem', { lineHeight: '1.5' }],
+        sm: ['1rem', { lineHeight: '1.6' }],
+        base: ['1.125rem', { lineHeight: '1.75' }],
+        lg: ['1.25rem', { lineHeight: '1.75' }],
+        xl: ['1.5rem', { lineHeight: '1.75' }],
+        '2xl': ['1.875rem', { lineHeight: '2' }],
+        '3xl': ['2.25rem', { lineHeight: '2.25' }],
+        '4xl': ['3rem', { lineHeight: '1.2' }],
+        '5xl': ['3.75rem', { lineHeight: '1.1' }],
+      },
       colors: {
         'dark-bg': '#0a0a0a',
         'primary-text': '#e5e5e5',
@@ -43,16 +34,9 @@ export default {
         'accent-purple': '#7000ff',
         'border-color': '#262626',
       },
-      backgroundImage: {
-        'grid-pattern': 'linear-gradient(to right, rgba(0, 255, 65, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 255, 65, 0.1) 1px, transparent 1px)',
-      },
-      backgroundSize: {
-        'grid': '50px 50px',
-      },
-      fontFamily: {
-        'display': ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
-      },
     },
   },
   plugins: [],
-} satisfies Config;
+};
+
+export default config;
