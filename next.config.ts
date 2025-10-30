@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === 'production';
+const repoName = 'portfolio'; // Your GitHub repo name
+
 const nextConfig: NextConfig = {
+  output: 'export',
+  basePath: isProd ? `/${repoName}` : '',
+  assetPrefix: isProd ? `/${repoName}/` : '',
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -18,13 +25,9 @@ const nextConfig: NextConfig = {
         hostname: "cdn.jsdelivr.net",
         pathname: "/gh/devicons/devicon/**",
       },
-      {
-        protocol: "https",
-        hostname: "cdn.jsdelivr.net",
-        pathname: "/gh/devicons/devicon/**",
-      },
     ],
   },
+  trailingSlash: true,
 };
 
 export default nextConfig;
