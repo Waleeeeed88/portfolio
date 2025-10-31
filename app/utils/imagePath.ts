@@ -1,8 +1,12 @@
 const isProd = process.env.NODE_ENV === 'production';
-const repoName = 'portfolio'; // Match your next.config.ts
+const repoName = 'portfolio'; // Must match your GitHub repo name
 
 export const getImagePath = (path: string): string => {
-  // Just return the path with leading slash
-  const cleanPath = path.startsWith('/') ? path : `/${path}`;
-  return cleanPath;
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  
+  if (isProd) {
+    return `/${repoName}/${cleanPath}`;
+  }
+  
+  return `/${cleanPath}`;
 };
