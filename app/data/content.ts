@@ -1,10 +1,10 @@
 export const personalInfo = {
   name: "Mohammad Waliduddin",
-  title: "Software Developer & Engineer | Football Enthusiast",
+  title: "Engineeering student",
   contact: [
     { text: "437-260-8096", href: "tel:437-260-8096" },
     { text: "walid40@my.yorku.ca", href: "mailto:walid40@my.yorku.ca" },
-    { text: "LinkedIn", href: "https://www.linkedin.com" },
+    { text: "LinkedIn", href: "https://ca.linkedin.com/in/mohammad-waliduddin-918aa1244" },
     { text: "Github", href: "https://github.com/Waleeeeed88" },
   ],
 };
@@ -12,9 +12,9 @@ export const personalInfo = {
 export const education = {
   institution: "York University",
   location: "North York, ON",
-  period: "Sept 2022 – Aug 2026",
+  period: "Sept 2022 – Aug 2027 (Expected)",
   degree: "Bachelors in Software Engineering",
-  gpa: "3.0/4.0",
+  gpa: "3.11/4.0",
   courses: [
     "Data Structures & Algorithms",
     "Database Systems",

@@ -15,12 +15,24 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Helper for production paths
+const isProd = process.env.NODE_ENV === 'production';
+const repoName = 'portfolio';
+const getIconPath = (path: string) => {
+  return isProd ? `/${repoName}/${path}` : `/${path}`;
+};
+
 export const metadata: Metadata = {
   title: "Mohammad Waliduddin | Software Developer",
   description:
     "Software Developer & Engineer with expertise in Full Stack Development, Cloud Computing, and Machine Learning",
   icons: {
-    icon: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>",
+    icon: [
+      { url: getIconPath("mw-logo.png"), type: "image/png", sizes: "32x32" },
+      { url: getIconPath("mw-logo.png"), type: "image/png", sizes: "16x16" }
+    ],
+    apple: [{ url: getIconPath("mw-logo.png"), sizes: "180x180" }],
+    shortcut: [{ url: getIconPath("mw-logo.png") }]
   },
   openGraph: {
     title: "Mohammad Waliduddin | Software Developer",
@@ -28,12 +40,14 @@ export const metadata: Metadata = {
       "Software Developer & Engineer with expertise in Full Stack Development, Cloud Computing, and Machine Learning",
     type: "website",
     locale: "en_US",
+    images: [{ url: getIconPath("mw-logo.png") }]
   },
   twitter: {
     card: "summary_large_image",
     title: "Mohammad Waliduddin | Software Developer",
     description:
       "Software Developer & Engineer with expertise in Full Stack Development, Cloud Computing, and Machine Learning",
+    images: [getIconPath("mw-logo.png")]
   },
 };
 
