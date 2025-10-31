@@ -18,26 +18,10 @@ type ExperienceItem = {
 const ExperienceSection = () => {
   const CompanyLogo = ({ company }: { company: string }) => {
     const logoMap: Record<string, { src: string; alt: string; bg: string }> = {
-      "Government of Ontario": {
-        src: "/ongov.png",
-        alt: "Ontario Government",
-        bg: "bg-gradient-to-br from-orange-500 to-orange-600"
-      },
-      "Ontario Digital Service": {
-        src: "/ongov.png",
-        alt: "Ontario Government",
-        bg: "bg-gradient-to-br from-orange-500 to-orange-600"
-      },
-      "Canadian Imperial Bank of Commerce": {
-        src: "/cibc.png",
-        alt: "CIBC",
-        bg: "bg-white"
-      },
-      "CIBC": {
-        src: "/cibc.png",
-        alt: "CIBC",
-        bg: "bg-white"
-      }
+      "Government of Ontario": { src: getImagePath("ongov.png"), alt: "Ontario Government", bg: "bg-gradient-to-br from-orange-500 to-orange-600" },
+      "Ontario Digital Service": { src: getImagePath("ongov.png"), alt: "Ontario Government", bg: "bg-gradient-to-br from-orange-500 to-orange-600" },
+      "Canadian Imperial Bank of Commerce": { src: getImagePath("cibc.png"), alt: "CIBC", bg: "bg-white" },
+      "CIBC": { src: getImagePath("cibc.png"), alt: "CIBC", bg: "bg-white" },
     };
 
     const logo = logoMap[company];

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { personalInfo, education } from "../data/content";
 import MW2019Logo from "./MW2019Logo";
+import { getImagePath } from "../utils/imagePath";
 
 const Header = () => {
   const interests = [
@@ -158,14 +159,10 @@ const Header = () => {
                 background: "linear-gradient(135deg, rgba(0,217,255,0.15), rgba(10,10,10,0.9))"
               }}
             >
-              <img 
-                src="/profile.jpg" 
+              <img
+                src={getImagePath("profile.jpg")}
                 alt={personalInfo.name}
                 className="w-full h-full object-cover"
-                onError={(e) => {
-                  console.error("Failed to load profile image");
-                  e.currentTarget.style.display = 'none';
-                }}
               />
             </div>
           </motion.div>
