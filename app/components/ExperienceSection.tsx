@@ -19,22 +19,22 @@ const ExperienceSection = () => {
   const CompanyLogo = ({ company }: { company: string }) => {
     const logoMap: Record<string, { src: string; alt: string; bg: string }> = {
       "Government of Ontario": {
-        src: getImagePath("ongov.png"),
+        src: "/ongov.png",
         alt: "Ontario Government",
         bg: "bg-gradient-to-br from-orange-500 to-orange-600"
       },
       "Ontario Digital Service": {
-        src: getImagePath("ongov.png"),
+        src: "/ongov.png",
         alt: "Ontario Government",
         bg: "bg-gradient-to-br from-orange-500 to-orange-600"
       },
       "Canadian Imperial Bank of Commerce": {
-        src: getImagePath("cibc.png"),
+        src: "/cibc.png",
         alt: "CIBC",
         bg: "bg-white"
       },
       "CIBC": {
-        src: getImagePath("cibc.png"),
+        src: "/cibc.png",
         alt: "CIBC",
         bg: "bg-white"
       }

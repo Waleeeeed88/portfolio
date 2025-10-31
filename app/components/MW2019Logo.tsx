@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { getImagePath } from "../utils/imagePath";
 
 const MW2019Logo = () => {
   return (
@@ -27,11 +26,15 @@ const MW2019Logo = () => {
         className="w-24 h-24 sm:w-32 sm:h-32"
       >
         <img
-          src={getImagePath("mw-logo.png")}
+          src="/mw-logo.png"
           alt="MW Logo"
           className="w-full h-full object-contain"
           style={{
             filter: "drop-shadow(0 0 20px rgba(0,255,65,0.6)) drop-shadow(0 0 40px rgba(0,217,255,0.4))"
+          }}
+          onError={(e) => {
+            console.error("Failed to load MW logo");
+            e.currentTarget.style.display = 'none';
           }}
         />
       </motion.div>

@@ -1,10 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { personalInfo, education } from "../data/content";
 import MW2019Logo from "./MW2019Logo";
-import { getImagePath } from "../utils/imagePath";
 
 const Header = () => {
   const interests = [
@@ -137,12 +135,17 @@ const Header = () => {
           </motion.div>
         </motion.div>
 
-        {/* MW Logo Image with electric blue background */}
-        <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.2 }} className="relative">
+        {/* Profile Image */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }} 
+          animate={{ opacity: 1, scale: 1 }} 
+          transition={{ duration: 0.5, delay: 0.2 }} 
+          className="relative"
+        >
           <motion.div
-            className="w-40 h-52 sm:w-48 sm:h-64 rounded-lg p-0.5 flex items-center justify-center"
+            className="w-40 h-52 sm:w-48 sm:h-64 rounded-lg p-0.5"
             style={{
-              background: "linear-gradient(135deg, rgba(0,217,255,0.4) 0%, rgba(0,255,65,0.3) 50%, rgba(0,229,255,0.4) 100%)",
+              background: "linear-gradient(135deg, rgba(0,255,65,0.4) 0%, rgba(0,217,255,0.4) 50%, rgba(0,229,255,0.4) 100%)",
             }}
             whileHover={{ 
               scale: 1.05,
@@ -150,37 +153,26 @@ const Header = () => {
               transition: { duration: 0.3 }
             }}
           >
-            <div className="w-full h-full rounded-lg overflow-hidden relative flex items-center justify-center p-8"
+            <div className="w-full h-full rounded-lg overflow-hidden relative"
               style={{
                 background: "linear-gradient(135deg, rgba(0,217,255,0.15), rgba(10,10,10,0.9))"
               }}
             >
-              <motion.div
-                animate={{ 
-                  rotate: [0, 360],
+              <img 
+                src="/profile.jpg" 
+                alt={personalInfo.name}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  console.error("Failed to load profile image");
+                  e.currentTarget.style.display = 'none';
                 }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                className="w-full h-full flex items-center justify-center"
-              >
-                <img
-                  src={getImagePath("mw-logo.png")}
-                  alt="MW Logo"
-                  className="w-full h-full object-contain"
-                  style={{
-                    filter: "drop-shadow(0 0 20px rgba(0,255,65,0.5)) drop-shadow(0 0 40px rgba(0,217,255,0.3))"
-                  }}
-                />
-              </motion.div>
+              />
             </div>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Education Section with electric blue backgrounds */}
+      {/* Education Section */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.5 }} className="w-full">
         <h3 className="text-2xl font-light tracking-wide mb-3 text-electric-green" style={{ textShadow: "0 0 20px rgba(0,255,65,0.5)" }}>
           Education
