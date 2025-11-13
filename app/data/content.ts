@@ -58,6 +58,17 @@ export const experiences = [
 
 export const projects = [
   {
+    title: "REAI (Real Estate Price Predictor)",
+    tech: "Python | XGBoost | Flask | Docker | Google Cloud Run | Imagen 4 Ultra",
+    points: [
+      "Built a full real-estate valuation platform using an XGBoost regressor trained on a 45,000-home dataset, achieving ~97.5% RMSE-normalized accuracy.",
+      "Converted the model into a production-ready Flask REST API with endpoints for price prediction and a comprehensive mortgage calculator.",
+      "Integrated Google Imagen 4 Ultra through a secure service-account workflow to generate dynamic, high-fidelity property visuals for users.",
+      "Containerized the application with Docker and deployed it on Google Cloud Run, configuring HTTPS and autoscaling for reliable, low-latency inference.",
+    ],
+    link: "https://aires-service-298702215071.us-central1.run.app/",
+  },
+  {
     title: "YorkU Parking App",
     tech: "Java | SwingWorker | Firebase | Firestore | Cloud Functions | Git | UML",
     points: [
@@ -67,16 +78,6 @@ export const projects = [
       "Automated UI and logic testing using Selenium, JUnit, and Randoop.",
     ],
     link: "https://github.com/Waleeeeed88/ParkingApp",
-  },
-  {
-    title: "Treatify (Full-Stack & Chatbot)",
-    tech: "React | Node.js | Python | GPT-Neo | PyTorch | GCP | REST APIs",
-    points: [
-      "Built a React frontend and Node.js backend for UI and AI service orchestration.",
-      "Developed a PDF-Parsing API using Google Cloud for medical document processing.",
-      "Trained and deployed a 20B-parameter GPT-Neo model on Google Cloud Run.",
-      "Achieved 99.8% uptime and sub-100 ms response times for the production model.",
-    ],
   },
   {
     title: "FPGA Car Parking System",
