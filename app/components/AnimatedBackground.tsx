@@ -7,7 +7,7 @@ const AnimatedBackground = () => {
     <div className="fixed inset-0 -z-10 overflow-hidden">
       {/* Grid pattern */}
       <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-20" />
-      
+
       {/* Animated gradient orbs */}
       <motion.div
         className="absolute top-1/4 -left-1/4 w-96 h-96 bg-accent-cyan/20 rounded-full blur-3xl"
@@ -17,7 +17,7 @@ const AnimatedBackground = () => {
           scale: [1, 1.2, 1],
         }}
         transition={{
-          duration: 8,
+          duration: 13,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -30,7 +30,7 @@ const AnimatedBackground = () => {
           scale: [1, 1.3, 1],
         }}
         transition={{
-          duration: 10,
+          duration: 17,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -43,12 +43,12 @@ const AnimatedBackground = () => {
           scale: [1, 1.1, 1],
         }}
         transition={{
-          duration: 12,
+          duration: 19,
           repeat: Infinity,
           ease: "easeInOut",
         }}
       />
-      
+
       {/* Additional smaller orbs */}
       <motion.div
         className="absolute top-3/4 left-1/4 w-48 h-48 bg-neon-blue/15 rounded-full blur-2xl"
@@ -58,7 +58,7 @@ const AnimatedBackground = () => {
           scale: [1, 1.15, 1],
         }}
         transition={{
-          duration: 7,
+          duration: 11,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -71,20 +71,20 @@ const AnimatedBackground = () => {
           scale: [1, 1.2, 1],
         }}
         transition={{
-          duration: 9,
+          duration: 14,
           repeat: Infinity,
           ease: "easeInOut",
         }}
       />
       <motion.div
-        className="absolute top-1/4 right-1/4 w-64 h-64 bg-electric-green/20 rounded-full blur-3xl"
+        className="absolute top-1/4 right-1/4 w-64 h-64 bg-electric-blue/25 rounded-full blur-3xl will-change-transform"
         animate={{
           x: [0, 50, 0],
           y: [0, -80, 0],
           scale: [1, 1.4, 1],
         }}
         transition={{
-          duration: 15,
+          duration: 23,
           repeat: Infinity,
           ease: "easeInOut",
         }}

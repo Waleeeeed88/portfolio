@@ -14,9 +14,9 @@ const GamingSection = () => {
   ];
 
   const gamingInterests = [
-    { icon: "🎮", text: "Action & Adventure", color: "electric-green" },
+    { icon: "🎮", text: "Action & Adventure", color: "electric-blue" },
     { icon: "🎯", text: "FPS Games", color: "accent-cyan" },
-    { icon: "🏆", text: "Competitive Gaming", color: "neon-green" },
+    { icon: "🏆", text: "Competitive Gaming", color: "neon-blue" },
     { icon: "🎪", text: "Story-Driven", color: "electric-blue" },
   ];
 
@@ -26,7 +26,7 @@ const GamingSection = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        transition={{ type: "spring", stiffness: 50, damping: 20 }}
       >
         {/* PlayStation Style Header */}
         <div className="flex items-center gap-4 mb-8">
@@ -38,7 +38,7 @@ const GamingSection = () => {
             className="flex items-center gap-2"
           >
             <div className="w-3 h-3 rounded-full bg-electric-blue"></div>
-            <div className="w-3 h-3 rounded-full bg-electric-green"></div>
+            <div className="w-3 h-3 rounded-full bg-neon-blue"></div>
             <div className="w-3 h-3 rounded-full bg-accent-magenta"></div>
             <div className="w-3 h-3 rounded-full bg-accent-cyan"></div>
           </motion.div>
@@ -104,8 +104,8 @@ const GamingSection = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={{ x: 5, backgroundColor: "rgba(0, 255, 65, 0.05)" }}
-                  className="flex items-center justify-between p-3 rounded-lg border border-border-color hover:border-electric-green/50 transition-all duration-300 cursor-pointer"
+                  whileHover={{ x: 5, backgroundColor: "rgba(0, 217, 255, 0.05)" }}
+                  className="flex items-center justify-between p-3 rounded-lg border border-border-color hover:border-electric-blue/50 transition-all duration-300 cursor-pointer"
                 >
                   <div>
                     <p className="text-sm text-primary-text font-light">{game.name}</p>
@@ -126,20 +126,20 @@ const GamingSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mt-6 p-6 rounded-xl border border-electric-green/30 bg-black/20 backdrop-blur-sm"
+          className="mt-6 p-6 rounded-xl border border-electric-blue/30 bg-black/20 backdrop-blur-sm"
         >
-          <h3 className="text-lg font-normal text-electric-green mb-3 tracking-wide">
+          <h3 className="text-lg font-normal text-electric-blue mb-3 tracking-wide">
             🎯 Gaming = Problem Solving
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-secondary-text font-light">
             <div>
-              <span className="text-electric-green">▹</span> <strong className="text-electric-green">Strategy:</strong> Planning raid routes like system architecture
+              <span className="text-electric-blue">▹</span> <strong className="text-electric-blue">Strategy:</strong> Planning raid routes like system architecture
             </div>
             <div>
-              <span className="text-electric-green">▹</span> <strong className="text-electric-green">Teamwork:</strong> Squad coordination mirrors agile development
+              <span className="text-electric-blue">▹</span> <strong className="text-electric-blue">Teamwork:</strong> Squad coordination mirrors agile development
             </div>
             <div>
-              <span className="text-electric-green">▹</span> <strong className="text-electric-green">Persistence:</strong> Boss fights teach debugging patience
+              <span className="text-electric-blue">▹</span> <strong className="text-electric-blue">Persistence:</strong> Boss fights teach debugging patience
             </div>
           </div>
         </motion.div>

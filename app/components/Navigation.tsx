@@ -88,11 +88,10 @@ const Navigation = () => {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
             ? "bg-dark-bg/80 backdrop-blur-md shadow-[0_4px_20px_rgba(0,217,255,0.1)]"
             : "bg-transparent"
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
@@ -101,7 +100,7 @@ const Navigation = () => {
               onClick={() => scrollToSection("header")}
               className="text-2xl font-bold tracking-wider"
               style={{
-                background: "linear-gradient(90deg, #00ff41 0%, #00d9ff 100%)",
+                background: "linear-gradient(90deg, #00d9ff 0%, #00ffff 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -118,11 +117,10 @@ const Navigation = () => {
                 <motion.button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`relative px-4 py-2 text-sm font-light tracking-wide rounded-lg transition-all duration-300 ${
-                    activeSection === item.id
+                  className={`relative px-4 py-2 text-sm font-light tracking-wide rounded-lg transition-all duration-300 ${activeSection === item.id
                       ? "text-electric-blue"
-                      : "text-secondary-text hover:text-electric-green"
-                  }`}
+                      : "text-secondary-text hover:text-neon-blue"
+                    }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -131,7 +129,7 @@ const Navigation = () => {
                       className="absolute inset-0 rounded-lg"
                       style={{
                         background:
-                          "linear-gradient(90deg, rgba(0, 217, 255, 0.15) 0%, rgba(0, 255, 65, 0.15) 100%)",
+                          "linear-gradient(90deg, rgba(0, 217, 255, 0.15) 0%, rgba(0, 255, 255, 0.15) 100%)",
                         border: "1px solid rgba(0, 217, 255, 0.3)",
                       }}
                       layoutId="activeNav"
@@ -182,11 +180,10 @@ const Navigation = () => {
                 <motion.button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`relative w-full text-left px-4 py-3 rounded-lg text-base font-light transition-all duration-300 ${
-                    activeSection === item.id
+                  className={`relative w-full text-left px-4 py-3 rounded-lg text-base font-light transition-all duration-300 ${activeSection === item.id
                       ? "text-electric-blue"
                       : "text-secondary-text"
-                  }`}
+                    }`}
                   whileTap={{ scale: 0.98 }}
                 >
                   {activeSection === item.id && (
@@ -194,8 +191,8 @@ const Navigation = () => {
                       className="absolute inset-0 rounded-lg"
                       style={{
                         background:
-                          "linear-gradient(90deg, rgba(0, 217, 255, 0.15) 0%, rgba(0, 255, 65, 0.15) 100%)",
-                        borderLeft: "2px solid #00ff41",
+                          "linear-gradient(90deg, rgba(0, 217, 255, 0.15) 0%, rgba(0, 255, 255, 0.15) 100%)",
+                        borderLeft: "2px solid #00d9ff",
                       }}
                       layoutId="mobileActive"
                       initial={false}
@@ -215,7 +212,7 @@ const Navigation = () => {
             className="absolute bottom-0 left-0 right-0 h-[1px]"
             style={{
               background:
-                "linear-gradient(90deg, transparent 0%, rgba(0, 217, 255, 0.5) 20%, rgba(0, 255, 65, 0.5) 80%, transparent 100%)",
+                "linear-gradient(90deg, transparent 0%, rgba(0, 217, 255, 0.5) 20%, rgba(0, 255, 255, 0.5) 80%, transparent 100%)",
             }}
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}

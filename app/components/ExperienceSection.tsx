@@ -88,14 +88,14 @@ const ExperienceSection = () => {
                       initial={{ scale: 0.8, opacity: 0 }}
                       whileInView={{ scale: 1, opacity: 1 }}
                       viewport={{ once: true }}
-                      transition={{ 
-                        delay: expIndex * 0.1 + 0.2, 
+                      transition={{
+                        delay: expIndex * 0.1 + 0.2,
                         duration: 0.4,
                         type: "spring",
                         stiffness: 200,
                         damping: 20
                       }}
-                      whileHover={{ 
+                      whileHover={{
                         scale: 1.1,
                         transition: {
                           type: "spring",
@@ -105,7 +105,7 @@ const ExperienceSection = () => {
                       }}
                     >
                       <motion.div
-                        animate={{ 
+                        animate={{
                           rotate: [0, -2, 2, -2, 2, 0]
                         }}
                         transition={{
@@ -123,7 +123,7 @@ const ExperienceSection = () => {
                       <h3 className="text-lg sm:text-xl font-normal text-electric-blue group-hover:text-accent-cyan transition-colors mb-1 break-words" style={{ textShadow: "0 0 10px rgba(0,217,255,0.3)" }}>
                         {title}
                       </h3>
-                      <p className="text-sm sm:text-base text-electric-green font-light break-words">{exp.company}</p>
+                      <p className="text-sm sm:text-base text-electric-blue font-light break-words">{exp.company}</p>
                     </div>
                   </div>
 
@@ -148,9 +148,9 @@ const ExperienceSection = () => {
                         <motion.span
                           className="text-electric-blue mt-0.5 sm:mt-1 flex-shrink-0 text-lg sm:text-xl"
                           animate={{ x: [0, 3, 0] }}
-                          transition={{ 
-                            duration: 2, 
-                            repeat: Infinity, 
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
                             delay: i * 0.3,
                             ease: "easeInOut"
                           }}
@@ -172,14 +172,14 @@ const ExperienceSection = () => {
                         initial={{ opacity: 0, scale: 0 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        transition={{ 
+                        transition={{
                           delay: expIndex * 0.1 + tIndex * 0.03,
                           type: "spring",
                           stiffness: 500,
                           damping: 30
                         }}
-                        whileHover={{ 
-                          scale: 1.1, 
+                        whileHover={{
+                          scale: 1.1,
                           y: -2,
                           transition: {
                             type: "spring",
