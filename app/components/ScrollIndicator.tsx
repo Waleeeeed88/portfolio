@@ -1,14 +1,10 @@
 "use client";
 
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const ScrollIndicator = () => {
   const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+  const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <motion.div
@@ -16,7 +12,7 @@ const ScrollIndicator = () => {
       style={{
         scaleX,
         background: "linear-gradient(90deg, #00ff41 0%, #00d9ff 50%, #00e5ff 100%)",
-        boxShadow: "0 0 10px rgba(0,255,65,0.5), 0 0 20px rgba(0,217,255,0.3)"
+        willChange: "transform"
       }}
     />
   );

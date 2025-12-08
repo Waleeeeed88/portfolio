@@ -1,22 +1,27 @@
 "use client";
 
 import AnimatedBackground from "./components/AnimatedBackground";
+import Navigation from "./components/Navigation";
 import Header from "./components/Header";
 import ExperienceSection from "./components/ExperienceSection";
 import ProjectsSection from "./components/ProjectsSection";
 import SkillsSection from "./components/SkillsSection";
 import Footer from "./components/Footer";
+import ScrollIndicator from "./components/ScrollIndicator";
 
 export default function Home() {
   return (
     <>
       <AnimatedBackground />
-      <main className="max-w-5xl mx-auto px-6 relative z-10">
-        <section id="header" className="min-h-[70vh] flex items-center justify-center py-20">
-          <Header />
-        </section>
+      <ScrollIndicator />
+      <Navigation />
+      {/* Increased pt to 24 to clear the fixed nav bar so the head isn't cut off */}
+      <main className="min-h-screen px-4 sm:px-6 lg:px-8 pt-24 pb-12 max-w-7xl mx-auto">
+        <div className="space-y-16">
+          <section id="header">
+            <Header />
+          </section>
 
-        <div className="space-y-8 pb-8">
           <section id="experience">
             <ExperienceSection />
           </section>
@@ -29,7 +34,6 @@ export default function Home() {
             <SkillsSection />
           </section>
         </div>
-
         <Footer />
       </main>
     </>

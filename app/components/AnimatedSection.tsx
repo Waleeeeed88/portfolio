@@ -9,14 +9,13 @@ interface AnimatedSectionProps {
 }
 
 const sectionVariants: Variants = {
-  hidden: { opacity: 0, y: 75 },
+  hidden: { opacity: 0, y: 15 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.8,
-      delay: 0.1,
-      ease: [0.22, 1, 0.36, 1], // A nice "easeOutExpo" like curve
+      duration: 0.4,
+      ease: "easeOut",
     },
   },
 };
@@ -31,7 +30,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.1 }}
     >
       {children}
     </motion.section>
