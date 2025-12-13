@@ -25,9 +25,15 @@ const itemVariants = {
 const ProjectsSection = () => {
   return (
     <AnimatedSection>
-      <h2 className="text-2xl font-light tracking-wide mb-4 text-primary-text">
-        Projects
-      </h2>
+      <div className="mb-4 flex items-center justify-between gap-3">
+        <h2 className="text-2xl font-light tracking-wide text-primary-text">
+          Projects
+        </h2>
+        <span className="px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-electric-blue/30 via-accent-cyan/20 to-accent-purple/20 text-electric-blue border border-electric-blue/30">
+          Selected work & experiments
+        </span>
+      </div>
+
       <motion.div
         className="space-y-6"
         variants={containerVariants}

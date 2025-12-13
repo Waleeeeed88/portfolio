@@ -10,6 +10,12 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, tech, points, link }) => {
+  const linkLabel = link
+    ? link.toLowerCase().includes("github")
+      ? "Link to GitHub repo"
+      : "Link to demo"
+    : null;
+
   const CardContent = (
     <>
       <div className="flex items-start justify-between gap-4">
@@ -17,15 +23,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, tech, points, link }) 
           {title}
         </h3>
         {link && (
-          <svg
-            className="w-5 h-5 text-accent-cyan group-hover:text-white flex-shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
+          <div className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-electric-blue/10 border border-electric-blue/40 text-electric-blue text-[11px] font-medium tracking-wide">
+            <span>{linkLabel}</span>
+            <svg
+              className="w-4 h-4 text-electric-blue"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </div>
         )}
       </div>
       <p className="text-xs font-light text-secondary-text my-3 tracking-wider">{tech}</p>

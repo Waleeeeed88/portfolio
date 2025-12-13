@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import AnimatedSection from "./AnimatedSection";
+import { motion, useReducedMotion } from "framer-motion";
 import { experiences } from "../data/content";
 import { getImagePath } from "../utils/imagePath";
 
@@ -15,24 +14,29 @@ type ExperienceItem = {
   technologies?: string[];
 };
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08 },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 15 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.3, ease: "easeOut" as const },
-  },
-};
-
 const ExperienceSection = () => {
+  const prefersReducedMotion = useReducedMotion();
+
+  const containerVariants = prefersReducedMotion
+    ? undefined
+    : {
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: { staggerChildren: 0.05, when: "beforeChildren" },
+        },
+      };
+
+  const cardVariants = prefersReducedMotion
+    ? undefined
+    : {
+        hidden: { opacity: 0, y: 6 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.18, ease: "easeOut" as const },
+        },
+      };
   const CompanyLogo = ({ company }: { company: string }) => {
     const logoMap: Record<string, { src: string; alt: string; bg: string }> = {
       "Government of Ontario": { src: getImagePath("ongov.png"), alt: "Ontario Government", bg: "bg-gradient-to-br from-orange-500 to-orange-600" },
@@ -67,18 +71,17 @@ const ExperienceSection = () => {
   const list: ExperienceItem[] = Array.isArray(experiences) ? (experiences as ExperienceItem[]) : [];
 
   return (
-    <AnimatedSection>
+    <section>
       <h2 className="text-2xl font-light tracking-wide mb-6 text-electric-blue">
         Experience
       </h2>
 
-      {/* Changed to Grid Layout for better spacing */}
       <motion.div
         className="grid grid-cols-1 lg:grid-cols-2 gap-6"
         variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
+        initial={containerVariants ? "hidden" : undefined}
+        whileInView={containerVariants ? "visible" : undefined}
+        viewport={{ once: true, amount: 0.2 }}
       >
         {list.map((exp, expIndex) => {
           const title = exp.title ?? exp.position ?? "";
@@ -92,7 +95,6 @@ const ExperienceSection = () => {
               className="p-6 rounded-xl border border-electric-blue/20 bg-black/20 
                          hover:border-electric-blue hover:shadow-[0_0_60px_rgba(0,217,255,0.5)] hover:bg-electric-blue/5 hover:-translate-y-1 
                          transition-all duration-300 flex flex-col h-full"
-              style={{ willChange: "transform, box-shadow" }} // Performance Hint
             >
               <div className="flex items-start gap-4 mb-4">
                 <CompanyLogo company={exp.company} />
@@ -132,7 +134,7 @@ const ExperienceSection = () => {
           );
         })}
       </motion.div>
-    </AnimatedSection>
+    </section>
   );
 };
 
