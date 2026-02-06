@@ -35,7 +35,7 @@ export const experiences = [
     points: [
       "Developed responsive UI components using Angular and TypeScript, improving user experience and interface consistency.",
       "Implemented automated testing frameworks with Cypress, reducing manual testing effort and improving code reliability.",
-      "Collaborated on Sigma design system integration, ensuring adherence to accessibility standards and design guidelines.",
+      "Collaborated on Figms design system integration, ensuring adherence to accessibility standards and design guidelines.",
       "Integrated Google Analytics for comprehensive user device tracking and behavior analysis across government applications.",
       "Worked in an Agile environment, participating in sprint planning and code reviews to deliver high-quality solutions.",
     ],
