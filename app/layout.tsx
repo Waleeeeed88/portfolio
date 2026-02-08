@@ -1,53 +1,63 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-// @ts-ignore: allow side-effect CSS import without type declarations
+import { Cormorant_Garamond, IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import Navigation from "./components/Navigation";
-import ScrollIndicator from "./components/ScrollIndicator";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
+  variable: "--font-space-grotesk",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
+  variable: "--font-cormorant",
+  weight: ["400", "500", "600", "700"],
 });
 
-// Helper for production paths
-const isProd = process.env.NODE_ENV === 'production';
-const repoName = 'portfolio';
-const getIconPath = (path: string) => {
-  return isProd ? `/${repoName}/${path}` : `/${path}`;
-};
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  variable: "--font-ibm-plex-mono",
+  weight: ["400", "500"],
+});
+
+const isProd = process.env.NODE_ENV === "production";
+const repoName = "portfolio";
+
+const getIconPath = (path: string) => (isProd ? `/${repoName}/${path}` : `/${path}`);
+const getSocialPath = (path: string) => `/${path}`;
 
 export const metadata: Metadata = {
-  title: "Mohammad Waliduddin | Software Developer",
+  metadataBase: new URL(isProd ? "https://waleeeeed88.github.io/portfolio/" : "http://localhost:3000"),
+  title: "mw2019 go",
+  applicationName: "mw2019 go",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    title: "mw2019 go",
+    capable: true,
+    statusBarStyle: "black-translucent",
+  },
   description:
-    "Software Developer & Engineer with expertise in Full Stack Development, Cloud Computing, and Machine Learning",
+    "Portfolio of Mohammad Waliduddin: engineer focused on full-stack delivery, cloud systems, AI integration, and embedded computing.",
   icons: {
     icon: [
-      { url: getIconPath("mw-logo.png"), type: "image/png", sizes: "32x32" },
-      { url: getIconPath("mw-logo.png"), type: "image/png", sizes: "16x16" }
+      { url: getIconPath("mw2019-alt.svg"), type: "image/svg+xml", sizes: "any" },
     ],
-    apple: [{ url: getIconPath("mw-logo.png"), sizes: "180x180" }],
-    shortcut: [{ url: getIconPath("mw-logo.png") }]
+    apple: [{ url: getIconPath("mw2019-alt.svg"), sizes: "180x180" }],
+    shortcut: [{ url: getIconPath("mw2019-alt.svg") }],
   },
   openGraph: {
-    title: "Mohammad Waliduddin | Software Developer",
+    title: "mw2019 go",
     description:
-      "Software Developer & Engineer with expertise in Full Stack Development, Cloud Computing, and Machine Learning",
+      "Engineer shipping reliable full-stack products, cloud tooling, and AI-backed features.",
     type: "website",
     locale: "en_US",
-    images: [{ url: getIconPath("mw-logo.png") }]
+    images: [{ url: getSocialPath("mw2019-alt.svg") }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mohammad Waliduddin | Software Developer",
+    title: "mw2019 go",
     description:
-      "Software Developer & Engineer with expertise in Full Stack Development, Cloud Computing, and Machine Learning",
-    images: [getIconPath("mw-logo.png")]
+      "Engineer shipping reliable full-stack products, cloud tooling, and AI-backed features.",
+    images: [getSocialPath("mw2019-alt.svg")],
   },
 };
 
@@ -58,13 +68,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ScrollIndicator />
-        <Navigation />
-        {children}
-      </body>
+      <body className={`${spaceGrotesk.variable} ${cormorant.variable} ${ibmPlexMono.variable}`}>{children}</body>
     </html>
   );
 }

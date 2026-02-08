@@ -1,139 +1,69 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import { experiences } from "../data/content";
 import { getImagePath } from "../utils/imagePath";
+import Reveal from "./Reveal";
 
-type ExperienceItem = {
-  company: string;
-  title?: string;
-  position?: string;
-  period?: string;
-  points?: string[];
-  description?: string[];
-  technologies?: string[];
+const logos: Record<string, { src: string; alt: string }> = {
+  "Government of Ontario": { src: "ongov.png", alt: "Government of Ontario" },
+  "Canadian Imperial Bank of Commerce": { src: "cibc.png", alt: "CIBC" },
 };
 
 const ExperienceSection = () => {
-  const prefersReducedMotion = useReducedMotion();
-
-  const containerVariants = prefersReducedMotion
-    ? undefined
-    : {
-        hidden: { opacity: 0 },
-        visible: {
-          opacity: 1,
-          transition: { staggerChildren: 0.05, when: "beforeChildren" },
-        },
-      };
-
-  const cardVariants = prefersReducedMotion
-    ? undefined
-    : {
-        hidden: { opacity: 0, y: 6 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.18, ease: "easeOut" as const },
-        },
-      };
-  const CompanyLogo = ({ company }: { company: string }) => {
-    const logoMap: Record<string, { src: string; alt: string; bg: string }> = {
-      "Government of Ontario": { src: getImagePath("ongov.png"), alt: "Ontario Government", bg: "bg-gradient-to-br from-orange-500 to-orange-600" },
-      "Ontario Digital Service": { src: getImagePath("ongov.png"), alt: "Ontario Government", bg: "bg-gradient-to-br from-orange-500 to-orange-600" },
-      "Canadian Imperial Bank of Commerce": { src: getImagePath("cibc.png"), alt: "CIBC", bg: "bg-white" },
-      "CIBC": { src: getImagePath("cibc.png"), alt: "CIBC", bg: "bg-white" },
-    };
-
-    const logo = logoMap[company];
-    if (!logo) return null;
-
-    return (
-      <div
-        className={`w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center ${logo.bg} rounded-xl p-2 flex-shrink-0`}
-        style={{
-          boxShadow: "0 0 15px rgba(0, 217, 255, 0.25), 0 4px 8px rgba(0, 0, 0, 0.3)"
-        }}
-      >
-        <img
-          src={logo.src}
-          alt={logo.alt}
-          className="w-full h-full object-contain"
-          loading="lazy"
-          onError={(e) => {
-            e.currentTarget.style.display = 'none';
-          }}
-        />
-      </div>
-    );
-  };
-
-  const list: ExperienceItem[] = Array.isArray(experiences) ? (experiences as ExperienceItem[]) : [];
-
   return (
-    <section>
-      <h2 className="text-2xl font-light tracking-wide mb-6 text-electric-blue">
-        Experience
-      </h2>
+    <section id="experience" className="section-block section-theme theme-ledger scroll-mt-28">
+      <Reveal>
+        <header>
+          <p className="section-kicker future">Past Experience</p>
+          <h2 className="section-title">Real teams. Real outcomes.</h2>
+          <p className="section-copy">Only the strongest impact points shown below.</p>
+        </header>
+      </Reveal>
 
-      <motion.div
-        className="grid grid-cols-1 lg:grid-cols-2 gap-6"
-        variants={containerVariants}
-        initial={containerVariants ? "hidden" : undefined}
-        whileInView={containerVariants ? "visible" : undefined}
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        {list.map((exp, expIndex) => {
-          const title = exp.title ?? exp.position ?? "";
-          const points = Array.isArray(exp.points) ? exp.points : Array.isArray(exp.description) ? exp.description : [];
-          const techs = Array.isArray(exp.technologies) ? exp.technologies : [];
+      <div className="timeline mt-6 space-y-4">
+        {experiences.map((experience, index) => {
+          const logo = logos[experience.company];
 
           return (
-            <motion.div
-              key={`${exp.company}-${title}-${expIndex}`}
-              variants={cardVariants}
-              className="p-6 rounded-xl border border-electric-blue/20 bg-black/20 
-                         hover:border-electric-blue hover:shadow-[0_0_60px_rgba(0,217,255,0.5)] hover:bg-electric-blue/5 hover:-translate-y-1 
-                         transition-all duration-300 flex flex-col h-full"
-            >
-              <div className="flex items-start gap-4 mb-4">
-                <CompanyLogo company={exp.company} />
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-normal text-electric-blue leading-tight mb-1">{title}</h3>
-                  <p className="text-sm text-secondary-text mb-1">{exp.company}</p>
-                  <span className="text-xs text-accent-cyan inline-block px-2 py-0.5 rounded bg-electric-blue/5 border border-electric-blue/10">
-                    {exp.period ?? ""}
-                  </span>
-                </div>
-              </div>
+            <Reveal key={`${experience.company}-${experience.period}`} delay={0.06 * index}>
+              <article className="panel panel-hover ledger-card timeline-item p-4 sm:p-5">
+                <div className="mb-3 flex items-start justify-between gap-3">
+                  <div>
+                    <p className="entry-stamp mono">Entry {(index + 1).toString().padStart(2, "0")}</p>
+                    <h3 className="heritage text-2xl font-semibold text-white">{experience.title}</h3>
+                    <p className="mt-1 text-sm text-[#95c7f5]">{experience.company}</p>
+                    <p className="mono mt-1 text-xs text-[var(--muted)]">
+                      {experience.location} | {experience.period}
+                    </p>
+                  </div>
 
-              {points.length > 0 && (
-                <ul className="space-y-2 text-sm text-primary-text font-light flex-grow mb-4">
-                  {points.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-electric-blue mt-1 flex-shrink-0 text-xs">▹</span>
-                      <span className="leading-relaxed">{item}</span>
+                  <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-lg border border-[rgba(102,211,255,0.3)] bg-[rgba(8,18,37,0.85)] p-1.5">
+                    {logo ? (
+                      <Image
+                        src={getImagePath(logo.src)}
+                        alt={logo.alt}
+                        width={44}
+                        height={44}
+                        className="h-full w-full object-contain"
+                      />
+                    ) : (
+                      <span className="mono text-[0.65rem] text-[#d4e9ff]">{experience.company.slice(0, 2)}</span>
+                    )}
+                  </div>
+                </div>
+
+                <ul className="space-y-2 text-sm leading-relaxed text-[var(--muted)]">
+                  {experience.points.slice(0, 3).map((point) => (
+                    <li key={point} className="flex gap-2">
+                      <span className="mt-[0.42rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#66d3ff]" />
+                      <span>{point}</span>
                     </li>
                   ))}
                 </ul>
-              )}
-
-              {techs.length > 0 && (
-                <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-electric-blue/10">
-                  {techs.map((tech, tIndex) => (
-                    <span
-                      key={tIndex}
-                      className="px-2 py-1 text-xs font-light bg-electric-blue/10 border border-electric-blue/30 rounded text-electric-blue"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </motion.div>
+              </article>
+            </Reveal>
           );
         })}
-      </motion.div>
+      </div>
     </section>
   );
 };

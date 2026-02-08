@@ -1,184 +1,133 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { personalInfo, education } from "../data/content";
+import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
+import { ArrowRight, FileText } from "lucide-react";
+import { personalInfo, projects } from "../data/content";
 import { getImagePath } from "../utils/imagePath";
+import Reveal from "./Reveal";
+
+const quickWins = [
+  "Full Stack Co-op @ Government of Ontario",
+  "REAI deployed on Cloud Run",
+  "Embedded + FPGA systems built and validated",
+];
+
+const orbitTags = [
+  { label: "Embedded", className: "one" },
+  { label: "Cloud", className: "two" },
+  { label: "C++", className: "three" },
+  { label: "TypeScript", className: "four" },
+];
 
 const Header = () => {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
+  const reduceMotion = useReducedMotion();
+  const featuredProject = projects.find((project) => project.featured) ?? projects[0];
+  const resumePath = getImagePath("Jake_s_Resume.pdf");
+  const topContacts = personalInfo.contacts.filter((contact) => contact.label === "Email" || contact.label === "GitHub");
 
   return (
-    // Changed justify-between to justify-start to push the right box left
-    // Increased gap to lg:gap-24 to maintain some separation but keep it closer than before
-    <header className="flex flex-col lg:flex-row items-center justify-start gap-10 lg:gap-24 w-full relative z-10">
-      
-      {/* Left Side: Profile Info */}
-      <div className="flex flex-col items-center lg:items-start flex-shrink-0">
-        {/* Profile Picture - Expanded Size */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, ease: "easeOut" as const }}
-          className="relative mb-6"
-        >
-          {/* Increased size to show entire face better */}
-          <div className="relative w-72 h-72 sm:w-96 sm:h-96">
+    <section id="home" className="section-block section-theme theme-hero !mt-0 scroll-mt-28">
+      <article className="panel big-card overflow-hidden">
+        <div className="edge-line" />
+
+        <div className="hero-grid px-4 py-5 sm:px-6 sm:py-7 lg:px-8 lg:py-8">
+          <div className="space-y-5">
+            <Reveal className="flex flex-wrap items-center justify-between gap-2 text-xs text-[#bdd4f8]" delay={0.04}>
+              <p className="mono tracking-[0.13em]">{personalInfo.name}</p>
+              <p className="mono tracking-[0.11em]">{personalInfo.location}</p>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <h1 className="hero-title">
+                <span className="hero-title-old">{personalInfo.role}</span>
+                <span className="hero-title-modern">Ships Real Systems</span>
+              </h1>
+              <p className="mt-3 max-w-xl text-base leading-relaxed text-[var(--muted)] sm:text-lg">
+                {personalInfo.summary}
+              </p>
+            </Reveal>
+
+            <Reveal className="flex flex-wrap gap-2" delay={0.14}>
+              <a
+                href={featuredProject.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[rgba(102,211,255,0.44)] bg-[rgba(102,211,255,0.12)] px-4 py-2 text-sm text-[#d9f1ff] transition-all duration-300 hover:-translate-y-0.5 hover:text-white hover:shadow-[0_0_20px_rgba(102,211,255,0.24)]"
+              >
+                Launch REAI
+                <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+              </a>
+              <a
+                href={resumePath}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full border border-[rgba(130,91,255,0.42)] bg-[rgba(130,91,255,0.12)] px-4 py-2 text-sm text-[#dfd2ff] transition-all duration-300 hover:-translate-y-0.5 hover:text-white hover:shadow-[0_0_20px_rgba(130,91,255,0.22)]"
+              >
+                <FileText className="h-3.5 w-3.5" aria-hidden />
+                Resume
+              </a>
+            </Reveal>
+
+            <Reveal className="meat-strip" delay={0.2}>
+              {quickWins.map((item) => (
+                <p key={item} className="meat-item">
+                  {item}
+                </p>
+              ))}
+            </Reveal>
+
+            <Reveal className="flex flex-wrap gap-3 pt-1" delay={0.24}>
+              {topContacts.map((contact) => (
+                <a
+                  key={contact.label}
+                  href={contact.href}
+                  target={contact.href.startsWith("http") ? "_blank" : undefined}
+                  rel={contact.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="mono text-xs tracking-[0.08em] text-[#b7d4f6] transition-colors hover:text-white"
+                >
+                  {contact.label}: {contact.value}
+                </a>
+              ))}
+            </Reveal>
+          </div>
+
+          <Reveal className="portrait-stage" delay={0.15}>
             <motion.div
-              className="absolute -inset-3 rounded-full border border-electric-blue/40 border-dashed"
-              style={{ willChange: "transform" }} // Performance Hint
-              animate={{ rotate: 360 }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.div
-              className="absolute -inset-1 rounded-full border border-electric-blue/20"
-              style={{ willChange: "transform" }} // Performance Hint
-              animate={{ rotate: -360 }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            />
-            <div 
-              className="w-full h-full rounded-full overflow-hidden border-2 border-electric-blue bg-black/50 relative z-10"
-              style={{
-                boxShadow: "0 0 40px rgba(0, 217, 255, 0.4), inset 0 0 20px rgba(0, 217, 255, 0.2)",
-                willChange: "transform" // Performance Hint
-              }}
+              className="portrait-core"
+              whileHover={reduceMotion ? undefined : { y: -3, rotate: -0.3 }}
+              transition={{ type: "spring", stiffness: 180, damping: 20 }}
             >
-              <img
+              <Image
                 src={getImagePath("profile.jpg")}
                 alt={personalInfo.name}
-                className="w-full h-full object-cover object-[50%_15%]"
-                loading="eager"
-                onError={(e) => {
-                  e.currentTarget.src = getImagePath("mw-logo.png");
-                }}
+                fill
+                priority
+                className="object-cover object-[50%_15%]"
               />
-            </div>
-          </div>
-        </motion.div>
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[rgba(3,6,14,0.92)] to-transparent" />
+              <div className="absolute bottom-4 left-4 rounded-full border border-[rgba(244,190,107,0.36)] bg-[rgba(22,14,5,0.54)] px-2.5 py-1 text-[0.65rem] text-[#f0ddbe]">
+                Portrait Module
+              </div>
+            </motion.div>
 
-        {/* Text Content */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" as const }}
-          className="text-center lg:text-left"
-        >
-          <h1
-            className="text-4xl sm:text-5xl font-light tracking-wide mb-1"
-            style={{
-              background: "linear-gradient(90deg, #00d9ff 0%, #00ffff 50%, #0066ff 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            {personalInfo.name}
-          </h1>
+            <div className="portrait-ring" />
 
-          <p className="text-xl text-electric-blue font-light mb-3">
-            Engineer
-          </p>
-
-          <div className="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2 text-sm mb-5">
-            {personalInfo.contact.map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
-                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="text-accent-cyan hover:text-electric-blue transition-colors hover:scale-105 transform duration-200"
+            {orbitTags.map((tag, index) => (
+              <motion.span
+                key={tag.label}
+                className={`float-chip ${tag.className}`}
+                initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.22 + index * 0.07, ease: "easeOut" }}
               >
-                {item.text}
-              </a>
+                {tag.label}
+              </motion.span>
             ))}
-          </div>
-
-          <div className="flex flex-wrap justify-center lg:justify-start gap-4 text-sm">
-            <button onClick={() => scrollToSection("experience")} className="text-electric-blue hover:text-neon-blue transition-colors underline decoration-electric-blue/50 hover:decoration-electric-blue">
-              Experience
-            </button>
-            <span className="text-accent-cyan/50">•</span>
-            <button onClick={() => scrollToSection("projects")} className="text-electric-blue hover:text-neon-blue transition-colors underline decoration-electric-blue/50 hover:decoration-electric-blue">
-              Projects
-            </button>
-            <span className="text-accent-cyan/50">•</span>
-            <button onClick={() => scrollToSection("skills")} className="text-electric-blue hover:text-neon-blue transition-colors underline decoration-electric-blue/50 hover:decoration-electric-blue">
-              Skills
-            </button>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Right Side: Education Card - Stronger Hover Effect */}
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.4, delay: 0.3 }}
-        className="w-full lg:w-[500px] flex-shrink-0 mt-8 lg:mt-0"
-      >
-        <div 
-          className="p-6 rounded-xl border border-electric-blue/30 bg-black/20 backdrop-blur-sm 
-                     hover:border-electric-blue hover:shadow-[0_0_60px_rgba(0,217,255,0.5)] hover:bg-electric-blue/5 hover:-translate-y-1 
-                     transition-all duration-300 cursor-default"
-          style={{
-            boxShadow: "0 0 20px rgba(0, 217, 255, 0.15), inset 0 0 20px rgba(0, 217, 255, 0.05)",
-            willChange: "transform, box-shadow" // Performance Hint
-          }}
-        >
-          <div className="flex flex-col gap-5">
-            <div 
-              className="h-24 px-6 flex items-center justify-center rounded bg-white w-full"
-              style={{
-                boxShadow: "0 0 15px rgba(0, 217, 255, 0.2)"
-              }}
-            >
-              <img
-                src={getImagePath("lassonde.png")}
-                alt="Lassonde School of Engineering"
-                className="h-full w-auto object-contain"
-                loading="lazy"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerText = "York U | Lassonde";
-                }}
-              />
-            </div>
-            <div className="text-center lg:text-left space-y-1">
-              <h3 className="text-xl font-normal text-electric-blue">{education.degree}</h3>
-              <p className="text-base text-secondary-text">{education.institution}</p>
-              
-              <div className="flex justify-between items-center mt-3 border-t border-electric-blue/20 pt-3 mb-2">
-                <p className="text-sm text-accent-cyan">GPA: {education.gpa}</p>
-                <span className="text-sm text-accent-cyan">{education.period}</span>
-              </div>
-
-              {/* Added Courses Section */}
-              <div className="pt-2">
-                <p className="text-sm text-electric-blue mb-2 font-medium">Relevant Courses:</p>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-1.5 text-sm text-primary-text font-light text-left">
-                  {education.courses.map((course, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <span className="text-electric-blue mt-1 flex-shrink-0 text-xs">▹</span>
-                      <span className="leading-relaxed text-xs sm:text-sm">{course}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
+          </Reveal>
         </div>
-      </motion.div>
-    </header>
+      </article>
+    </section>
   );
 };
 
