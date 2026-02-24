@@ -1,63 +1,58 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-jakarta",
+  display: "swap",
 });
 
-const cormorant = Cormorant_Garamond({
+const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-cormorant",
-  weight: ["400", "500", "600", "700"],
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  variable: "--font-ibm-plex-mono",
+  variable: "--font-jetbrains",
   weight: ["400", "500"],
+  display: "swap",
 });
 
 const isProd = process.env.NODE_ENV === "production";
 const repoName = "portfolio";
 
-const getIconPath = (path: string) => (isProd ? `/${repoName}/${path}` : `/${path}`);
-const getSocialPath = (path: string) => `/${path}`;
+const getIconPath = (path: string) =>
+  isProd ? `/${repoName}/${path}` : `/${path}`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(isProd ? "https://waleeeeed88.github.io/portfolio/" : "http://localhost:3000"),
-  title: "mw2019 go",
-  applicationName: "mw2019 go",
+  metadataBase: new URL(
+    isProd
+      ? "https://waleeeeed88.github.io/portfolio/"
+      : "http://localhost:3000"
+  ),
+  title: "Walid — Software Engineer",
+  applicationName: "Walid",
   manifest: "/manifest.webmanifest",
-  appleWebApp: {
-    title: "mw2019 go",
-    capable: true,
-    statusBarStyle: "black-translucent",
-  },
   description:
-    "Portfolio of Mohammad Waliduddin: engineer focused on full-stack delivery, cloud systems, AI integration, and embedded computing.",
+    "Walid — Software Engineer focused on agentic systems, AI/ML, and cloud infrastructure.",
   icons: {
     icon: [
-      { url: getIconPath("mw2019-alt.svg"), type: "image/svg+xml", sizes: "any" },
+      {
+        url: getIconPath("mw2019-alt.svg"),
+        type: "image/svg+xml",
+        sizes: "any",
+      },
     ],
     apple: [{ url: getIconPath("mw2019-alt.svg"), sizes: "180x180" }],
     shortcut: [{ url: getIconPath("mw2019-alt.svg") }],
   },
   openGraph: {
-    title: "mw2019 go",
-    description:
-      "Engineer shipping reliable full-stack products, cloud tooling, and AI-backed features.",
+    title: "Walid — Software Engineer",
+    description: "Software Engineer focused on agentic systems, AI/ML, and cloud infrastructure.",
     type: "website",
     locale: "en_US",
-    images: [{ url: getSocialPath("mw2019-alt.svg") }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "mw2019 go",
-    description:
-      "Engineer shipping reliable full-stack products, cloud tooling, and AI-backed features.",
-    images: [getSocialPath("mw2019-alt.svg")],
+    title: "Walid — Software Engineer",
+    description: "Software Engineer focused on agentic systems, AI/ML, and cloud infrastructure.",
   },
 };
 
@@ -68,7 +63,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${spaceGrotesk.variable} ${cormorant.variable} ${ibmPlexMono.variable}`}>{children}</body>
+      <body className={`${jakarta.variable} ${jetbrains.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }

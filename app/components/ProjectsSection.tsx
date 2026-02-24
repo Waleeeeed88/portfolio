@@ -1,81 +1,129 @@
-import { ExternalLink, Rocket } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 import { projects } from "../data/content";
 import Reveal from "./Reveal";
 
 const ProjectsSection = () => {
-  const featured = projects.find((project) => project.featured) ?? projects[0];
-  const others = projects.filter((project) => project.title !== featured.title);
+  const featured = projects.find((p) => p.featured) ?? projects[0];
+  const highlight = projects.find((p) => p.highlight);
+  const others = projects.filter(
+    (p) => p.title !== featured.title && !p.highlight
+  );
 
   return (
-    <section id="projects" className="section-block section-theme theme-lab scroll-mt-28">
-      <Reveal>
-        <header>
-          <p className="section-kicker future">Featured Works</p>
-          <h2 className="section-title">Projects that prove execution</h2>
-          <p className="section-copy">Start here. This is the strongest work.</p>
-        </header>
+    <section id="projects" className="section-block scroll-mt-24">
+      <Reveal from="left">
+        <p className="section-label">Projects</p>
       </Reveal>
 
-      <div className="project-grid mt-6">
-        <Reveal delay={0.04}>
-          <article className="panel panel-hover p-5 sm:p-6">
-            <div className="edge-line mb-4" />
-            <p className="mono text-[0.68rem] uppercase tracking-[0.14em] text-[#9fd6ff]">Flagship</p>
-            <h3 className="heritage mt-2 text-3xl font-semibold text-white">{featured.title}</h3>
-            <p className="mono mt-2 text-[0.72rem] leading-relaxed text-[#a7caef]">{featured.stack}</p>
+      <Reveal from="left" delay={0.08}>
+        <article className="card card-featured">
+          <div className="featured-bar" />
 
-            <div className="mt-4 grid gap-2 sm:grid-cols-2">
-              {featured.points.slice(0, 3).map((point) => (
-                <div key={point} className="rounded-xl border border-[rgba(102,211,255,0.24)] bg-[rgba(7,14,30,0.62)] px-3 py-2.5">
-                  <p className="text-sm leading-relaxed text-[var(--muted)]">{point}</p>
-                </div>
-              ))}
-            </div>
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="mono text-xs font-semibold uppercase tracking-wider text-[var(--accent)]">
+              Featured
+            </span>
+            <span className="live-badge mono text-xs font-medium text-[var(--green)]">
+              <span className="live-dot" />
+              Live
+            </span>
+          </div>
 
-            <a
-              href={featured.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 rounded-full border border-[rgba(102,211,255,0.45)] bg-[rgba(102,211,255,0.12)] px-4 py-2 text-sm text-[#ddf2ff] transition-all duration-300 hover:-translate-y-0.5 hover:text-white hover:shadow-[0_0_20px_rgba(102,211,255,0.22)]"
-            >
-              <Rocket className="h-4 w-4" aria-hidden />
-              Launch REAI
-              <ExternalLink className="h-3.5 w-3.5" aria-hidden />
-            </a>
-          </article>
-        </Reveal>
+          <h3 className="mt-3 text-2xl font-bold text-[var(--text-heading)]">
+            {featured.title}
+          </h3>
+          <p className="mono mt-2 text-sm text-[var(--green)]">
+            {featured.stack}
+          </p>
 
-        <Reveal delay={0.1}>
-          <aside className="panel p-5 sm:p-6">
-            <p className="section-kicker future">Embedded Lens</p>
-            <h3 className="heritage mt-2 text-2xl font-semibold">Embedded focus</h3>
-            <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">
-              I build deterministic systems under real hardware constraints.
-            </p>
+          <ul className="mt-4 space-y-2">
+            {featured.points.map((point) => (
+              <li
+                key={point}
+                className="flex gap-2 text-sm text-[var(--text)]"
+              >
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
 
-            <div className="mt-4 space-y-2">
-              <div className="rounded-lg border border-[rgba(130,91,255,0.3)] bg-[rgba(130,91,255,0.08)] px-3 py-2 text-sm text-[#d9ccff]">
-                Home Security System: motion pipeline designed for low false alarms.
-              </div>
-              <div className="rounded-lg border border-[rgba(102,211,255,0.24)] bg-[rgba(102,211,255,0.08)] px-3 py-2 text-sm text-[#ccecff]">
-                FPGA Parking Controller: finite-state logic verified before hardware deploy.
-              </div>
-            </div>
-          </aside>
-        </Reveal>
-      </div>
+          <a
+            href={featured.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-link project-link-featured mt-4"
+          >
+            Launch REAI
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </article>
+      </Reveal>
 
-      <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {others.map((project, index) => (
-          <Reveal key={project.title} delay={0.04 * index}>
-            <article className={`panel panel-hover p-4 sm:p-5 ${index === 0 ? "xl:col-span-2" : ""}`}>
-              <h3 className="heritage text-2xl font-semibold text-white">{project.title}</h3>
-              <p className="mono mt-2 text-[0.7rem] leading-relaxed text-[#a7caef]">{project.stack}</p>
+      <div className="projects-bento mt-3">
+        {highlight && (
+          <Reveal from="left" delay={0.1} className="bento-highlight">
+            <article className="card card-highlight flex h-full flex-col py-4 px-5">
+              <div className="highlight-bar" />
 
-              <ul className="mt-3 space-y-2 text-sm leading-relaxed text-[var(--muted)]">
+              <span className="mono text-[0.65rem] font-semibold uppercase tracking-wider text-[var(--green)]">
+                Highlight
+              </span>
+
+              <h3 className="mt-1.5 text-lg font-bold text-[var(--text-heading)]">
+                {highlight.title}
+              </h3>
+              <p className="mono mt-1 text-xs text-[var(--accent)]">
+                {highlight.stack}
+              </p>
+
+              <ul className="mt-2.5 flex-1 space-y-1">
+                {highlight.points.map((point) => (
+                  <li
+                    key={point}
+                    className="flex gap-2 text-[0.82rem] text-[var(--text)]"
+                  >
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--green)]" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href={highlight.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link mt-3"
+              >
+                View CLAI
+                <ArrowRight className="h-3.5 w-3.5" />
+              </a>
+            </article>
+          </Reveal>
+        )}
+
+        {others.map((project, i) => (
+          <Reveal
+            key={project.title}
+            from="right"
+            delay={0.14 + 0.08 * i}
+            className="bento-small"
+          >
+            <article className="card flex h-full flex-col">
+              <h3 className="text-lg font-bold text-[var(--text-heading)]">
+                {project.title}
+              </h3>
+              <p className="mono mt-1.5 text-xs text-[var(--accent)]">
+                {project.stack}
+              </p>
+
+              <ul className="mt-3 flex-1 space-y-1.5">
                 {project.points.slice(0, 2).map((point) => (
-                  <li key={point} className="flex gap-2">
-                    <span className="mt-[0.42rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#66d3ff]" />
+                  <li
+                    key={point}
+                    className="flex gap-2 text-sm text-[var(--text)]"
+                  >
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
                     <span>{point}</span>
                   </li>
                 ))}
@@ -85,10 +133,10 @@ const ProjectsSection = () => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-[rgba(102,211,255,0.34)] px-3 py-1.5 text-xs text-[#d5ecff] transition-colors hover:text-white"
+                className="project-link mt-4"
               >
-                Open Project
-                <ExternalLink className="h-3 w-3" aria-hidden />
+                View Project
+                <ExternalLink className="h-3.5 w-3.5" />
               </a>
             </article>
           </Reveal>

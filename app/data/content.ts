@@ -5,11 +5,11 @@ export type ContactLink = {
 };
 
 export const personalInfo = {
-  name: "Mohammad Waliduddin",
-  role: "Engineer",
+  name: "Walid",
+  role: "Software Engineer",
   location: "Toronto, ON",
   summary:
-    "I build production systems across frontend, cloud, and embedded. I optimize for reliability, speed, and clean execution.",
+    "I build agentic systems, AI pipelines, and cloud infrastructure. I optimize for reliability, speed, and clean execution.",
   contacts: [
     { label: "Phone", value: "437-260-8096", href: "tel:437-260-8096" },
     {
@@ -91,6 +91,7 @@ export type Project = {
   points: string[];
   link: string;
   featured?: boolean;
+  highlight?: boolean;
 };
 
 export const projects: Project[] = [
@@ -128,14 +129,15 @@ export const projects: Project[] = [
     link: "https://github.com/Waleeeeed88/HomeSecuritySystem",
   },
   {
-    title: "FPGA Car Parking System",
-    stack: "VHDL, SystemVerilog, Intel MAX 10 FPGA, Quartus Prime, ModelSim",
+    title: "CLAI — Command Line AI Team",
+    stack: "Python, Anthropic API, OpenAI API, Gemini API, MCP, GitHub Integration",
+    highlight: true,
     points: [
-      "Implemented a hierarchical parking lot controller on DE10-Lite hardware.",
-      "Designed debounced sensor flows and FSM-based entry/exit control.",
-      "Verified behavior with simulation and deployed to physical FPGA targets.",
+      "Built a multi-agent orchestrator where Claude, GPT, and Gemini collaborate with native tool calling — not prompt hacks.",
+      "Engineered a 6-phase project pipeline (plan → setup → build → QA → review → deliver) driven entirely from the CLI.",
+      "Integrated MCP-based GitHub tools so agents create repos, branches, PRs, and code reviews autonomously.",
     ],
-    link: "https://github.com/Waleeeeed88/CarParkingVerilog",
+    link: "https://github.com/Waleeeeed88/CLAI",
   },
 ];
 

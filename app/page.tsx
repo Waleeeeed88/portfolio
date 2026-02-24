@@ -8,11 +8,7 @@ import SkillsSection from "./components/SkillsSection";
 export default function Home() {
   return (
     <>
-      <div aria-hidden className="glow-dot a" />
-      <div aria-hidden className="glow-dot b" />
-
       <Navigation />
-
       <main className="site-wrap">
         <Header />
         <ExperienceSection />
