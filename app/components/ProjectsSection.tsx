@@ -62,7 +62,7 @@ const ProjectsSection = () => {
 
       <div className="projects-bento mt-3">
         {highlight && (
-          <Reveal from="left" delay={0.1} className="bento-highlight">
+          <Reveal from="left" delay={0.06} className="bento-highlight">
             <article className="card card-highlight flex h-full flex-col py-4 px-5">
               <div className="highlight-bar" />
 
@@ -106,7 +106,7 @@ const ProjectsSection = () => {
           <Reveal
             key={project.title}
             from="right"
-            delay={0.14 + 0.08 * i}
+            delay={0.08 + 0.06 * i}
             className="bento-small"
           >
             <article className="card flex h-full flex-col">

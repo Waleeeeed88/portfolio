@@ -20,7 +20,7 @@ const ExperienceSection = () => {
           <Reveal
             key={`${exp.company}-${exp.period}`}
             from={i % 2 === 0 ? "left" : "right"}
-            delay={0.1 * i}
+            delay={0.06 * i}
           >
             <div className="timeline-item">
               <div

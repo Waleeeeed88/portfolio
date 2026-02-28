@@ -30,7 +30,7 @@ const Reveal = ({
   className,
   delay = 0,
   from = "up",
-  distance = 50,
+  distance = 24,
 }: RevealProps) => {
   const reduceMotion = useReducedMotion();
 
@@ -43,7 +43,7 @@ const Reveal = ({
       }
       viewport={{ once: true, amount: 0.12 }}
       transition={{
-        duration: 0.72,
+        duration: 0.5,
         delay,
         ease: [0.16, 1, 0.3, 1],
       }}
