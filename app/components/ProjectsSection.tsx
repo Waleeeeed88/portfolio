@@ -4,10 +4,7 @@ import Reveal from "./Reveal";
 
 const ProjectsSection = () => {
   const featured = projects.find((p) => p.featured) ?? projects[0];
-  const highlight = projects.find((p) => p.highlight);
-  const others = projects.filter(
-    (p) => p.title !== featured.title && !p.highlight
-  );
+  const others = projects.filter((p) => p.title !== featured.title);
 
   return (
     <section id="projects" className="section-block scroll-mt-24">
@@ -15,7 +12,7 @@ const ProjectsSection = () => {
         <p className="section-label">Projects</p>
       </Reveal>
 
-      <Reveal from="left" delay={0.08}>
+      <Reveal from="left" delay={0.06}>
         <article className="card card-featured">
           <div className="featured-bar" />
 
@@ -32,21 +29,12 @@ const ProjectsSection = () => {
           <h3 className="mt-3 text-2xl font-bold text-[var(--text-heading)]">
             {featured.title}
           </h3>
-          <p className="mono mt-2 text-sm text-[var(--green)]">
+          <p className="mono mt-1 text-xs text-[var(--text-secondary)]">
             {featured.stack}
           </p>
-
-          <ul className="mt-4 space-y-2">
-            {featured.points.map((point) => (
-              <li
-                key={point}
-                className="flex gap-2 text-sm text-[var(--text)]"
-              >
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
-                <span>{point}</span>
-              </li>
-            ))}
-          </ul>
+          <p className="mt-3 text-sm leading-relaxed text-[var(--text)]">
+            {featured.description}
+          </p>
 
           <a
             href={featured.link}
@@ -54,86 +42,30 @@ const ProjectsSection = () => {
             rel="noopener noreferrer"
             className="project-link project-link-featured mt-4"
           >
-            Launch REAI
+            Launch {featured.title}
             <ArrowRight className="h-4 w-4" />
           </a>
         </article>
       </Reveal>
 
-      <div className="projects-bento mt-3">
-        {highlight && (
-          <Reveal from="left" delay={0.06} className="bento-highlight">
-            <article className="card card-highlight flex h-full flex-col py-4 px-5">
-              <div className="highlight-bar" />
-
-              <span className="mono text-[0.65rem] font-semibold uppercase tracking-wider text-[var(--green)]">
-                Highlight
-              </span>
-
-              <h3 className="mt-1.5 text-lg font-bold text-[var(--text-heading)]">
-                {highlight.title}
-              </h3>
-              <p className="mono mt-1 text-xs text-[var(--accent)]">
-                {highlight.stack}
-              </p>
-
-              <ul className="mt-2.5 flex-1 space-y-1">
-                {highlight.points.map((point) => (
-                  <li
-                    key={point}
-                    className="flex gap-2 text-[0.82rem] text-[var(--text)]"
-                  >
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--green)]" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href={highlight.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link mt-3"
-              >
-                View CLAI
-                <ArrowRight className="h-3.5 w-3.5" />
-              </a>
-            </article>
-          </Reveal>
-        )}
-
+      <div className="project-grid mt-3">
         {others.map((project, i) => (
-          <Reveal
-            key={project.title}
-            from="right"
-            delay={0.08 + 0.06 * i}
-            className="bento-small"
-          >
-            <article className="card flex h-full flex-col">
+          <Reveal key={project.title} from="right" delay={0.06 + 0.05 * i}>
+            <article className="card project-card">
               <h3 className="text-lg font-bold text-[var(--text-heading)]">
                 {project.title}
               </h3>
-              <p className="mono mt-1.5 text-xs text-[var(--accent)]">
+              <p className="mono mt-1 text-xs text-[var(--text-secondary)]">
                 {project.stack}
               </p>
-
-              <ul className="mt-3 flex-1 space-y-1.5">
-                {project.points.slice(0, 2).map((point) => (
-                  <li
-                    key={point}
-                    className="flex gap-2 text-sm text-[var(--text)]"
-                  >
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-[var(--text)]">
+                {project.description}
+              </p>
               <a
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="project-link mt-4"
+                className="project-link mt-3"
               >
                 View Project
                 <ExternalLink className="h-3.5 w-3.5" />

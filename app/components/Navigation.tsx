@@ -4,10 +4,10 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const navItems = [
+  { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
-  { id: "contact", label: "Contact" },
 ];
 
 const Navigation = () => {
@@ -95,7 +95,7 @@ const Navigation = () => {
 
           <button
             type="button"
-            onClick={() => jumpTo("contact")}
+            onClick={() => jumpTo("about")}
             className="nav-cta"
           >
             Hire Me

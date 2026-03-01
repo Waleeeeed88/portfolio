@@ -30,6 +30,14 @@ export const personalInfo = {
   ] as ContactLink[],
 };
 
+export const about = {
+  heading: "A bit about me",
+  paragraphs: [
+    "I've always liked the feeling of working through something tough—especially when it starts out confusing and slowly becomes clear. Engineering, for me, is less about \"just coding\" and more about building something you can trust: making good decisions, thinking through trade-offs, and caring about the small details that make a system feel solid.",
+    "Outside of school and side projects, I'm usually on the football pitch, at the gym, or unwinding with a game. I'm also really into Iranian and Mughal history and architecture—there's something grounding about designs that are both beautiful and built to last.",
+  ],
+};
+
 export const education = {
   institution: "York University",
   school: "Lassonde School of Engineering",
@@ -54,7 +62,7 @@ export type Experience = {
   company: string;
   location: string;
   period: string;
-  points: string[];
+  description: string;
 };
 
 export const experiences: Experience[] = [
@@ -63,81 +71,56 @@ export const experiences: Experience[] = [
     company: "Government of Ontario",
     location: "Toronto, ON",
     period: "Sep 2025 - Present",
-    points: [
-      "Built responsive Angular + TypeScript UI modules that improved task completion and consistency across pages.",
-      "Introduced Cypress testing coverage to reduce manual QA effort and improve release confidence.",
-      "Integrated Figma design system components with accessibility standards in daily delivery workflows.",
-      "Implemented analytics instrumentation to track device usage and user behavior across critical journeys.",
-      "Delivered features in agile sprints through planning, reviews, and iterative production feedback.",
-    ],
+    description:
+      "Working within CDIS on infant data monitoring, front-end development in Angular, and data pipeline design for citizen-facing services.",
   },
   {
     title: "Software Developer Co-op",
     company: "Canadian Imperial Bank of Commerce",
     location: "Toronto, ON",
     period: "Sep 2024 - Dec 2024",
-    points: [
-      "Optimized notification delivery with local storage, improving engagement by 10%.",
-      "Produced UML class and sequence diagrams that reduced design-phase rework by 12%.",
-      "Automated SIC and TCP reporting pipelines with Python, reducing manual effort by 70%.",
-      "Supported rollout and incident reduction initiatives, lowering tickets by 20%.",
-    ],
+    description:
+      "Part of ECIF Solutions Delivery — focused on automation, release management, and streamlining reporting pipelines in Python.",
   },
 ];
 
 export type Project = {
   title: string;
   stack: string;
-  points: string[];
+  description: string;
   link: string;
   featured?: boolean;
-  highlight?: boolean;
 };
 
 export const projects: Project[] = [
   {
-    title: "REAI - Real Estate Price Predictor",
-    stack: "Python, XGBoost, Flask, Docker, Google Cloud Run, Imagen 4 Ultra",
+    title: "REAI",
+    stack: "Python · XGBoost · Flask · Docker · Cloud Run",
     featured: true,
-    points: [
-      "Built a valuation platform using an XGBoost regressor trained on 45,000 listings.",
-      "Exposed model inference and mortgage tooling through a production-ready Flask API.",
-      "Integrated secure image generation workflows for dynamic property visual previews.",
-      "Containerized and deployed on Cloud Run with HTTPS and autoscaling.",
-    ],
+    description:
+      "ML-powered real estate valuation platform trained on 45K listings, containerized and live on GCP. Exposes model inference and mortgage tooling through a production-ready Flask API with autoscaling.",
     link: "https://aires-service-298702215071.us-central1.run.app/",
   },
   {
-    title: "YorkU Parking App",
-    stack: "Java, SwingWorker, Firebase, Firestore, Cloud Functions, Selenium, JUnit",
-    points: [
-      "Engineered a real-time parking management app using Java Swing and Firebase services.",
-      "Implemented asynchronous workflows for responsive UI and better user throughput.",
-      "Automated regression and UI verification with Selenium and JUnit.",
-      "Used UML and Git-based collaboration to improve delivery quality.",
-    ],
+    title: "CLAI",
+    stack: "Python · Claude · GPT · Gemini · MCP",
+    description:
+      "Multi-agent CLI orchestrator where three LLMs collaborate on a 6-phase dev pipeline with autonomous GitHub workflows. Agents create repos, branches, PRs, and code reviews through MCP-based tool calling.",
+    link: "https://github.com/Waleeeeed88/CLAI",
+  },
+  {
+    title: "YorkU Parking",
+    stack: "Java · Firebase · Firestore · Selenium",
+    description:
+      "Real-time campus parking app with async workflows, live availability, and automated test coverage. Built with Java Swing and Firebase, verified end-to-end with Selenium and JUnit.",
     link: "https://github.com/Waleeeeed88/ParkingApp",
   },
   {
-    title: "Home Security System",
-    stack: "C++, OpenCV, Raspberry Pi, Real-time Vision, Motion Detection",
-    points: [
-      "Built a real-time home monitoring loop on Raspberry Pi with continuous camera capture and low-latency motion alerts.",
-      "Engineered a frame-difference detection pipeline with blur, thresholding, and contour filtering to reduce noise-triggered false alarms.",
-      "Structured the detector as a reusable C++ module so AI classification can be layered in without rewriting the core capture path.",
-    ],
+    title: "Home Security",
+    stack: "C++ · OpenCV · Raspberry Pi",
+    description:
+      "Embedded vision system with motion detection, noise filtering, and a modular architecture for AI classification. Runs a continuous capture loop on Raspberry Pi with low-latency contour-based alerts.",
     link: "https://github.com/Waleeeeed88/HomeSecuritySystem",
-  },
-  {
-    title: "CLAI — Command Line AI Team",
-    stack: "Python, Anthropic API, OpenAI API, Gemini API, MCP, GitHub Integration",
-    highlight: true,
-    points: [
-      "Built a multi-agent orchestrator where Claude, GPT, and Gemini collaborate with native tool calling — not prompt hacks.",
-      "Engineered a 6-phase project pipeline (plan → setup → build → QA → review → deliver) driven entirely from the CLI.",
-      "Integrated MCP-based GitHub tools so agents create repos, branches, PRs, and code reviews autonomously.",
-    ],
-    link: "https://github.com/Waleeeeed88/CLAI",
   },
 ];
 
