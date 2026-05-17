@@ -95,14 +95,6 @@ const Navigation = () => {
 
           <button
             type="button"
-            onClick={() => jumpTo("about")}
-            className="nav-cta"
-          >
-            Hire Me
-          </button>
-
-          <button
-            type="button"
             onClick={() => setMenuOpen((v) => !v)}
             className="nav-mobile-toggle"
             aria-label="Toggle menu"

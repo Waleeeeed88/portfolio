@@ -17,6 +17,9 @@
 /test-results/
 /playwright-report/
 
+# generated graph analysis
+graphify-out/
+
 # next.js
 /.next/
 /out/

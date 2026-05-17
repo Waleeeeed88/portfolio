@@ -9,7 +9,7 @@ export const personalInfo = {
   role: "Software Engineer",
   location: "Toronto, ON",
   summary:
-    "I build agentic systems, AI pipelines, and cloud infrastructure. I optimize for reliability, speed, and clean execution.",
+    "Legacy modernization, multi-agent orchestration, and graph-powered AI.",
   contacts: [
     { label: "Phone", value: "437-260-8096", href: "tel:437-260-8096" },
     {
@@ -62,7 +62,8 @@ export type Experience = {
   company: string;
   location: string;
   period: string;
-  description: string;
+  bullets: string[];
+  tools: string[];
 };
 
 export const experiences: Experience[] = [
@@ -70,17 +71,25 @@ export const experiences: Experience[] = [
     title: "Full Stack Developer Co-op",
     company: "Government of Ontario",
     location: "Toronto, ON",
-    period: "Sep 2025 - Present",
-    description:
-      "Working within CDIS on infant data monitoring, front-end development in Angular, and data pipeline design for citizen-facing services.",
+    period: "Sep 2025 – Present",
+    bullets: [
+      "Modernized a legacy Angular platform with Docker + devcontainers for reproducible onboarding.",
+      "Built Spring Boot + TypeScript web surfaces alongside Angular for citizen-facing services.",
+      "Maintained Obsidian-backed knowledge bases as Copilot context while shipping CDIS workflows.",
+    ],
+    tools: ["Angular", "Spring Boot", "TypeScript", "Docker", "devcontainers", "Obsidian"],
   },
   {
     title: "Software Developer Co-op",
     company: "Canadian Imperial Bank of Commerce",
     location: "Toronto, ON",
-    period: "Sep 2024 - Dec 2024",
-    description:
-      "Part of ECIF Solutions Delivery — focused on automation, release management, and streamlining reporting pipelines in Python.",
+    period: "Sep 2024 – Dec 2024",
+    bullets: [
+      "Python automation across release management and operational reporting.",
+      "Owned data pipelines and ETL steps for aggregating source data into analyst-ready outputs.",
+      "Cut weekly analyst reporting from hours to minutes end-to-end.",
+    ],
+    tools: ["Python", "SQL", "ETL", "Jira", "Confluence", "Git"],
   },
 ];
 
@@ -88,54 +97,146 @@ export type Project = {
   title: string;
   stack: string;
   description: string;
+  detail?: string;
   link: string;
+  deployed?: boolean;
   featured?: boolean;
 };
 
 export const projects: Project[] = [
   {
     title: "REAI",
-    stack: "Python · XGBoost · Flask · Docker · Cloud Run",
+    stack: "Python · XGBoost · Flask · Docker · GCP Cloud Run",
     featured: true,
+    deployed: true,
     description:
-      "ML-powered real estate valuation platform trained on 45K listings, containerized and live on GCP. Exposes model inference and mortgage tooling through a production-ready Flask API with autoscaling.",
+      "45K-listing real estate valuation model, Dockerized and live on Cloud Run with autoscaling inference.",
+    detail: "Mortgage tooling + model predictions served through a production Flask API — no infrastructure babysitting.",
     link: "https://aires-service-298702215071.us-central1.run.app/",
   },
   {
     title: "CLAI",
-    stack: "Python · Claude · GPT · Gemini · MCP",
+    stack: "Python · MCP · OpenRouter · GitHub automation",
     description:
-      "Multi-agent CLI orchestrator where three LLMs collaborate on a 6-phase dev pipeline with autonomous GitHub workflows. Agents create repos, branches, PRs, and code reviews through MCP-based tool calling.",
+      "Multi-agent coding workflow orchestrated through MCP — autonomous repo creation, code, PRs, and reviews.",
+    detail: "Models split across planner, implementer, reviewer, and support roles. MCP tool-calling end-to-end with zero manual hand-offs.",
     link: "https://github.com/Waleeeeed88/CLAI",
   },
   {
-    title: "YorkU Parking",
-    stack: "Java · Firebase · Firestore · Selenium",
+    title: "TechYork",
+    stack: "Next.js · TypeScript · Tailwind",
+    deployed: true,
     description:
-      "Real-time campus parking app with async workflows, live availability, and automated test coverage. Built with Java Swing and Firebase, verified end-to-end with Selenium and JUnit.",
-    link: "https://github.com/Waleeeeed88/ParkingApp",
-  },
-  {
-    title: "Home Security",
-    stack: "C++ · OpenCV · Raspberry Pi",
-    description:
-      "Embedded vision system with motion detection, noise filtering, and a modular architecture for AI classification. Runs a continuous capture loop on Raspberry Pi with low-latency contour-based alerts.",
-    link: "https://github.com/Waleeeeed88/HomeSecuritySystem",
+      "Full-stack platform for York's engineering tech community — events, membership, and org presence.",
+    detail: "Designed, built, and shipped solo from 0 to production at techyork.ca.",
+    link: "https://techyork.ca",
   },
 ];
 
+export type SkillUse = {
+  name: string;
+  use: string;
+};
+
+export type SkillGroup = {
+  label: string;
+  blurb: string;
+  items: SkillUse[];
+};
+
+export const skillGroups: SkillGroup[] = [
+  {
+    label: "Languages",
+    blurb: "What I program in — work co-ops, school, and my own shipping projects.",
+    items: [
+      { name: "Python", use: "Automation, ETL, CLAI agents, REAI training + APIs." },
+      { name: "Java", use: "Spring Boot services and Ontario full-stack delivery." },
+      { name: "TypeScript", use: "Type-safe Ontario UIs, TechYork, this site." },
+      { name: "C#", use: "ASP.NET Core work on the TechYork platform." },
+      { name: "SQL", use: "CIBC reporting — extract, shape, deliver to analysts." },
+      { name: "HTML/CSS", use: "Responsive UI polish across portfolio and platform work." },
+    ],
+  },
+  {
+    label: "Infra & runtimes",
+    blurb: "How I run, pack, and standardize environments so prod matches dev.",
+    items: [
+      { name: "Linux", use: "Daily driver for backends, containers, and tooling." },
+      { name: "Docker", use: "REAI packaged for repeatable Cloud Run deploys." },
+      { name: "devcontainers", use: "Ontario: one shared setup on legacy codebases." },
+      { name: "Cloud Run", use: "REAI live with autoscaling — minimal ops." },
+      { name: "GCP", use: "Cloud Run deployment, validation, rate limiting, monitoring." },
+      { name: "Azure DevOps", use: "CIBC notification platform and release workflows." },
+      { name: "AWS", use: "Cloud platform foundation from resume technical skills." },
+      { name: "Firebase", use: "TechYork member, admin, and platform workflows." },
+      { name: "CircleCI", use: "CI checks and release confidence tooling." },
+      { name: "Git", use: "Source control, PR flow, and multi-agent repo work." },
+    ],
+  },
+  {
+    label: "Agents & LLMs",
+    blurb: "Multi-agent workflows, model routing, and coding-agent tooling.",
+    items: [
+      { name: "Agent Sims", use: "Multi-agent simulations for planning, coding, review, and support." },
+      { name: "Orchestration", use: "Six-phase pipeline with specialized models and no hand-offs." },
+      { name: "Codex", use: "CodeEcon: Codex-first workflow and coding-agent visibility." },
+      { name: "Qwen Code", use: "Coding-agent experiments for implementation and review loops." },
+      { name: "OpenRouter", use: "Model routing layer for multi-model agent workflows." },
+      { name: "MCP", use: "Autonomous repos, PRs, reviews, and real tool calls." },
+      { name: "AI Workflows", use: "Reusable AI-assisted developer workflows and documentation." },
+      { name: "Agent Trace", use: "Agent activity, permissions, and task flow made inspectable." },
+    ],
+  },
+  {
+    label: "Knowledge & context",
+    blurb: "How I wire retrieval and internal docs so AI (and people) stay grounded.",
+    items: [
+      { name: "Graph RAG", use: "Retrieval that respects relationships, not flat chunks." },
+      { name: "Obsidian", use: "Ontario: graph-style notes Copilot can leverage." },
+      { name: "Graphify", use: "CodeEcon repo memory for structural codebase awareness." },
+      { name: "Serena context", use: "Fallback repo context for multi-agent development." },
+      { name: "Engineering docs", use: "Reusable docs that speed onboarding and delivery." },
+      { name: "Repo memory", use: "Persistent context for coding-agent workflows." },
+    ],
+  },
+  {
+    label: "Web & APIs",
+    blurb: "Stacks I use to ship UIs and backends customers actually touch.",
+    items: [
+      { name: "Angular", use: "Ontario citizen-facing features in production." },
+      { name: "Spring Boot", use: "Java APIs alongside the Angular stack." },
+      { name: "React", use: "TechYork + components — client-heavy UI." },
+      { name: "Next.js", use: "TechYork + this portfolio, full stack in one repo." },
+      { name: "ASP.NET Core", use: "TechYork backend architecture and API work." },
+      { name: "Node.js", use: "API and platform tooling across full-stack projects." },
+      { name: "Express", use: "JavaScript API foundation from resume skills." },
+      { name: "Flask", use: "REAI inference + mortgage logic in prod." },
+      { name: "FastAPI", use: "Python API foundation for typed service work." },
+      { name: "Zod", use: "Validated TechYork APIs for secure member/admin flows." },
+      { name: "PostgreSQL", use: "TechYork relational data layer." },
+    ],
+  },
+  {
+    label: "Data & ML",
+    blurb: "Moving data and training models — CIBC pipelines through REAI.",
+    items: [
+      { name: "XGBoost", use: "REAI valuation on 45K listings." },
+      { name: "ETL", use: "CIBC: source systems → reporting tables on a schedule." },
+      { name: "pandas", use: "Features and training tables before model fit." },
+      { name: "PySpark", use: "Large-scale data processing from resume technical skills." },
+      { name: "Optuna", use: "Bayesian hyperparameter optimization for REAI." },
+      { name: "PyTorch", use: "ML experimentation and model-building foundation." },
+      { name: "Oracle SQL", use: "Ontario data-quality checks across 4–5 backend pipelines." },
+      { name: "Data-quality checks", use: "Validation for production-impacting backend changes." },
+      { name: "Rate limiting", use: "REAI production API protection and monitoring." },
+    ],
+  },
+];
+
+/* kept for backward compat with any other consumers */
 export const skills = {
   languages: ["Java", "Python", "TypeScript", "JavaScript", "C#", "C++", "SQL"],
-  frameworks: [
-    "Angular",
-    "React",
-    "Node.js",
-    "Express",
-    "Flask",
-    "FastAPI",
-    "TensorFlow",
-    "PyTorch"
-  ],
-  testing: ["Cypress", "JUnit", "Selenium", "Randoop",],
+  frameworks: ["Angular", "React", "Node.js", "Express", "Flask", "FastAPI", "TensorFlow", "PyTorch"],
+  testing: ["Cypress", "JUnit", "Selenium", "Randoop"],
   platforms: ["Docker", "GCP", "AWS", "Firebase", "Git", "Jira", "Confluence"],
 };

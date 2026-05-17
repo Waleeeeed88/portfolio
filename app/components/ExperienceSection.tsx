@@ -43,7 +43,20 @@ const ExperienceSection = () => {
                 </div>
                 <span className="exp-period mono">{exp.period}</span>
               </div>
-              <p className="exp-desc">{exp.description}</p>
+
+              <ul className="exp-bullets">
+                {exp.bullets.map((b) => (
+                  <li key={b}>{b}</li>
+                ))}
+              </ul>
+
+              <div className="exp-tools">
+                {exp.tools.map((tool) => (
+                  <span key={tool} className="exp-tool mono">
+                    {tool}
+                  </span>
+                ))}
+              </div>
             </article>
           </Reveal>
         ))}

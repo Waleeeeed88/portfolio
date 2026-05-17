@@ -3,7 +3,7 @@ import { getImagePath } from "../utils/imagePath";
 import Reveal from "./Reveal";
 
 const ContactSection = () => {
-    const resumePath = getImagePath("Jake_s_Resume.pdf");
+    const resumePath = getImagePath("fRESUME.pdf");
 
     return (
         <section id="contact" className="section-block scroll-mt-24">

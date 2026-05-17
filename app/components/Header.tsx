@@ -8,25 +8,47 @@ import Reveal from "./Reveal";
 const BLUR_DATA_URL =
   "data:image/jpeg;base64,/9j/2wBDACgcHiMeGSgjISMtKygwPGRBPDc3PHtYXUlkkYCZlo+AjIqgtObDoKrarYqMyP/L2u71////m8H////6/+b9//j/2wBDASstLTw1PHZBQXb4pYyl+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj/wAARCAANAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQED/8QAHhAAAQQBBQAAAAAAAAAAAAAAAQACAzEhBBESMoH/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/EABURAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIRAxEAPwCO1DBMQSdqvC38RsnYhIwx8oWEnJaDSpX/2Q==";
 
+const focusTags = [
+  "Multi-agent simulations",
+  "AI context graphs",
+  "Knowledge bases",
+  "Java Spring Boot",
+  "Docker",
+  "Linux containers",
+  "Python",
+];
+
 const Header = () => {
   return (
     <section id="home" className="scroll-mt-24">
       <div className="hero-grid">
         <div>
           <Reveal from="left">
-            <p className="hero-greeting">Hi, Walid here.</p>
+            <p className="hero-greeting">Hey, I am Walid.</p>
           </Reveal>
 
           <Reveal from="left" delay={0.06}>
             <h1 className="hero-heading">
-              An engineering student specializing in{" "}
-              <span className="accent">software</span>,{" "}
-              <span className="accent">Multi-agent orchestration</span>, and{" "}
-              <span className="accent">AIoT</span>.
+              A 4th-year Software Engineering student at{" "}
+              <span className="accent">York</span>.
             </h1>
+            <p className="hero-specialize">I specialize in the following:</p>
           </Reveal>
 
           <Reveal from="left" delay={0.1}>
+            <div className="hero-focus-row">
+              {focusTags.map((tag) => (
+                <span
+                  key={tag}
+                  className="hero-focus-tag"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal from="left" delay={0.14}>
             <div className="hero-edu">
               <Image
                 src={getImagePath("lassonde.png")}
@@ -35,7 +57,7 @@ const Header = () => {
                 height={28}
                 className="h-5 w-auto object-contain"
               />
-              <span>BEng Software Engineering · York University</span>
+              <span>B.Eng Software Engineering · York University</span>
             </div>
           </Reveal>
         </div>
@@ -62,4 +84,3 @@ const Header = () => {
 };
 
 export default Header;
-

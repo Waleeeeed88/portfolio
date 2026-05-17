@@ -1,50 +1,58 @@
-import { skills } from "../data/content";
-import Reveal from "./Reveal";
+"use client";
 
-const categories = [
-  { title: "Languages", items: skills.languages, color: "blue" as const },
-  { title: "Frameworks", items: skills.frameworks, color: "green" as const },
-  { title: "Testing", items: skills.testing, color: "orange" as const },
-  { title: "Platforms", items: skills.platforms, color: "purple" as const },
-];
-
-const colorMap = {
-  blue: "skill-tag-blue",
-  green: "skill-tag-green",
-  orange: "skill-tag-orange",
-  purple: "skill-tag-purple",
-};
+import { skillGroups } from "../data/content";
+import { motion, useReducedMotion } from "framer-motion";
 
 const SkillsSection = () => {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section id="skills" className="section-block scroll-mt-24">
-      <Reveal from="left">
-        <p className="section-label">Skills</p>
-      </Reveal>
+      <motion.p
+        className="section-label"
+        initial={reduceMotion ? false : { opacity: 0, x: -16 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      >
+        Skills
+      </motion.p>
 
-      <div className="space-y-6">
-        {categories.map((cat, i) => (
-          <Reveal
-            key={cat.title}
-            from={i % 2 === 0 ? "right" : "left"}
-            delay={0.06 * i}
+      <div className="skills-groups">
+        {skillGroups.map((group, gi) => (
+          <motion.article
+            key={group.label}
+            className="skills-group"
+            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.12 }}
+            transition={{
+              duration: 0.55,
+              delay: 0.06 * gi,
+              ease: [0.16, 1, 0.3, 1],
+            }}
           >
-            <div>
-              <h3 className="mb-3 text-sm font-semibold text-[var(--text-secondary)]">
-                {cat.title}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {cat.items.map((item) => (
-                  <span
-                    key={item}
-                    className={`skill-tag ${colorMap[cat.color]}`}
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
+            <header className="skills-group-head">
+              <h3 className="skills-group-title">{group.label}</h3>
+              <p className="skills-group-blurb">{group.blurb}</p>
+            </header>
+            <div className="skills-tile-grid">
+              {group.items.map((item) => (
+                <div
+                  key={item.name}
+                  className="skill-tile-wrap"
+                  tabIndex={0}
+                >
+                  <div className="skill-tile mono" title={item.use}>
+                    {item.name}
+                  </div>
+                  <div className="skill-tile-pop" role="tooltip">
+                    {item.use}
+                  </div>
+                </div>
+              ))}
             </div>
-          </Reveal>
+          </motion.article>
         ))}
       </div>
     </section>
