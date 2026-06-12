@@ -1,0 +1,146 @@
+\documentclass[letterpaper,10.6pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.50in}
+\addtolength{\evensidemargin}{-0.50in}
+\addtolength{\textwidth}{1.00in}
+\addtolength{\topmargin}{-0.58in}
+\addtolength{\textheight}{1.22in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-2pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+
+\newcommand{\resumeItem}[1]{\item\small{#1}}
+
+\newcommand{\resumeSubheading}[4]{
+  \item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small #3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-2pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+  \item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \small #1 & #2 \\
+    \end{tabular*}\vspace{-3pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}, itemsep=1.5pt, topsep=1pt]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*, itemsep=0.8pt, parsep=0pt, topsep=1pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-1pt}}
+
+\begin{document}
+
+\begin{center}
+  \textbf{\Huge \scshape Mohammad Waliduddin} \\ \vspace{2pt}
+  \small 437-260-8096 $|$
+  \href{mailto:walid40@my.yorku.ca}{\underline{walid40@my.yorku.ca}} $|$
+  \href{https://linkedin.com/in/mohammad-waliduddin-918aa1244}{\underline{LinkedIn}} $|$
+  \href{https://github.com/Waleeeeed88}{\underline{GitHub}} $|$
+  \href{https://waleeeeed88.github.io/portfolio/}{\underline{Portfolio}}
+\end{center}
+
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {York University}{Toronto, ON}
+    {B.Eng. Software Engineering (Specialized Honours)}{Sep. 2022 -- Aug. 2027}
+\resumeSubHeadingListEnd
+
+\section{Experience}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Software Developer Co-op}{Sep. 2025 -- Present}
+{Ontario Government (MPBSD)}{Toronto, ON}
+\resumeItemListStart
+  \resumeItem{Contributed to front-end modernization of a \textbf{700K+ LOC Java 1.8} legacy system to \textbf{Angular 21}, implementing \textbf{40+ reusable components} with a \textbf{Spring Boot facade} layer serving \textbf{3 ministry programs}.}
+  \resumeItem{Pioneered a \textbf{code-as-design} workflow replacing Figma handoffs, generating production-ready Angular components directly from specs and reducing design-to-dev cycle time by \textbf{70\%} (\textbf{50+ team hours/week} saved).}
+  \resumeItem{Built queryable knowledge bases using \textbf{Obsidian} and \textbf{Graphify} across \textbf{12 legacy modules}, producing structured specs that accelerated AI-assisted code generation by \textbf{3x}.}
+  \resumeItem{Translated stakeholder requirements into \textbf{15+ technical specifications}, bridging business logic with implementation across \textbf{4 cross-functional teams}.}
+\resumeItemListEnd
+
+\resumeSubheading
+{Software Developer Co-op}{Sep. 2024 -- Dec. 2024}
+{CIBC}{Toronto, ON}
+\resumeItemListStart
+  \resumeItem{Engineered a \textbf{Jenkins CI/CD pipeline} with \textbf{Java} to automate \textbf{8 weekly Excel reports}, eliminating \textbf{15+ hours/week} of manual DB queries for \textbf{20+ analysts} via Confluence delivery.}
+  \resumeItem{Implemented \textbf{name-change specifications} across \textbf{3 legacy banking systems}, improving identity management for \textbf{11M+ retail clients}.}
+  \resumeItem{Analyzed \textbf{eCIF client database} schema changes impacting \textbf{consent and permissions} for \textbf{4,000+ frontline staff}, delivering risk assessments for \textbf{2 production releases}.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\section{Leadership}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Developer / Automation Lead (Volunteer)}{Oct. 2025 -- Present}
+    {Data Science Club @ York University}{Toronto, ON}
+  \resumeItemListStart
+    \resumeItem{Architected and shipped a \textbf{Next.js} platform with \textbf{Firebase} auth, \textbf{Firestore}, and \textbf{Zod}-validated APIs, serving \textbf{80+ active members} across event registration, admin, and CMS workflows.}
+    \resumeItem{Delivered \textbf{4 cloud AI workshops} and built \textbf{3 internal automation tools}, reducing manual club operations by \textbf{60\%}.}
+  \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\section{Projects}
+\resumeSubHeadingListStart
+
+\resumeProjectHeading
+{\textbf{TechYork -- University Collaboration Platform} $|$ \emph{Next.js, TypeScript, C\#, ASP.NET Core, Neon DB} $|$ \href{https://techyork.ca}{\underline{Live}}}{Ongoing}
+\resumeItemListStart
+  \resumeItem{Architected a full-stack platform with \textbf{Next.js} frontend and \textbf{C\# / ASP.NET Core} backend, managing \textbf{30+ active users} with MVC-structured API layer.}
+  \resumeItem{Led a team of \textbf{6 developers} -- managed GitHub issues, CI/CD pipelines, code reviews, and deployments across \textbf{dev/prod environments}.}
+  \resumeItem{Migrated infrastructure from \textbf{Railway} to a \textbf{self-hosted VPS}, cutting hosting costs by \textbf{80\%} while improving latency by \textbf{40\%}.}
+  \resumeItem{Built \textbf{GitHub API ingestion}, custom job scrapers, and logic-gate code trees processing \textbf{500+ data points daily}.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{Hermes Agent Deployment} $|$ \emph{Codex, Nous Research, Linux VPS, Automation}}{\href{https://github.com/Zageragent}{\underline{GitHub}}}
+\resumeItemListStart
+  \resumeItem{Deployed \textbf{Hermes} (Nous Research) on a \textbf{Linux VPS} with \textbf{Codex}, configuring it as a specialized coding agent handling \textbf{20+ automated tasks/day} including \textbf{Grocery orders, financial planning, project analytics}}
+  \resumeItem{Integrated \textbf{MCP protocol} for direct database interaction, \textbf{cron-scheduled automations}, and context-aware code assistance.}
+\resumeItemListEnd
+
+\resumeProjectHeading
+{\textbf{REAI -- Real Estate Price Predictor} $|$ \emph{Python, XGBoost, Flask, Docker}}{\href{https://aires-production.up.railway.app/}{\underline{Live Demo}}}
+\resumeItemListStart
+  \resumeItem{Built an \textbf{XGBoost} model fine-tuned with \textbf{Optuna} (R\textsuperscript{2} = \textbf{0.91}) to predict Canadian home prices across \textbf{50K+ listings}.}
+  \resumeItem{Containerized with \textbf{Docker}, deployed on Railway with \textbf{rate-limited endpoints} (\textbf{100 req/min}) and \textbf{Imagen API} integration for property visualization.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\section{Technical Skills}
+\small
+\textbf{Languages:} TypeScript, Python, Java, C\#, SQL, HTML/CSS \\
+\textbf{Frameworks:} Angular, React, Next.js, Spring Boot, ASP.NET Core, Flask \\
+\textbf{Cloud / DevOps:} GCP (Cloud Run, Pub/Sub, BigQuery), Azure, Firebase, AWS (EC2, Lambda, S3, App Runner), Docker \\
+\textbf{Tools:} Jenkins, Git, Cypress, Playwright, JUnit, Confluence, Jira \\
+\textbf{AI \& Knowledge Engineering:} Obsidian, Graphify, OpenRouter API, Codex, Claude Code, MCP
+
+\end{document}
