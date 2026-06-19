@@ -10,12 +10,12 @@ const SkillsSection = () => {
     <section id="skills" className="section-block scroll-mt-24">
       <motion.p
         className="section-label"
-        initial={reduceMotion ? false : { opacity: 0, x: -16 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={reduceMotion ? false : { opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.28, ease: "easeOut" }}
       >
-        Skills
+        Engineering Stack
       </motion.p>
 
       <div className="skills-groups">
@@ -23,13 +23,13 @@ const SkillsSection = () => {
           <motion.article
             key={group.label}
             className="skills-group"
-            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={reduceMotion ? false : { opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.12 }}
             transition={{
-              duration: 0.55,
-              delay: 0.06 * gi,
-              ease: [0.16, 1, 0.3, 1],
+              duration: 0.28,
+              delay: 0.03 * gi,
+              ease: "easeOut",
             }}
           >
             <header className="skills-group-head">

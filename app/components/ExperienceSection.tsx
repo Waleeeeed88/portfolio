@@ -37,7 +37,7 @@ const ExperienceSection = () => {
                   <div>
                     <h3 className="exp-title">{exp.title}</h3>
                     <p className="exp-company">
-                      {exp.company} · {exp.location}
+                      {exp.company} / {exp.location}
                     </p>
                   </div>
                 </div>

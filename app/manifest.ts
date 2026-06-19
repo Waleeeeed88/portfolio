@@ -7,14 +7,15 @@ export default function manifest(): MetadataRoute.Manifest {
   const repoBase = isProd ? "/portfolio" : "";
 
   return {
-    name: "Walid",
+    name: "Walid | Software Engineering Student",
     short_name: "Walid",
-    description: "Walid — Software Engineer.",
+    description:
+      "Software engineering student at York University in Toronto.",
     start_url: `${repoBase}/`,
     scope: `${repoBase}/`,
     display: "standalone",
-    background_color: "#1e1e1e",
-    theme_color: "#007acc",
+    background_color: "#080808",
+    theme_color: "#080808",
     icons: [
       {
         src: `${repoBase}/mw2019-alt.svg`,

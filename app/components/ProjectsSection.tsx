@@ -11,12 +11,12 @@ const ProjectsSection = () => {
     <section id="projects" className="section-block scroll-mt-24">
       <motion.p
         className="section-label"
-        initial={reduceMotion ? false : { opacity: 0, x: -16 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={reduceMotion ? false : { opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.28, ease: "easeOut" }}
       >
-        Selected work
+        Projects
       </motion.p>
 
       <div className="project-list">
@@ -27,13 +27,13 @@ const ProjectsSection = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="project-row"
-            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={reduceMotion ? false : { opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{
-              duration: 0.55,
-              delay: 0.05 * i,
-              ease: [0.16, 1, 0.3, 1],
+              duration: 0.28,
+              delay: 0.03 * i,
+              ease: "easeOut",
             }}
           >
             <span className="project-num mono">

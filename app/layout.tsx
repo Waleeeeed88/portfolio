@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -18,7 +18,7 @@ const jetbrains = JetBrains_Mono({
 const isProd = process.env.NODE_ENV === "production";
 const repoName = "portfolio";
 
-const getIconPath = (path: string) =>
+const getAssetPath = (path: string) =>
   isProd ? `/${repoName}/${path}` : `/${path}`;
 
 export const metadata: Metadata = {
@@ -27,32 +27,58 @@ export const metadata: Metadata = {
       ? "https://waleeeeed88.github.io/portfolio/"
       : "http://localhost:3000"
   ),
-  title: "Walid — Software Engineer",
+  title: {
+    default: "Walid | Software Engineering Student",
+    template: "%s | Walid",
+  },
   applicationName: "Walid",
-  manifest: "/manifest.webmanifest",
+  manifest: getAssetPath("manifest.webmanifest"),
   description:
-    "Walid — Software Engineer focused on agentic systems, AI/ML, and cloud infrastructure.",
+    "Walid is a software engineering student at York University in Toronto with interests in multi-agent workflows, autonomous AI agents, predictive modelling, UX design, and Linux.",
+  authors: [{ name: "Mohammad Waliduddin" }],
+  creator: "Mohammad Waliduddin",
+  keywords: [
+    "Walid",
+    "Mohammad Waliduddin",
+    "software engineering student",
+    "York University",
+    "Toronto",
+    "multi-agent workflows",
+    "autonomous AI agents",
+    "predictive modelling",
+    "UX design",
+    "Linux",
+  ],
+  alternates: {
+    canonical: isProd ? "/portfolio/" : "/",
+  },
   icons: {
     icon: [
       {
-        url: getIconPath("mw2019-alt.svg"),
+        url: getAssetPath("mw2019-alt.svg"),
         type: "image/svg+xml",
         sizes: "any",
       },
     ],
-    apple: [{ url: getIconPath("mw2019-alt.svg"), sizes: "180x180" }],
-    shortcut: [{ url: getIconPath("mw2019-alt.svg") }],
+    apple: [{ url: getAssetPath("mw2019-alt.svg"), sizes: "180x180" }],
+    shortcut: [{ url: getAssetPath("mw2019-alt.svg") }],
   },
   openGraph: {
-    title: "Walid — Software Engineer",
-    description: "Software Engineer focused on agentic systems, AI/ML, and cloud infrastructure.",
+    title: "Walid | Software Engineering Student",
+    description:
+      "York University software engineering student interested in multi-agent workflows, autonomous AI agents, predictive modelling, UX design, and Linux.",
+    url: isProd ? "/portfolio/" : "/",
+    siteName: "Walid",
+    images: [{ url: getAssetPath("profile.jpg"), alt: "Walid" }],
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Walid — Software Engineer",
-    description: "Software Engineer focused on agentic systems, AI/ML, and cloud infrastructure.",
+    title: "Walid | Software Engineering Student",
+    description:
+      "York University software engineering student interested in multi-agent workflows, autonomous AI agents, predictive modelling, UX design, and Linux.",
+    images: [getAssetPath("profile.jpg")],
   },
 };
 

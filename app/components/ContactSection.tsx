@@ -13,7 +13,7 @@ const ContactSection = () => {
 
             <Reveal delay={0.06}>
                 <h2 className="mb-6 text-2xl font-bold text-[var(--text-heading)] sm:text-3xl">
-                    Let&apos;s build something together.
+                    {personalInfo.fullName}, {personalInfo.location}
                 </h2>
             </Reveal>
 
@@ -33,7 +33,7 @@ const ContactSection = () => {
                             }
                             className="contact-card group"
                         >
-                            <span className="text-xs font-medium text-[var(--text-secondary)] transition-colors group-hover:text-[var(--accent)]">
+                            <span className="text-xs font-medium text-[var(--text-secondary)] transition-colors group-hover:text-[var(--text-heading)]">
                                 {contact.label}
                             </span>
                             <p className="mono mt-1 text-sm text-[var(--text-heading)]">
@@ -52,7 +52,7 @@ const ContactSection = () => {
                         rel="noopener noreferrer"
                         className="project-link"
                     >
-                        View Resume
+                        R&eacute;sum&eacute;
                     </a>
                 </div>
             </Reveal>
