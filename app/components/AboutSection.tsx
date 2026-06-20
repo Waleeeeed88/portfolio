@@ -3,7 +3,7 @@ import { getImagePath } from "../utils/imagePath";
 import Reveal from "./Reveal";
 
 const AboutSection = () => {
-  const resumePath = getImagePath("fRESUME.pdf");
+  const resumePath = getImagePath("WalidFresume.pdf");
 
   return (
     <section id="about" className="about-section scroll-mt-24">
@@ -27,7 +27,7 @@ const AboutSection = () => {
       <Reveal from="left" delay={0.1}>
         <div className="about-contact">
           <h3 className="about-contact-heading">
-            {personalInfo.fullName}, {personalInfo.location}
+            Find me here
           </h3>
 
           <div className="contact-grid">

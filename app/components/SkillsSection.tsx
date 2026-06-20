@@ -23,13 +23,13 @@ const SkillsSection = () => {
           <motion.article
             key={group.label}
             className="skills-group"
-            initial={reduceMotion ? false : { opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, amount: 0.12 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.16, margin: "0px 0px -10% 0px" }}
             transition={{
-              duration: 0.28,
+              duration: 0.42,
               delay: 0.03 * gi,
-              ease: "easeOut",
+              ease: [0.22, 1, 0.36, 1],
             }}
           >
             <header className="skills-group-head">

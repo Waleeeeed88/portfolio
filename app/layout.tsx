@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   applicationName: "Walid",
   manifest: getAssetPath("manifest.webmanifest"),
   description:
-    "Walid is a software engineering student at York University in Toronto with interests in multi-agent workflows, autonomous AI agents, predictive modelling, UX design, and Linux.",
+    "Portfolio for Walid, a York University software engineering student in Toronto.",
   authors: [{ name: "Mohammad Waliduddin" }],
   creator: "Mohammad Waliduddin",
   keywords: [
@@ -43,11 +43,8 @@ export const metadata: Metadata = {
     "software engineering student",
     "York University",
     "Toronto",
-    "multi-agent workflows",
-    "autonomous AI agents",
-    "predictive modelling",
-    "UX design",
-    "Linux",
+    "portfolio",
+    "software developer",
   ],
   alternates: {
     canonical: isProd ? "/portfolio/" : "/",
@@ -55,18 +52,18 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: getAssetPath("mw2019-alt.svg"),
-        type: "image/svg+xml",
-        sizes: "any",
+        url: getAssetPath("mw-logo.png"),
+        type: "image/png",
+        sizes: "3840x2160",
       },
     ],
-    apple: [{ url: getAssetPath("mw2019-alt.svg"), sizes: "180x180" }],
-    shortcut: [{ url: getAssetPath("mw2019-alt.svg") }],
+    apple: [{ url: getAssetPath("mw-logo.png"), sizes: "3840x2160" }],
+    shortcut: [{ url: getAssetPath("mw-logo.png") }],
   },
   openGraph: {
     title: "Walid | Software Engineering Student",
     description:
-      "York University software engineering student interested in multi-agent workflows, autonomous AI agents, predictive modelling, UX design, and Linux.",
+      "Portfolio for Walid, a York University software engineering student in Toronto.",
     url: isProd ? "/portfolio/" : "/",
     siteName: "Walid",
     images: [{ url: getAssetPath("profile.jpg"), alt: "Walid" }],
@@ -77,7 +74,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Walid | Software Engineering Student",
     description:
-      "York University software engineering student interested in multi-agent workflows, autonomous AI agents, predictive modelling, UX design, and Linux.",
+      "Portfolio for Walid, a York University software engineering student in Toronto.",
     images: [getAssetPath("profile.jpg")],
   },
 };

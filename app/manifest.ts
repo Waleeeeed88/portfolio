@@ -14,13 +14,13 @@ export default function manifest(): MetadataRoute.Manifest {
     start_url: `${repoBase}/`,
     scope: `${repoBase}/`,
     display: "standalone",
-    background_color: "#080808",
-    theme_color: "#080808",
+    background_color: "#000000",
+    theme_color: "#000000",
     icons: [
       {
-        src: `${repoBase}/mw2019-alt.svg`,
-        sizes: "any",
-        type: "image/svg+xml",
+        src: `${repoBase}/mw-logo.png`,
+        sizes: "3840x2160",
+        type: "image/png",
       },
     ],
   };

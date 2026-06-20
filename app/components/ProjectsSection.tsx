@@ -27,13 +27,13 @@ const ProjectsSection = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="project-row"
-            initial={reduceMotion ? false : { opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, amount: 0.25 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2, margin: "0px 0px -10% 0px" }}
             transition={{
-              duration: 0.28,
+              duration: 0.42,
               delay: 0.03 * i,
-              ease: "easeOut",
+              ease: [0.22, 1, 0.36, 1],
             }}
           >
             <span className="project-num mono">

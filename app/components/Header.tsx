@@ -6,11 +6,10 @@ import { getImagePath } from "../utils/imagePath";
 import Reveal from "./Reveal";
 
 const focusTags = [
-  "Multi-agent workflows",
-  "Autonomous AI agents",
-  "ML systems for predictive modelling",
-  "UX design",
-  "Linux",
+  "Agent workflows",
+  "Machine learning",
+  "Product UX",
+  "Linux systems",
 ];
 
 const Header = () => {

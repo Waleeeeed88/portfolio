@@ -12,7 +12,6 @@ export const personalInfo = {
   summary:
     "I am a software engineering student at York University in Toronto.",
   contacts: [
-    { label: "Phone", value: "437-260-8096", href: "tel:437-260-8096" },
     {
       label: "Email",
       value: "walid40@my.yorku.ca",
@@ -32,10 +31,10 @@ export const personalInfo = {
 };
 
 export const about = {
-  heading: "Outside software",
+  heading: "I like systems that explain themselves",
   paragraphs: [
-    "Outside software, I spend time with history, literature, art, and older architecture.",
-    "I spend a lot of time reading and researching politics and economics too. I also experiment with uncensored, self-hosted AI models to understand how machines reason and respond to complex human political situations.",
+    "I am drawn to software that makes messy work easier to understand, whether that means cleaner interfaces, better internal tools, or agents that can carry context across a workflow.",
+    "Apart from my professional life, I spend time with history, literature, art, and older architecture. I also read and research politics and economics, and I experiment with self-hosted AI models to understand how machines reason through complex human situations.",
   ],
 };
 
