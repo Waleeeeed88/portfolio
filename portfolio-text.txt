@@ -1,0 +1,154 @@
+Portfolio Text
+
+Name
+Walid
+Mohammad Waliduddin
+
+Role
+Software Engineering Student
+
+Location
+Toronto, ON
+
+Hero
+Hi, I'm Walid.
+I am a software engineering student at York University in Toronto.
+My areas of interest are
+Agent workflows
+Machine learning
+Product UX
+Linux systems
+B.Eng Software Engineering - York University
+
+About
+I like systems that explain themselves
+
+I am drawn to software that makes messy work easier to understand, whether that means cleaner interfaces, better internal tools, or agents that can carry context across a workflow.
+
+Apart from my professional life, I spend time with history, literature, art, and older architecture. I also read and research politics and economics, and I experiment with self-hosted AI models to understand how machines reason through complex human situations.
+
+Find me here
+Email: walid40@my.yorku.ca
+LinkedIn: mohammad-waliduddin
+LinkedIn URL: https://ca.linkedin.com/in/mohammad-waliduddin-918aa1244
+GitHub: Waleeeeed88
+GitHub URL: https://github.com/Waleeeeed88
+Resume: WALLRES.pdf
+
+Education
+York University
+Lassonde School of Engineering
+North York, ON
+Sep 2022 - Aug 2027 expected
+BEng in Software Engineering
+GPA: 3.11 / 4.0
+
+Courses
+EECS 2030 - Advanced OOP
+EECS 2011 / 3101 - Data Structures and Algorithms
+EECS 3311 - Software Design
+EECS 3421 - Database Management Systems
+EECS 2032 - Embedded Systems
+EECS 3201 - Digital Logic Design
+EECS 3482 - Intro to Computer Security
+
+Experience
+Software Developer Co-op
+Government of Ontario / Toronto, ON
+Sep 2025 - Present
+I helped build a design-to-production code workflow using GitHub Copilot and custom agents. It let PMs and BAs prompt implementation-ready code.
+I also worked on AI-native legacy modernization from Java 1.8 to Angular and Spring Boot.
+Tools: GitHub Copilot, Custom agents, Java 1.8, Angular, Spring Boot
+
+Software Developer Co-op
+Canadian Imperial Bank of Commerce / Toronto, ON
+Sep 2024 - Dec 2024
+Java/Jenkins automation for eight weekly Excel reports, plus specs for name-change and eCIF releases.
+Led DB analysis with DB Visualizer, then implemented ETL jobs and data quality checks for warehouse workflows.
+Tools: Java, Jenkins, Excel automation, DB Visualizer, ETL, Data quality checks
+
+Projects
+REAI - Real Estate Price Predictor
+Python, XGBoost, Flask, Docker
+XGBoost model fine-tuned with Optuna on 50K+ home listings, including location, province, acreage, and other listing parameters.
+Served through a Flask API and Docker deployment.
+Status: deployed
+Link: https://aires-production.up.railway.app/
+
+Instacart for Agents
+TypeScript, npm, Codex plugin, agent workflows
+Published TypeScript API layer for safe Instacart grocery planning with browser agents.
+Official npm package with a companion GitHub repo.
+Link: https://www.npmjs.com/package/instacart-for-agents
+
+TechYork
+Next.js, TypeScript, C#, ASP.NET Core, Neon DB
+Built a platform for university students to connect, message, share projects, and apply for jobs.
+Live at techyork.ca.
+Status: deployed
+Link: https://techyork.ca
+
+CLAI - Multi-Agent Coding Workflow
+Python, MCP, OpenRouter, GitHub automation
+Specialized coding agents coordinate through APIs to plan, implement, and review project work.
+Workflow project for multi-agent coding automation.
+Link: https://github.com/Waleeeeed88/CLAI
+
+Engineering Stack
+Backend & Product Engineering
+Frameworks and languages I use for apps, services, and APIs.
+TypeScript
+Next.js
+React
+Angular
+Java
+Spring Boot
+C#
+ASP.NET Core
+REST APIs
+SQL
+
+Cloud & Deployment
+What I use to deploy apps and services.
+Docker
+GCP
+Cloud Run
+AWS
+App Runner
+S3
+Azure
+Firebase
+Neon DB
+
+Testing & DevOps
+Tools I use before and after deployment to maintain projects.
+GitHub Actions
+Jenkins
+CI/CD
+Playwright
+Cypress
+Selenium
+Linux
+
+ML & Data Systems
+How I prepare data for ML models and pipelines.
+Python
+pandas
+scikit-learn
+XGBoost
+Optuna
+Flask
+SQL
+
+AI-Native Workflows
+Tools I use for custom workflows to speed up development while maintaining quality.
+MCP
+Codebase specs and graphing
+Agent deployment
+LLM API integration & implementation
+Agent workflows
+
+Metadata
+Walid | Software Engineering Student
+Portfolio for Walid, a York University software engineering student in Toronto.
+Software engineering student at York University in Toronto.
