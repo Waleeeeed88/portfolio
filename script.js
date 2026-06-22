@@ -21,8 +21,8 @@ const renderTypedTitle = (target, text, cursor) => {
 const renderEmphasizedTitle = (target, text, cursor) => {
   const emphasizedPhrases = [
     "Walid",
-    "4th year software engineering student",
-    "Lassonde School of Engineering",
+    "fourth-year Software Engineering student",
+    "York University's Lassonde School of Engineering",
   ];
 
   target.textContent = "";

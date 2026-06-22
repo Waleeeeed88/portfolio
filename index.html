@@ -6,7 +6,7 @@
     <title>Walid | Software Engineering Student</title>
     <meta
       name="description"
-      content="Portfolio for Walid, a York University software engineering student in Toronto."
+      content="Portfolio for Walid, a fourth-year Software Engineering student at York University's Lassonde School of Engineering."
     />
     <link rel="icon" href="public/mw-logo.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
@@ -26,15 +26,15 @@
       <section id="home" class="hero section" aria-labelledby="hero-title">
         <p class="eyebrow">available for software, product, and AI workflow work</p>
         <h1 id="hero-title" data-typewriter>
-          Hey I am Walid. <br>
-          I am 4th year software engineering student @ Lassonde School of Engineering
+          Hey, I am Walid. <br>
+          I am a fourth-year Software Engineering student at York University's Lassonde School of Engineering.
         </h1>
       </section>
 
       <div class="section intro-section" aria-labelledby="intro-title" data-animate="section">
         <div class="intro-panel" data-animate="intro">
           <p class="hero-copy">
-            My interests are rooted around <strong>product design and development</strong>, <strong>linux servers, security, and sandboxing</strong>, and <strong>AI agent teams</strong>. I also fine tune small ML models for different use cases. My most interesting one is an <strong>XGboost model trained with hyperparameterized Optuna trials</strong> to predict real estate prices based on a variety of features.
+            My interests are rooted in <strong>product design and development</strong>, <strong>Linux servers, security, and sandboxing</strong>, and <strong>AI agent teams</strong>. I also fine-tune small ML models for applied use cases. My most interesting one is an <strong>XGBoost model trained with Optuna hyperparameter tuning</strong> to predict real estate prices from property and market features.
             <br> I have worked across <strong>all parts of the software development lifecycle</strong>, from design and implementation to testing, deployment, and maintenance.
             <br>
           </p>
@@ -43,7 +43,7 @@
             <p>
               Away from software, I spend time with history, literature, art, and
               older architecture. I also research politics and economics, and I
-              experiment with self-hosted AI models, testing everythign from political opinions to vulnerability research.
+              experiment with self-hosted AI models, testing everything from political opinions to vulnerability research.
             </p>
           </div>
         </div>
@@ -112,19 +112,24 @@
         </div>
 
         <div class="project-list">
-          <a class="project" href="https://aires-production.up.railway.app/" target="_blank" rel="noopener" data-animate="project">
+          <article class="project" data-animate="project">
             <div class="project-shot" data-animate-child="media">
               <img src="public/project-reai.png" alt="REAI project preview" />
             </div>
             <div class="project-copy" data-animate-child="copy">
               <h3>Real Estate Price Predictor</h3>
               <p class="built-with"><strong>Built with</strong> Python, XGBoost, Flask, Docker</p>
-              <p>XGBoost model fine-tuned with Optuna on 50K+ home listings and served through a Flask API.</p>
-              <span><i class="ti ti-external-link" aria-hidden="true"></i>live project</span>
+              <p>XGBoost model trained with Optuna hyperparameter tuning on 50K+ home listings and served through a Flask API.</p>
+              <p class="what-built"><strong>What I built</strong> Model training pipeline, Flask inference API, Docker containerization, and Railway deployment.</p>
+              <div class="project-actions" aria-label="Real Estate Price Predictor links">
+                <a href="https://aires-production.up.railway.app/" target="_blank" rel="noopener"><i class="ti ti-external-link" aria-hidden="true"></i>Live Demo</a>
+                <span class="project-action is-muted"><i class="ti ti-brand-github" aria-hidden="true"></i>GitHub private</span>
+                <span class="project-action"><i class="ti ti-list-check" aria-hidden="true"></i>What I built</span>
+              </div>
             </div>
-          </a>
+          </article>
 
-          <a class="project" href="https://www.npmjs.com/package/instacart-for-agents" target="_blank" rel="noopener" data-animate="project">
+          <article class="project" data-animate="project">
             <div class="project-shot green" data-animate-child="media">
               <img src="public/project-instacart.png" alt="Instacart for Agents project preview" />
             </div>
@@ -132,11 +137,16 @@
               <h3>Instacart for Agents</h3>
               <p class="built-with"><strong>Built with</strong> TypeScript, npm, Codex plugin, agent workflows</p>
               <p>Published TypeScript API layer for safe grocery planning with browser agents.</p>
-              <span><i class="ti ti-package" aria-hidden="true"></i>npm package</span>
+              <p class="what-built"><strong>What I built</strong> Package API, typed browser-agent helpers, npm publishing workflow, and companion source repository.</p>
+              <div class="project-actions" aria-label="Instacart for Agents links">
+                <a href="https://www.npmjs.com/package/instacart-for-agents" target="_blank" rel="noopener"><i class="ti ti-package" aria-hidden="true"></i>Live Demo</a>
+                <a href="https://github.com/Waleeeeed88/instacart-for-agents" target="_blank" rel="noopener"><i class="ti ti-brand-github" aria-hidden="true"></i>GitHub</a>
+                <span class="project-action"><i class="ti ti-list-check" aria-hidden="true"></i>What I built</span>
+              </div>
             </div>
-          </a>
+          </article>
 
-          <a class="project" href="https://techyork.ca" target="_blank" rel="noopener" data-animate="project">
+          <article class="project" data-animate="project">
             <div class="project-shot blue" data-animate-child="media">
               <img src="public/project-techyork.png" alt="TechYork project preview" />
             </div>
@@ -144,11 +154,16 @@
               <h3>TechYork</h3>
               <p class="built-with"><strong>Built with</strong> Next.js, TypeScript, C#, ASP.NET Core, Neon DB</p>
               <p>Platform for students to connect, message, share projects, and apply for jobs.</p>
-              <span><i class="ti ti-external-link" aria-hidden="true"></i>live project</span>
+              <p class="what-built"><strong>What I built</strong> Feed and project-sharing workflows, student profile surfaces, backend APIs, and database-backed community features.</p>
+              <div class="project-actions" aria-label="TechYork links">
+                <a href="https://techyork.ca" target="_blank" rel="noopener"><i class="ti ti-external-link" aria-hidden="true"></i>Live Demo</a>
+                <span class="project-action is-muted"><i class="ti ti-brand-github" aria-hidden="true"></i>GitHub private</span>
+                <span class="project-action"><i class="ti ti-list-check" aria-hidden="true"></i>What I built</span>
+              </div>
             </div>
-          </a>
+          </article>
 
-          <a class="project" href="https://github.com/Waleeeeed88/CLAI" target="_blank" rel="noopener" data-animate="project">
+          <article class="project" data-animate="project">
             <div class="project-shot dark" data-animate-child="media">
               <img src="public/project-clai.png" alt="CLAI project preview" />
             </div>
@@ -156,9 +171,14 @@
               <h3>Multi-Agent Coding Workflow</h3>
               <p class="built-with"><strong>Built with</strong> Python, MCP, OpenRouter, GitHub automation</p>
               <p>Specialized coding agents coordinate through APIs to plan, implement, and review project work.</p>
-              <span><i class="ti ti-brand-github" aria-hidden="true"></i>repo</span>
+              <p class="what-built"><strong>What I built</strong> Multi-agent orchestration flow, provider routing through OpenRouter, MCP tool integration, and GitHub automation hooks.</p>
+              <div class="project-actions" aria-label="Multi-Agent Coding Workflow links">
+                <span class="project-action is-muted"><i class="ti ti-external-link" aria-hidden="true"></i>Live Demo unavailable</span>
+                <a href="https://github.com/Waleeeeed88/CLAI" target="_blank" rel="noopener"><i class="ti ti-brand-github" aria-hidden="true"></i>GitHub</a>
+                <span class="project-action"><i class="ti ti-list-check" aria-hidden="true"></i>What I built</span>
+              </div>
             </div>
-          </a>
+          </article>
         </div>
       </section>
 
@@ -255,6 +275,7 @@
           <a href="https://github.com/Waleeeeed88" target="_blank" rel="noopener" aria-label="GitHub"><i class="ti ti-brand-github" aria-hidden="true"></i><span>GitHub</span></a>
           <a href="WALLRES.pdf" target="_blank" rel="noopener" aria-label="Resume"><i class="ti ti-file-text" aria-hidden="true"></i><span>Resume</span></a>
         </div>
+        <p class="build-note">Built with semantic HTML, CSS, and vanilla JavaScript. Deployed on GitHub Pages.</p>
         <a class="service-link" href="mailto:walid40@my.yorku.ca"><i class="ti ti-send" aria-hidden="true"></i><span>start a conversation</span></a>
       </section>
     </main>

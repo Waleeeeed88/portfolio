@@ -12,7 +12,7 @@ Toronto, ON
 
 Hero
 Hi, I'm Walid.
-I am a software engineering student at York University in Toronto.
+I am a fourth-year Software Engineering student at York University's Lassonde School of Engineering.
 My areas of interest are
 Agent workflows
 Machine learning
@@ -70,20 +70,22 @@ Tools: Java, Jenkins, Excel automation, DB Visualizer, ETL, Data quality checks
 Projects
 REAI - Real Estate Price Predictor
 Python, XGBoost, Flask, Docker
-XGBoost model fine-tuned with Optuna on 50K+ home listings, including location, province, acreage, and other listing parameters.
-Served through a Flask API and Docker deployment.
+XGBoost model trained with Optuna hyperparameter tuning on 50K+ home listings, including location, province, acreage, and other listing parameters.
+What I built: model training pipeline, Flask inference API, Docker containerization, and Railway deployment.
 Status: deployed
 Link: https://aires-production.up.railway.app/
 
 Instacart for Agents
 TypeScript, npm, Codex plugin, agent workflows
 Published TypeScript API layer for safe Instacart grocery planning with browser agents.
-Official npm package with a companion GitHub repo.
+What I built: package API, typed browser-agent helpers, npm publishing workflow, and companion source repository.
 Link: https://www.npmjs.com/package/instacart-for-agents
+GitHub: https://github.com/Waleeeeed88/instacart-for-agents
 
 TechYork
 Next.js, TypeScript, C#, ASP.NET Core, Neon DB
 Built a platform for university students to connect, message, share projects, and apply for jobs.
+What I built: feed and project-sharing workflows, student profile surfaces, backend APIs, and database-backed community features.
 Live at techyork.ca.
 Status: deployed
 Link: https://techyork.ca
@@ -91,7 +93,7 @@ Link: https://techyork.ca
 CLAI - Multi-Agent Coding Workflow
 Python, MCP, OpenRouter, GitHub automation
 Specialized coding agents coordinate through APIs to plan, implement, and review project work.
-Workflow project for multi-agent coding automation.
+What I built: multi-agent orchestration flow, provider routing through OpenRouter, MCP tool integration, and GitHub automation hooks.
 Link: https://github.com/Waleeeeed88/CLAI
 
 Engineering Stack
@@ -150,5 +152,5 @@ Agent workflows
 
 Metadata
 Walid | Software Engineering Student
-Portfolio for Walid, a York University software engineering student in Toronto.
-Software engineering student at York University in Toronto.
+Portfolio for Walid, a fourth-year Software Engineering student at York University's Lassonde School of Engineering.
+Fourth-year Software Engineering student at York University's Lassonde School of Engineering.
