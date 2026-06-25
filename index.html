@@ -1,285 +1,198 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Walid | Software Engineering Student</title>
-    <meta
-      name="description"
-      content="Portfolio for Walid, a fourth-year Software Engineering student at York University's Lassonde School of Engineering."
-    />
-    <link rel="icon" href="public/mw-logo.png" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="progress" aria-hidden="true"></div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Walid | Software Engineering Student</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  
+  <link rel="icon" href="public/mw-logo.png" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <nav class="rail-nav" aria-label="Primary navigation">
-      <a href="#contact"><i class="ti ti-send" aria-hidden="true"></i><span>contact</span></a>
-      <a href="#projects"><i class="ti ti-folder" aria-hidden="true"></i><span>projects</span></a>
-      <a href="#experience"><i class="ti ti-briefcase" aria-hidden="true"></i><span>experience</span></a>
-      <a href="#home"><i class="ti ti-home" aria-hidden="true"></i><span>home</span></a>
-    </nav>
+  <main class="main-container">
+    
+    <!-- Intro Section -->
+    <section class="section" id="about">
+      <h1 class="display-name">Hey, I'm Walid.</h1>
+      <p class="body-text">
+        I'm a 4th-year Software Engineering student at York University. I enjoy building things from the ground up—whether that means architecting scalable backends, digging into Linux internals and sandboxing, or orchestrating multi-agent AI workflows.
+      </p>
+      <p class="body-text">
+        I care deeply about the entire lifecycle of a product. I've spent time modernizing legacy infrastructure, fine-tuning ML models for applied use cases, and building developer automation tools. Right now, I'm focused on the intersection of product engineering, applied ML, and robust infrastructure.
+      </p>
+      <div class="action-links">
+        <a href="#experience" class="link-btn">See my work &darr;</a>
+        <a href="WalidResume.pdf" target="_blank" class="link-btn">View Resume &nearr;</a>
+      </div>
+    </section>
 
-    <main>
-      <section id="home" class="hero section" aria-labelledby="hero-title">
-        <p class="eyebrow">available for software, product, and AI workflow work</p>
-        <h1 id="hero-title" data-typewriter>
-          Hey, I am Walid. <br>
-          I am a fourth-year Software Engineering student at York University's Lassonde School of Engineering.
-        </h1>
-      </section>
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+      <h2 class="section-title">Professional Experience</h2>
+      
+      <div class="item-list">
+        
+        <article class="list-item">
+          <img src="public/ongov.png" alt="Government of Ontario" class="item-logo">
+          <div class="item-content">
+            <h3 class="item-title">Government of Ontario</h3>
+            <p class="item-meta">Software Developer Co-op &middot; Toronto, ON &middot; Sep 2025 - Present</p>
+            <p class="body-text mt-2">
+              I helped build a design-to-production code workflow using GitHub Copilot and custom agents. It enabled Product Managers and Business Analysts to prompt and receive implementation-ready code. I was also heavily involved in AI-native legacy modernization, architecting the transition of legacy systems from Java 1.8 to modern Angular and Spring Boot architectures.
+            </p>
+            <p class="item-tech mt-2">GitHub Copilot, Custom Agents, Java 1.8, Angular, Spring Boot</p>
+          </div>
+        </article>
 
-      <div class="section intro-section" aria-labelledby="intro-title" data-animate="section">
-        <div class="intro-panel" data-animate="intro">
-          <p class="hero-copy">
-            My interests are rooted in <strong>product design and development</strong>, <strong>Linux servers, security, and sandboxing</strong>, and <strong>AI agent teams</strong>. I also fine-tune small ML models for applied use cases. My most interesting one is an <strong>XGBoost model trained with Optuna hyperparameter tuning</strong> to predict real estate prices from property and market features.
-            <br> I have worked across <strong>all parts of the software development lifecycle</strong>, from design and implementation to testing, deployment, and maintenance.
-            <br>
-          </p>
-          <div class="hero-about">
-            <h2 id="intro-title">Some facts</h2>
-            <p>
-              Away from software, I spend time with history, literature, art, and
-              older architecture. I also research politics and economics, and I
-              experiment with self-hosted AI models, testing everything from political opinions to vulnerability research.
+        <article class="list-item">
+          <img src="public/cibc.png" alt="CIBC" class="item-logo">
+          <div class="item-content">
+            <h3 class="item-title">Canadian Imperial Bank of Commerce</h3>
+            <p class="item-meta">Software Developer Co-op &middot; Toronto, ON &middot; Sep 2024 - Dec 2024</p>
+            <p class="body-text mt-2">
+              Engineered Java and Jenkins automation pipelines for eight weekly Excel reporting routines and wrote technical specifications for name-change and eCIF releases. I also led extensive database analysis workflows using DB Visualizer, implementing critical ETL jobs and enforcing data quality checks across enterprise warehouse workflows.
+            </p>
+            <p class="item-tech mt-2">Java, Jenkins, Excel Automation, DB Visualizer, ETL, Data Quality</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section" id="education">
+      <h2 class="section-title">Education</h2>
+      <div class="item-list">
+        <article class="list-item">
+          <img src="public/lassonde.png" alt="Lassonde School of Engineering" class="item-logo">
+          <div class="item-content">
+            <h3 class="item-title">Lassonde School of Engineering</h3>
+            <p class="item-meta">B.Eng Software Engineering &middot; York University, Toronto, ON</p>
+            <p class="body-text mt-2">
+              Currently in my fourth year. My coursework and academic focus center around operating systems, data structures, and the rigorous engineering practices required for building highly resilient software systems.
             </p>
           </div>
-        </div>
+        </article>
       </div>
+    </section>
 
-      <section id="experience" class="section case-section" aria-labelledby="case-title" data-animate="section">
-        <h2 id="case-title" class="vertical-title">experience</h2>
-        <div class="experience-wrap">
-          <div class="experience-list" aria-label="Experience">
-            <article class="experience-entry" data-animate="timeline">
-              <div class="experience-mark">
-                <img src="public/ongov.png" alt="Government of Ontario logo" />
-              </div>
-              <div class="experience-copy">
-                <p class="role">Software Developer Co-op</p>
-                <h3>Government of Ontario</h3>
-                <p class="meta">Toronto, ON / Sep 2025 - Present</p>
-                <p>
-                  I helped build a design-to-production code workflow using GitHub Copilot and custom agents. It let PMs and BAs prompt implementation-ready code.
-                </p>
-                <p>
-                  I also worked on AI-native legacy modernization from Java 1.8 to Angular and Spring Boot.
-                </p>
-                <div class="tool-row" aria-label="Ontario tools">
-                  <span><i class="ti ti-robot" aria-hidden="true"></i>GitHub Copilot</span>
-                  <span><i class="ti ti-route" aria-hidden="true"></i>Custom agents</span>
-                  <span><i class="ti ti-coffee" aria-hidden="true"></i>Java 1.8</span>
-                  <span><i class="ti ti-components" aria-hidden="true"></i>Angular</span>
-                  <span><i class="ti ti-leaf" aria-hidden="true"></i>Spring Boot</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="experience-entry" data-animate="timeline">
-              <div class="experience-mark">
-                <img src="public/cibc.png" alt="CIBC logo" />
-              </div>
-              <div class="experience-copy">
-                <p class="role">Software Developer Co-op</p>
-                <h3>Canadian Imperial Bank of Commerce</h3>
-                <p class="meta">Toronto, ON / Sep 2024 - Dec 2024</p>
-                <p>
-                  Java/Jenkins automation for eight weekly Excel reports, plus specs for name-change and eCIF releases.
-                </p>
-                <p>
-                  Led DB analysis with DB Visualizer, then implemented ETL jobs and data quality checks for warehouse workflows.
-                </p>
-                <div class="tool-row" aria-label="CIBC tools">
-                  <span><i class="ti ti-coffee" aria-hidden="true"></i>Java</span>
-                  <span><i class="ti ti-server-cog" aria-hidden="true"></i>Jenkins</span>
-                  <span><i class="ti ti-table" aria-hidden="true"></i>Excel automation</span>
-                  <span><i class="ti ti-database" aria-hidden="true"></i>DB Visualizer</span>
-                  <span><i class="ti ti-arrows-shuffle" aria-hidden="true"></i>ETL</span>
-                  <span><i class="ti ti-shield-check" aria-hidden="true"></i>Data quality checks</span>
-                </div>
-              </div>
-            </article>
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+      <h2 class="section-title">Personal Projects</h2>
+      <div class="project-grid">
+        
+        <article class="project-item">
+          <img src="public/project-reai.png" alt="Real Estate Predictor" class="project-img">
+          <h3 class="item-title mt-3">Real Estate Predictor</h3>
+          <p class="body-text mt-2">
+            XGBoost model trained with Optuna hyperparameter tuning on 50K+ home listings and served through a Flask API. Built model training pipeline, Flask inference API, Docker containerization, and Railway deployment.
+          </p>
+          <p class="item-tech mt-2">Python, XGBoost, Flask, Docker</p>
+          <div class="action-links mt-2">
+            <a href="https://aires-production.up.railway.app/" target="_blank" class="text-link">Live Demo &nearr;</a>
           </div>
+        </article>
 
-        </div>
-      </section>
-
-      <section id="projects" class="section projects" aria-labelledby="projects-title" data-animate="section">
-        <div class="section-heading right" data-animate="heading">
-          <h2 id="projects-title">personal projects</h2>
-        </div>
-
-        <div class="project-list">
-          <article class="project" data-animate="project">
-            <div class="project-shot" data-animate-child="media">
-              <img src="public/project-reai.png" alt="REAI project preview" />
-            </div>
-            <div class="project-copy" data-animate-child="copy">
-              <h3>Real Estate Price Predictor</h3>
-              <p class="built-with"><strong>Built with</strong> Python, XGBoost, Flask, Docker</p>
-              <p>XGBoost model trained with Optuna hyperparameter tuning on 50K+ home listings and served through a Flask API.</p>
-              <p class="what-built"><strong>What I built</strong> Model training pipeline, Flask inference API, Docker containerization, and Railway deployment.</p>
-              <div class="project-actions" aria-label="Real Estate Price Predictor links">
-                <a href="https://aires-production.up.railway.app/" target="_blank" rel="noopener"><i class="ti ti-external-link" aria-hidden="true"></i>Live Demo</a>
-                <span class="project-action is-muted"><i class="ti ti-brand-github" aria-hidden="true"></i>GitHub private</span>
-                <span class="project-action"><i class="ti ti-list-check" aria-hidden="true"></i>What I built</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project" data-animate="project">
-            <div class="project-shot green" data-animate-child="media">
-              <img src="public/project-instacart.png" alt="Instacart for Agents project preview" />
-            </div>
-            <div class="project-copy" data-animate-child="copy">
-              <h3>Instacart for Agents</h3>
-              <p class="built-with"><strong>Built with</strong> TypeScript, npm, Codex plugin, agent workflows</p>
-              <p>Published TypeScript API layer for safe grocery planning with browser agents.</p>
-              <p class="what-built"><strong>What I built</strong> Package API, typed browser-agent helpers, npm publishing workflow, and companion source repository.</p>
-              <div class="project-actions" aria-label="Instacart for Agents links">
-                <a href="https://www.npmjs.com/package/instacart-for-agents" target="_blank" rel="noopener"><i class="ti ti-package" aria-hidden="true"></i>Live Demo</a>
-                <a href="https://github.com/Waleeeeed88/instacart-for-agents" target="_blank" rel="noopener"><i class="ti ti-brand-github" aria-hidden="true"></i>GitHub</a>
-                <span class="project-action"><i class="ti ti-list-check" aria-hidden="true"></i>What I built</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project" data-animate="project">
-            <div class="project-shot blue" data-animate-child="media">
-              <img src="public/project-techyork.png" alt="TechYork project preview" />
-            </div>
-            <div class="project-copy" data-animate-child="copy">
-              <h3>TechYork</h3>
-              <p class="built-with"><strong>Built with</strong> Next.js, TypeScript, C#, ASP.NET Core, Neon DB</p>
-              <p>Platform for students to connect, message, share projects, and apply for jobs.</p>
-              <p class="what-built"><strong>What I built</strong> Feed and project-sharing workflows, student profile surfaces, backend APIs, and database-backed community features.</p>
-              <div class="project-actions" aria-label="TechYork links">
-                <a href="https://techyork.ca" target="_blank" rel="noopener"><i class="ti ti-external-link" aria-hidden="true"></i>Live Demo</a>
-                <span class="project-action is-muted"><i class="ti ti-brand-github" aria-hidden="true"></i>GitHub private</span>
-                <span class="project-action"><i class="ti ti-list-check" aria-hidden="true"></i>What I built</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project" data-animate="project">
-            <div class="project-shot dark" data-animate-child="media">
-              <img src="public/project-clai.png" alt="CLAI project preview" />
-            </div>
-            <div class="project-copy" data-animate-child="copy">
-              <h3>Multi-Agent Coding Workflow</h3>
-              <p class="built-with"><strong>Built with</strong> Python, MCP, OpenRouter, GitHub automation</p>
-              <p>Specialized coding agents coordinate through APIs to plan, implement, and review project work.</p>
-              <p class="what-built"><strong>What I built</strong> Multi-agent orchestration flow, provider routing through OpenRouter, MCP tool integration, and GitHub automation hooks.</p>
-              <div class="project-actions" aria-label="Multi-Agent Coding Workflow links">
-                <span class="project-action is-muted"><i class="ti ti-external-link" aria-hidden="true"></i>Live Demo unavailable</span>
-                <a href="https://github.com/Waleeeeed88/CLAI" target="_blank" rel="noopener"><i class="ti ti-brand-github" aria-hidden="true"></i>GitHub</a>
-                <span class="project-action"><i class="ti ti-list-check" aria-hidden="true"></i>What I built</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="stack" class="section stack-section" aria-labelledby="stack-title" data-animate="section">
-        <div class="stack-panel" aria-label="Engineering Stack">
-          <div class="stack-intro">
-            <p id="stack-title" class="role">Engineering Stack</p>
+        <article class="project-item">
+          <img src="public/project-instacart.png" alt="Instacart for Agents" class="project-img">
+          <h3 class="item-title mt-3">Instacart for Agents</h3>
+          <p class="body-text mt-2">
+            Published TypeScript API layer for safe grocery planning with browser agents. Includes Package API, typed browser-agent helpers, npm publishing workflow, and companion source repository.
+          </p>
+          <p class="item-tech mt-2">TypeScript, npm, Codex plugin, Agent Workflows</p>
+          <div class="action-links mt-2">
+            <a href="https://www.npmjs.com/package/instacart-for-agents" target="_blank" class="text-link">NPM Package &nearr;</a>
+            <a href="https://github.com/Waleeeeed88/instacart-for-agents" target="_blank" class="text-link">GitHub &nearr;</a>
           </div>
-          <div class="stack-grid">
-            <article data-animate="stack">
-              <span><i class="ti ti-layers-intersect" aria-hidden="true"></i>Product</span>
-              <h3>Backend & Product Engineering</h3>
-              <p>Frameworks and languages I use for apps, services, and APIs.</p>
-              <ul>
-                <li>TypeScript</li>
-                <li>Next.js</li>
-                <li>React</li>
-                <li>Angular</li>
-                <li>Java</li>
-                <li>Spring Boot</li>
-                <li>C#</li>
-                <li>ASP.NET Core</li>
-                <li>REST APIs</li>
-                <li>SQL</li>
-              </ul>
-            </article>
-            <article data-animate="stack">
-              <span><i class="ti ti-cloud" aria-hidden="true"></i>Cloud</span>
-              <h3>Cloud & Deployment</h3>
-              <p>What I use to deploy apps and services.</p>
-              <ul>
-                <li>Docker</li>
-                <li>GCP</li>
-                <li>Cloud Run</li>
-                <li>AWS</li>
-                <li>App Runner</li>
-                <li>S3</li>
-                <li>Azure</li>
-                <li>Firebase</li>
-                <li>Neon DB</li>
-              </ul>
-            </article>
-            <article data-animate="stack">
-              <span><i class="ti ti-git-branch" aria-hidden="true"></i>DevOps</span>
-              <h3>Testing & DevOps</h3>
-              <p>Tools I use before and after deployment to maintain projects.</p>
-              <ul>
-                <li>GitHub Actions</li>
-                <li>Jenkins</li>
-                <li>CI/CD</li>
-                <li>Playwright</li>
-                <li>Cypress</li>
-                <li>Selenium</li>
-                <li>Linux</li>
-              </ul>
-            </article>
-            <article data-animate="stack">
-              <span><i class="ti ti-chart-bar" aria-hidden="true"></i>Data</span>
-              <h3>ML & Data Systems</h3>
-              <p>How I prepare data for ML models and pipelines.</p>
-              <ul>
-                <li>Python</li>
-                <li>pandas</li>
-                <li>scikit-learn</li>
-                <li>XGBoost</li>
-                <li>Optuna</li>
-                <li>Flask</li>
-                <li>SQL</li>
-              </ul>
-            </article>
-            <article data-animate="stack">
-              <span><i class="ti ti-sparkles" aria-hidden="true"></i>Agents</span>
-              <h3>AI-Native Workflows</h3>
-              <p>Tools I use for custom workflows to speed up development while maintaining quality.</p>
-              <ul>
-                <li>MCP</li>
-                <li>Codebase specs and graphing</li>
-                <li>Agent deployment</li>
-                <li>LLM API integration & implementation</li>
-                <li>Agent workflows</li>
-              </ul>
-            </article>
+        </article>
+
+        <article class="project-item">
+          <img src="public/project-techyork.png" alt="TechYork" class="project-img">
+          <h3 class="item-title mt-3">TechYork</h3>
+          <p class="body-text mt-2">
+            Platform for students to connect, message, share projects, and apply for jobs. Built feed and project-sharing workflows, student profile surfaces, backend APIs, and database-backed community features.
+          </p>
+          <p class="item-tech mt-2">Next.js, TypeScript, C#, ASP.NET Core, Neon DB</p>
+          <div class="action-links mt-2">
+            <a href="https://techyork.ca" target="_blank" class="text-link">Live Demo &nearr;</a>
           </div>
-        </div>
-      </section>
+        </article>
 
-      <section id="contact" class="section contact" aria-labelledby="contact-title" data-animate="section">
-        <div class="section-heading center" data-animate="heading">
-          <h2 id="contact-title">contact me</h2>
-        </div>
-        <div class="social-row" data-animate="contact">
-          <a href="mailto:walid40@my.yorku.ca" aria-label="Email"><i class="ti ti-mail" aria-hidden="true"></i><span>Email</span></a>
-          <a href="https://ca.linkedin.com/in/mohammad-waliduddin-918aa1244" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ti ti-brand-linkedin" aria-hidden="true"></i><span>LinkedIn</span></a>
-          <a href="https://github.com/Waleeeeed88" target="_blank" rel="noopener" aria-label="GitHub"><i class="ti ti-brand-github" aria-hidden="true"></i><span>GitHub</span></a>
-          <a href="WALLRES.pdf" target="_blank" rel="noopener" aria-label="Resume"><i class="ti ti-file-text" aria-hidden="true"></i><span>Resume</span></a>
-        </div>
-        <p class="build-note">Built with semantic HTML, CSS, and vanilla JavaScript. Deployed on GitHub Pages.</p>
-        <a class="service-link" href="mailto:walid40@my.yorku.ca"><i class="ti ti-send" aria-hidden="true"></i><span>start a conversation</span></a>
-      </section>
-    </main>
+        <article class="project-item">
+          <img src="public/project-clai.png" alt="CLAI Coding Automation" class="project-img">
+          <h3 class="item-title mt-3">Multi-Agent Coding Workflow</h3>
+          <p class="body-text mt-2">
+            Specialized coding agents coordinate through APIs to plan, implement, and review project work. Engineered multi-agent orchestration flow, provider routing through OpenRouter, MCP tool integration, and GitHub automation hooks.
+          </p>
+          <p class="item-tech mt-2">Python, MCP, OpenRouter, GitHub Automation</p>
+          <div class="action-links mt-2">
+            <a href="https://github.com/Waleeeeed88/CLAI" target="_blank" class="text-link">GitHub &nearr;</a>
+          </div>
+        </article>
 
-    <script src="script.js"></script>
-  </body>
+      </div>
+    </section>
+
+    <!-- Stack Section -->
+    <section class="section" id="stack">
+      <h2 class="section-title">Engineering Stack</h2>
+      <div class="stack-list">
+        
+        <div class="stack-item">
+          <h3 class="item-title">Backend & Product Engineering</h3>
+          <p class="body-text">TypeScript, Next.js, React, Angular, Java, Spring Boot, C#, ASP.NET Core, REST APIs, SQL</p>
+        </div>
+
+        <div class="stack-item">
+          <h3 class="item-title">Cloud & Deployment</h3>
+          <p class="body-text">Docker, GCP, Cloud Run, AWS, App Runner, S3, Azure, Firebase, Neon DB</p>
+        </div>
+
+        <div class="stack-item">
+          <h3 class="item-title">Testing & DevOps</h3>
+          <p class="body-text">GitHub Actions, Jenkins, CI/CD, Playwright, Cypress, Selenium, Linux</p>
+        </div>
+
+        <div class="stack-item">
+          <h3 class="item-title">ML & Data Systems</h3>
+          <p class="body-text">Python, pandas, scikit-learn, XGBoost, Optuna, Flask, SQL</p>
+        </div>
+
+        <div class="stack-item">
+          <h3 class="item-title">AI-Native Workflows</h3>
+          <p class="body-text">MCP, Codebase specs & graphing, Agent deployment, LLM API integration, Agent workflows</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Beyond Software -->
+    <section class="section" id="interests">
+      <h2 class="section-title">Beyond the code</h2>
+      <p class="body-text">
+        Away from software, I spend time with history, literature, art, and older architecture. I also research politics and economics, and I actively experiment with self-hosted AI models, testing everything from nuanced political opinions to deep vulnerability research.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="footer-content">
+      <h2 class="item-title mb-2">Get in touch</h2>
+      <div class="action-links">
+        <a href="mailto:walid40@my.yorku.ca" class="text-link">walid40@my.yorku.ca</a>
+        <a href="https://ca.linkedin.com/in/mohammad-waliduddin-918aa1244" target="_blank" class="text-link">LinkedIn &nearr;</a>
+        <a href="https://github.com/Waleeeeed88" target="_blank" class="text-link">GitHub &nearr;</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
 </html>
