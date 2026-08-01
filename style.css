@@ -126,6 +126,7 @@ button { font-family: inherit; }
   transition: background-color .25s var(--ease), color .25s var(--ease);
 }
 .rail-item:hover { background: var(--surface-sunken); color: var(--on-surface); }
+.rail-item:active { scale: .92; }
 .rail-item.active { background: var(--secondary-container); color: var(--on-secondary-container); }
 
 .rail-item::after {
@@ -219,6 +220,100 @@ button { font-family: inherit; }
 .text-link:hover { border-bottom-color: currentColor; }
 .text-link .arrow { font-size: 13px; }
 
+/* Assist chips */
+.chip-set { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 14px;
+  border: 1px solid var(--outline-variant);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--on-surface-variant);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color .2s var(--ease), border-color .2s var(--ease),
+              color .2s var(--ease), box-shadow .2s var(--ease), translate .2s var(--ease);
+}
+.chip:hover {
+  background: var(--primary-container);
+  border-color: transparent;
+  color: var(--on-primary-container);
+  box-shadow: var(--elev-1);
+  translate: 0 -2px;
+}
+
+/* Icon button */
+.icon-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-grid;
+  place-items: center;
+  width: 40px; height: 40px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--on-surface-variant);
+  cursor: pointer;
+  transition: background-color .2s var(--ease), color .2s var(--ease), scale .15s var(--ease);
+}
+.icon-btn:hover { background: var(--surface-sunken); color: var(--on-surface); }
+.icon-btn:active { scale: .9; }
+
+/* Floating action button */
+.fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 95;
+  display: grid;
+  place-items: center;
+  width: 56px; height: 56px;
+  border: none;
+  border-radius: var(--r-tile);
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+  box-shadow: var(--elev-2);
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0;
+  translate: 0 12px;
+  pointer-events: none;
+  transition: opacity .25s var(--ease), translate .25s var(--ease),
+              box-shadow .25s var(--ease), scale .15s var(--ease);
+}
+.fab .material-symbols-rounded { font-size: 24px; }
+.fab.show { opacity: 1; translate: 0; pointer-events: auto; }
+.fab:hover { box-shadow: var(--elev-3); }
+.fab:active { scale: .94; }
+
+/* Snackbar */
+.snackbar {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  border-radius: var(--r-tile);
+  background: var(--on-surface);
+  color: var(--canvas);
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: var(--elev-3);
+  opacity: 0;
+  translate: -50% 16px;
+  pointer-events: none;
+  transition: opacity .25s var(--ease), translate .25s var(--ease);
+}
+.snackbar .material-symbols-rounded { font-size: 20px; }
+.snackbar.show { opacity: 1; translate: -50% 0; }
+
 /* ============================================================
    Canvas
    ============================================================ */
@@ -268,11 +363,6 @@ button { font-family: inherit; }
 
 .hero-sub { font-size: 16px; color: var(--on-surface-variant); }
 
-.hero-interests {
-  font-size: 14.5px;
-  color: var(--on-surface-variant);
-}
-
 /* "Now" note — grounded, specific, human */
 .hero-now {
   font-size: 13.5px;
@@ -299,22 +389,30 @@ button { font-family: inherit; }
 }
 
 /* ============================================================
-   About — lede + two quiet columns
+   About — statement left, prose right (no section label)
    ============================================================ */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
 .about-lede {
   font-family: var(--font-serif);
   font-size: clamp(20px, 2.6vw, 27px);
   font-weight: 400;
-  line-height: 1.4;
-  max-width: 30ch;
-  margin-bottom: 32px;
+  line-height: 1.35;
+  letter-spacing: -.01em;
+  max-width: 18ch;
 }
 
-.prose-2col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
+.about-prose {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   color: var(--on-surface-variant);
+  padding-top: 6px;
 }
 
 /* ============================================================
@@ -358,7 +456,9 @@ button { font-family: inherit; }
   padding: 6px;
   border: 1px solid var(--outline-variant);
   flex-shrink: 0;
+  transition: box-shadow .3s var(--ease), transform .3s var(--ease);
 }
+.entry:hover .entry-logo { transform: translateY(-2px); box-shadow: var(--elev-2); }
 
 .entry-title {
   font-family: var(--font-serif);
@@ -390,11 +490,44 @@ button { font-family: inherit; }
               background-color .35s var(--ease);
 }
 
-/* One quiet elevation change on hover — no lifting, no tilting */
+/* Depth: the card lifts and presses, the artwork tilts toward the pointer.
+   Tilt stays off the card itself so text never rasterizes blurry. */
+.depth-card {
+  --rx: 0deg;
+  --ry: 0deg;
+  --mx: 50%;
+  --my: 50%;
+  position: relative;
+  transition: box-shadow .35s var(--ease), border-color .35s var(--ease),
+              background-color .35s var(--ease), transform .35s var(--ease);
+}
+
 .depth-card:hover {
   box-shadow: var(--elev-3);
   border-color: var(--outline);
+  transform: translateY(-4px);
 }
+
+.depth-card:active {
+  transform: translateY(-1px) scale(.995);
+  box-shadow: var(--elev-1);
+  transition-duration: .1s;
+}
+
+/* Light that follows the pointer */
+.depth-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(320px circle at var(--mx) var(--my),
+              color-mix(in srgb, var(--primary) 10%, transparent), transparent 62%);
+  transition: opacity .35s var(--ease);
+}
+.depth-card:hover::after { opacity: 1; }
 
 .app-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
 
@@ -404,12 +537,18 @@ button { font-family: inherit; }
   aspect-ratio: 16 / 9;
   background: var(--surface-sunken);
   border-bottom: 1px solid var(--outline-variant);
+  perspective: 800px;
 }
 
 .app-thumb img {
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: top center;
+  transition: transform .45s var(--ease);
+}
+.depth-card:hover .app-thumb img {
+  transform: rotateX(var(--rx)) rotateY(var(--ry)) scale(1.06);
+  transition-duration: .15s;
 }
 
 .app-body { padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
@@ -474,6 +613,14 @@ button { font-family: inherit; }
   margin-bottom: 16px;
 }
 
+.contact-email-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
 .contact-email {
   display: inline-block;
   font-family: var(--font-serif);
@@ -484,7 +631,6 @@ button { font-family: inherit; }
   color: var(--on-surface);
   border-bottom: 2px solid var(--outline);
   padding-bottom: 4px;
-  margin-bottom: 24px;
   transition: color .3s var(--ease), border-color .3s var(--ease);
 }
 .contact-email:hover { color: var(--primary); border-bottom-color: var(--primary); }
@@ -506,10 +652,6 @@ button { font-family: inherit; }
   margin-top: 40px;
 }
 
-.footer-colophon {
-  font-style: italic;
-}
-
 /* ============================================================
    Responsive
    ============================================================ */
@@ -524,7 +666,9 @@ button { font-family: inherit; }
   .shell { margin-left: 0; }
   .topbar { padding: 0 16px; }
   .canvas { padding: 16px 20px 0; }
-  .prose-2col, .gallery { grid-template-columns: 1fr; }
+  .about, .gallery { grid-template-columns: 1fr; }
+  .about { gap: 20px; }
+  .about-lede { max-width: none; }
   .entry { grid-template-columns: 1fr; gap: 12px; padding: 24px 0; }
   .entry-when { flex-direction: row; align-items: baseline; gap: 8px; }
   .entry-year { font-size: 24px; }
@@ -535,6 +679,8 @@ button { font-family: inherit; }
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .depth-card:hover, .depth-card:active { transform: none; }
+  .depth-card:hover .app-thumb img { transform: none; }
   *, *::before, *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
