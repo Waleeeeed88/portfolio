@@ -104,8 +104,7 @@ button { font-family: inherit; }
   align-items: center;
   padding: 16px 0;
   background: var(--canvas);
-  border-right: 1px solid var(--outline-variant);
-  transition: background-color .35s var(--ease), border-color .35s var(--ease);
+  transition: background-color .35s var(--ease);
 }
 
 .rail-logo img { width: 40px; height: 40px; border-radius: 10px; object-fit: contain; }
@@ -154,7 +153,7 @@ button { font-family: inherit; }
 /* ============================================================
    Shell + top bar
    ============================================================ */
-.shell { margin-left: var(--rail-w); min-height: 100svh; display: flex; flex-direction: column; }
+.shell { min-height: 100svh; display: flex; flex-direction: column; }
 
 .topbar {
   position: sticky;
@@ -163,16 +162,13 @@ button { font-family: inherit; }
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 16px;
   height: 64px;
-  padding: 0 32px;
-  background: color-mix(in srgb, var(--canvas) 88%, transparent);
+  background: color-mix(in srgb, var(--canvas) 82%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid transparent;
-  transition: border-color .3s var(--ease), background-color .35s var(--ease);
+  transition: background-color .35s var(--ease);
 }
-.topbar.scrolled { border-bottom-color: var(--outline-variant); }
+.topbar.scrolled { background: color-mix(in srgb, var(--canvas) 96%, transparent); }
 
 /* ============================================================
    Buttons + text links
@@ -228,9 +224,9 @@ button { font-family: inherit; }
   align-items: center;
   height: 32px;
   padding: 0 14px;
-  border: 1px solid var(--outline-variant);
+  border: none;
   border-radius: 8px;
-  background: var(--surface);
+  background: var(--surface-sunken);
   color: var(--on-surface-variant);
   font-size: 13px;
   font-weight: 500;
@@ -240,9 +236,7 @@ button { font-family: inherit; }
 }
 .chip:hover {
   background: var(--primary-container);
-  border-color: transparent;
   color: var(--on-primary-container);
-  box-shadow: var(--elev-1);
   translate: 0 -2px;
 }
 
@@ -317,32 +311,40 @@ button { font-family: inherit; }
 /* ============================================================
    Canvas
    ============================================================ */
-.canvas {
+/* One measure for every band: top bar, content, footer. The column is centred
+   on the viewport, not on the space left over beside the rail. */
+.canvas,
+.topbar > .bar-inner,
+.footer > .footer-inner {
   width: 100%;
   max-width: 1064px;
   margin: 0 auto;
-  padding: 24px 32px 0;
+  padding-inline: 32px;
+}
+
+.canvas {
+  padding-block: 24px 0;
   display: flex;
   flex-direction: column;
   flex: 1;
 }
+
+.topbar > .bar-inner { display: flex; align-items: center; justify-content: flex-end; gap: 16px; }
 
 /* ============================================================
    Hero — centered introduction
    ============================================================ */
 .hero {
   display: flex;
-  justify-content: center;
-  padding: clamp(64px, 12vh, 120px) 0 clamp(48px, 8vh, 80px);
+  padding: clamp(56px, 10vh, 104px) 0 clamp(40px, 7vh, 72px);
 }
 
 .hero-text {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
   gap: 16px;
-  max-width: 640px;
+  max-width: 62ch;
 }
 
 .hero-meta {
@@ -361,28 +363,33 @@ button { font-family: inherit; }
   line-height: 1.08;
 }
 
-.hero-sub { font-size: 16px; color: var(--on-surface-variant); }
+.hero-sub { font-size: 17px; color: var(--on-surface-variant); max-width: 56ch; }
 
 /* "Now" note — grounded, specific, human */
 .hero-now {
   font-size: 13.5px;
+  line-height: 1.7;
   color: var(--on-surface-variant);
+  background: var(--surface);
+  border-radius: var(--r-tile);
+  padding: 14px 18px;
+  max-width: 62ch;
 }
 
-.hero-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 28px; padding-top: 8px; }
+.hero-links { display: flex; flex-wrap: wrap; gap: 8px 28px; padding-top: 8px; }
 
 /* ============================================================
    Sections — oversized serif numerals as a design element
    ============================================================ */
 .block {
-  padding: 48px 0 56px;
+  padding: 40px 0 48px;
 }
 
-.block-head { margin-bottom: 32px; }
+.block-head { margin-bottom: 24px; }
 
 .block-title {
   font-family: var(--font-serif);
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 500;
   letter-spacing: -.01em;
 }
@@ -407,25 +414,35 @@ button { font-family: inherit; }
   color: var(--on-surface);
 }
 
-.entries { display: flex; flex-direction: column; }
+.entries { display: flex; flex-direction: column; gap: 12px; }
 
 .entry {
   display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 32px;
-  padding: 32px 0;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 12px 24px;
+  padding: 24px 28px;
+  background: var(--surface);
+  border-radius: var(--r-card);
+  transition: box-shadow .3s var(--ease), background-color .35s var(--ease);
 }
-.entry + .entry { border-top: 1px solid var(--outline-variant); }
-.entry:first-child { padding-top: 0; }
+.entry:hover { box-shadow: var(--elev-1); }
 
-.entry-when { display: flex; flex-direction: column; gap: 4px; padding-top: 2px; }
+/* Timeframe sits as a quiet label opposite the role */
+.entry-when {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding-top: 6px;
+  white-space: nowrap;
+}
 
 .entry-year {
-  font-family: var(--font-serif);
-  font-size: 34px;
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -.01em;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .01em;
 }
 
 .entry-range {
@@ -433,17 +450,22 @@ button { font-family: inherit; }
   color: var(--on-surface-variant);
 }
 
-.entry-main { display: flex; flex-direction: column; gap: 12px; }
+.entry-main {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
 .entry-head { display: flex; align-items: center; gap: 16px; }
 
 .entry-logo {
-  width: 48px; height: 48px;
+  width: 44px; height: 44px;
   border-radius: var(--r-tile);
   object-fit: contain;
   background: #ffffff;
   padding: 6px;
-  border: 1px solid var(--outline-variant);
   flex-shrink: 0;
   transition: box-shadow .3s var(--ease), transform .3s var(--ease);
 }
@@ -460,7 +482,7 @@ button { font-family: inherit; }
 
 .entry-text { color: var(--on-surface-variant); font-size: 14.5px; max-width: 68ch; }
 
-.entry-tags { font-size: 13px; line-height: 1.7; color: var(--on-surface-variant); }
+.entry-tags { font-size: 12.5px; line-height: 1.7; color: var(--on-surface-variant); }
 
 /* ============================================================
    Project gallery — featured card + three-up row
@@ -474,9 +496,7 @@ button { font-family: inherit; }
 .card {
   background: var(--surface);
   border-radius: var(--r-card);
-  border: 1px solid var(--outline-variant);
-  transition: box-shadow .35s var(--ease), border-color .35s var(--ease),
-              background-color .35s var(--ease);
+  transition: box-shadow .35s var(--ease), background-color .35s var(--ease);
 }
 
 /* Depth: the card lifts and presses, the artwork tilts toward the pointer.
@@ -493,7 +513,6 @@ button { font-family: inherit; }
 
 .depth-card:hover {
   box-shadow: var(--elev-3);
-  border-color: var(--outline);
   transform: translateY(-4px);
 }
 
@@ -525,7 +544,6 @@ button { font-family: inherit; }
   overflow: hidden;
   aspect-ratio: 16 / 9;
   background: var(--surface-sunken);
-  border-bottom: 1px solid var(--outline-variant);
   perspective: 800px;
 }
 
@@ -566,8 +584,6 @@ button { font-family: inherit; }
   aspect-ratio: auto;
   height: 100%;
   min-height: 280px;
-  border-bottom: none;
-  border-right: 1px solid var(--outline-variant);
 }
 .app-card--featured .app-body { padding: 32px; gap: 16px; justify-content: center; }
 .app-card--featured .entry-title { font-size: 24px; }
@@ -576,18 +592,20 @@ button { font-family: inherit; }
 /* ============================================================
    Stack — spec sheet
    ============================================================ */
-.spec { display: flex; flex-direction: column; }
+.spec { display: flex; flex-direction: column; gap: 8px; }
 
 .spec-row {
   display: grid;
-  grid-template-columns: 224px 1fr;
+  grid-template-columns: 200px 1fr;
+  align-items: start;
   gap: 24px;
-  padding: 16px 0;
+  padding: 14px 20px;
+  border-radius: var(--r-tile);
+  transition: background-color .25s var(--ease);
 }
-.spec-row + .spec-row { border-top: 1px solid var(--outline-variant); }
-.spec-row:first-child { padding-top: 0; }
+.spec-row:hover { background: var(--surface); }
 
-.spec-row dt { font-size: 14px; font-weight: 600; padding-top: 1px; }
+.spec-row dt { font-size: 14px; font-weight: 600; padding-top: 5px; }
 
 .spec-row dd { color: var(--on-surface-variant); font-size: 14.5px; line-height: 1.7; }
 
@@ -618,11 +636,9 @@ button { font-family: inherit; }
   letter-spacing: -.01em;
   line-height: 1.15;
   color: var(--on-surface);
-  border-bottom: 2px solid var(--outline);
-  padding-bottom: 4px;
-  transition: color .3s var(--ease), border-color .3s var(--ease);
+  transition: color .3s var(--ease);
 }
-.contact-email:hover { color: var(--primary); border-bottom-color: var(--primary); }
+.contact-email:hover { color: var(--primary); }
 
 .contact-links { display: flex; flex-wrap: wrap; gap: 8px 32px; }
 
@@ -630,36 +646,44 @@ button { font-family: inherit; }
    Footer — colophon
    ============================================================ */
 .footer {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px 24px;
-  padding: 24px 32px;
+  padding-block: 24px;
   font-size: 12.5px;
   color: var(--on-surface-variant);
   margin-top: 40px;
 }
 
+.footer > .footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+
 /* ============================================================
    Responsive
    ============================================================ */
+/* Below this width the centred column would run under the fixed rail,
+   so the shell steps aside instead. */
+@media (max-width: 1272px) {
+  .shell { margin-left: var(--rail-w); }
+}
+
 @media (max-width: 980px) {
   .gallery { grid-template-columns: 1fr 1fr; }
   .app-card--featured { grid-template-columns: 1fr; }
-  .app-card--featured .app-thumb { min-height: 0; aspect-ratio: 16 / 9; border-right: none; border-bottom: 1px solid var(--outline-variant); }
+  .app-card--featured .app-thumb { min-height: 0; aspect-ratio: 16 / 9; }
 }
 
 @media (max-width: 760px) {
   .rail { display: none; }
   .shell { margin-left: 0; }
-  .topbar { padding: 0 16px; }
-  .canvas { padding: 16px 20px 0; }
+  .canvas, .topbar > .bar-inner, .footer > .footer-inner { padding-inline: 20px; }
   .gallery { grid-template-columns: 1fr; }
-  .entry { grid-template-columns: 1fr; gap: 12px; padding: 24px 0; }
-  .entry-when { flex-direction: row; align-items: baseline; gap: 8px; }
-  .entry-year { font-size: 24px; }
-  .spec-row { grid-template-columns: 1fr; gap: 4px; padding: 16px 0; }
-  .footer { justify-content: center; text-align: center; }
+  .entry { grid-template-columns: 1fr; gap: 10px; padding: 20px; }
+  .entry-when { grid-column: 1; grid-row: 1; padding-top: 0; }
+  .entry-main { grid-column: 1; grid-row: 2; }
+  .spec-row { grid-template-columns: 1fr; gap: 6px; padding: 12px 16px; }
+  .footer > .footer-inner { justify-content: center; text-align: center; }
 }
 
 /* ---------- Reduced motion ---------- */
