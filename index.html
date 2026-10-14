@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Walid | Software Engineering Student</title>
   <meta name="description" content="Portfolio for Walid, a fourth-year Software Engineering student at York University's Lassonde School of Engineering.">
-  <meta name="theme-color" content="#1114d8">
+  <meta name="theme-color" content="#f2f4f1">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Walid | Software Engineering Student">
   <meta property="og:description" content="Fourth-year Software Engineering student at York University's Lassonde School of Engineering. Backend systems, developer tooling, applied AI.">
@@ -13,35 +13,55 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
 
   <link rel="icon" href="public/mw-logo.png" />
-  <link rel="stylesheet" href="style.css?v=18">
+  <link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
 
-  <header class="site-header" id="topbar">
-    <div class="nav-inner">
-      <a href="#top" class="site-brand" aria-label="Back to top">
-        <img src="public/mw-logo.png" alt="MW logo">
+  <!-- Icon navigation rail -->
+  <nav class="rail" aria-label="Primary">
+    <a href="#top" class="rail-logo" aria-label="Back to top">
+      <img src="public/mw-logo.png" alt="MW logo">
+    </a>
+    <div class="rail-items">
+      <a href="#top" class="rail-item" data-label="Intro">
+        <span class="material-symbols-rounded">home</span>
       </a>
-      <nav class="primary-nav" id="primaryNav" aria-label="Primary">
-        <a href="#top">Intro</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#projects">Projects</a>
-        <a href="#stack">Stack</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <a href="MWUI.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary header-resume">Resume</a>
-      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="primaryNav" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="#experience" class="rail-item" data-label="Experience">
+        <span class="material-symbols-rounded">work</span>
+      </a>
+      <a href="#education" class="rail-item" data-label="Education">
+        <span class="material-symbols-rounded">school</span>
+      </a>
+      <a href="#projects" class="rail-item" data-label="Projects">
+        <span class="material-symbols-rounded">deployed_code</span>
+      </a>
+      <a href="#stack" class="rail-item" data-label="Stack">
+        <span class="material-symbols-rounded">stacks</span>
+      </a>
+      <a href="#contact" class="rail-item" data-label="Contact">
+        <span class="material-symbols-rounded">mail</span>
+      </a>
     </div>
-  </header>
+    <button class="rail-item rail-bottom" id="themeToggle" data-label="Theme" aria-label="Toggle dark theme">
+      <span class="material-symbols-rounded">dark_mode</span>
+    </button>
+  </nav>
 
   <div class="shell" id="top">
+
+    <!-- Top bar -->
+    <header class="topbar" id="topbar">
+      <div class="bar-inner">
+        <a href="MWUI.pdf" target="_blank" class="btn btn-filled ripple">
+          <span class="material-symbols-rounded">description</span>
+          Resume
+        </a>
+      </div>
+    </header>
 
     <main class="canvas">
 
@@ -53,13 +73,16 @@
             I'm a fourth-year <strong>Software Engineering</strong> student at <strong>York University</strong>.
             I work on backend systems, developer tooling, and applied AI.
           </p>
+          <p class="hero-now">
+            Curr state : <strong>Deloitte Toronto</strong> — AI Platform Engineering Intern on the CoE (centre of
+            excellence) genAI team, applied AI use cases.
+            <br>future state : looking to satisfy my technical hunger
+          </p>
           <div class="hero-links">
             <a href="MWUI.pdf" target="_blank" class="text-link">Resume<span class="arrow">&nearr;</span></a>
+            <a href="mailto:walid40@my.yorku.ca" class="text-link">walid40@my.yorku.ca</a>
             <a href="#experience" class="text-link">Selected work<span class="arrow">&darr;</span></a>
           </div>
-        </div>
-        <div class="hero-art" aria-hidden="true">
-          <img src="public/hero-engraving.png" alt="">
         </div>
       </section>
 
@@ -92,8 +115,9 @@
             </p>
             <div class="entry-main">
               <div class="entry-head">
+                <img src="public/deloitte.svg" alt="Deloitte logo" class="entry-logo">
                 <div>
-                  <h3 class="entry-title">AI platform engineer intern</h3>
+                  <h3 class="entry-title">AI Platform Engineering Intern</h3>
                   <p class="entry-org">Deloitte Canada · Toronto, ON</p>
                 </div>
               </div>
@@ -102,6 +126,7 @@
                 Risk &amp; Transactions practice. The work is AI software on <strong>Azure</strong> — retrieval
                 pipelines, agents, and document and image understanding that consultants use on client engagements.
               </p>
+              <p class="entry-tags">Azure OpenAI · Azure AI Search · Document Intelligence · Python · React · SQL</p>
             </div>
           </article>
 
@@ -112,6 +137,7 @@
             </p>
             <div class="entry-main">
               <div class="entry-head">
+                <img src="public/ongov.png" alt="Government of Ontario logo" class="entry-logo">
                 <div>
                   <h3 class="entry-title">Software Developer Co-op</h3>
                   <p class="entry-org">Government of Ontario · Toronto, ON</p>
@@ -122,6 +148,7 @@
                 can get a prototype without waiting on a developer. Also moved legacy <strong>Java 1.8</strong>
                 services onto <strong>Angular</strong> and <strong>Spring Boot</strong>.
               </p>
+              <p class="entry-tags">GitHub Copilot · Custom agents · Java 1.8 · Angular · Spring Boot</p>
             </div>
           </article>
 
@@ -132,6 +159,7 @@
             </p>
             <div class="entry-main">
               <div class="entry-head">
+                <img src="public/cibc.png" alt="CIBC logo" class="entry-logo">
                 <div>
                   <h3 class="entry-title">Software Developer Co-op</h3>
                   <p class="entry-org">Canadian Imperial Bank of Commerce · Toronto, ON</p>
@@ -141,6 +169,7 @@
                 Automated <strong>eight weekly Excel reports</strong> with <strong>Java</strong> and
                 <strong>Jenkins</strong>. Wrote ETL jobs and data quality checks for the warehouse.
               </p>
+              <p class="entry-tags">Java · Jenkins · Excel automation · DB Visualizer · ETL</p>
             </div>
           </article>
         </div>
@@ -160,11 +189,16 @@
             </p>
             <div class="entry-main">
               <div class="entry-head">
+                <img src="public/lassonde.png" alt="Lassonde School of Engineering logo" class="entry-logo">
                 <div>
                   <h3 class="entry-title">B.Eng, Software Engineering</h3>
                   <p class="entry-org">York University, Lassonde School of Engineering · GPA 3.11 / 4.0</p>
                 </div>
               </div>
+              <p class="entry-tags">
+                Advanced OOP · Data Structures &amp; Algorithms · Software Design · Databases ·
+                Embedded Systems · Digital Logic · Computer Security
+              </p>
             </div>
           </article>
         </div>
@@ -178,25 +212,27 @@
 
         <div class="gallery">
 
-          <article class="app-card app-card--featured">
+          <article class="card app-card app-card--featured depth-card">
             <div class="app-thumb">
               <img src="public/project-reai.png" alt="REAI real estate price predictor screenshot">
             </div>
             <div class="app-body">
               <div class="app-head">
                 <h3 class="entry-title">REAI · Home price predictor</h3>
+                <span class="app-status">Live</span>
               </div>
               <p class="entry-text">
                 Predicts what a house should sell for, trained on <strong>50,000+ listings</strong>.
                 <strong>XGBoost</strong> tuned with Optuna, served through a Flask API on Railway.
               </p>
+              <p class="entry-tags">Python · XGBoost · Flask · Docker</p>
               <div class="app-links">
                 <a href="https://aires.up.railway.app/" target="_blank" class="text-link">https://aires.up.railway.app/<span class="arrow">&nearr;</span></a>
               </div>
             </div>
           </article>
 
-          <article class="app-card">
+          <article class="card app-card depth-card">
             <div class="app-thumb">
               <img src="public/project-instacart.png" alt="Instacart for Agents package screenshot">
             </div>
@@ -208,6 +244,7 @@
                 A <strong>TypeScript package</strong> that lets browser agents put together an Instacart order
                 without going off script. Published on <strong>npm</strong>.
               </p>
+              <p class="entry-tags">TypeScript · npm · Codex plugin · Agent workflows</p>
               <div class="app-links">
                 <a href="https://www.npmjs.com/package/instacart-for-agents" target="_blank" class="text-link">npm<span class="arrow">&nearr;</span></a>
                 <a href="https://github.com/Waleeeeed88/instacart-for-agents" target="_blank" class="text-link">GitHub<span class="arrow">&nearr;</span></a>
@@ -215,24 +252,26 @@
             </div>
           </article>
 
-          <article class="app-card">
+          <article class="card app-card depth-card">
             <div class="app-thumb">
               <img src="public/project-techyork.png" alt="TechYork platform screenshot">
             </div>
             <div class="app-body">
               <div class="app-head">
                 <h3 class="entry-title">TechYork</h3>
+                <span class="app-status">Live</span>
               </div>
               <p class="entry-text">
                 A place for York students to share projects, message each other, and find jobs.
               </p>
+              <p class="entry-tags">Next.js · TypeScript · C# · ASP.NET Core · Neon DB</p>
               <div class="app-links">
                 <a href="https://techyork.ca" target="_blank" class="text-link">techyork.ca<span class="arrow">&nearr;</span></a>
               </div>
             </div>
           </article>
 
-          <article class="app-card">
+          <article class="card app-card depth-card">
             <div class="app-thumb">
               <img src="public/project-clai.png" alt="CLAI multi-agent workflow screenshot">
             </div>
@@ -243,6 +282,7 @@
               <p class="entry-text">
                 Coding agents that split up a task, write the code, and review each other's work over MCP.
               </p>
+              <p class="entry-tags">Python · MCP · OpenRouter · GitHub automation</p>
               <div class="app-links">
                 <a href="https://github.com/Waleeeeed88/CLAI" target="_blank" class="text-link">GitHub<span class="arrow">&nearr;</span></a>
               </div>
@@ -325,13 +365,14 @@
         </p>
         <div class="contact-email-row">
           <a href="mailto:walid40@my.yorku.ca" class="contact-email">walid40@my.yorku.ca</a>
-          <button class="icon-btn" id="copyEmail" aria-label="Copy email address">
+          <button class="icon-btn ripple" id="copyEmail" aria-label="Copy email address">
             <span class="material-symbols-rounded">content_copy</span>
           </button>
         </div>
         <div class="contact-links">
           <a href="https://ca.linkedin.com/in/mohammad-waliduddin-918aa1244" target="_blank" class="text-link">LinkedIn<span class="arrow">&nearr;</span></a>
           <a href="https://github.com/Waleeeeed88" target="_blank" class="text-link">GitHub<span class="arrow">&nearr;</span></a>
+          <a href="MWUI.pdf" target="_blank" class="text-link">Resume<span class="arrow">&nearr;</span></a>
         </div>
       </section>
 
@@ -344,11 +385,15 @@
     </footer>
   </div>
 
+  <button class="fab ripple" id="toTop" aria-label="Back to top">
+    <span class="material-symbols-rounded">arrow_upward</span>
+  </button>
+
   <div class="snackbar" id="snackbar" role="status" aria-live="polite">
     <span class="material-symbols-rounded">check_circle</span>
     <span id="snackbarText"></span>
   </div>
 
-  <script src="script.js?v=14"></script>
+  <script src="script.js?v=11"></script>
 </body>
 </html>
