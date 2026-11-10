@@ -1,0 +1,409 @@
+/* Layout glue + meta.ai-style softness; base colour, type and spacing come from Astryx tokens. */
+:root {
+  --meta-blue: var(--color-accent);
+  --meta-blue-soft: var(--color-accent-muted);
+  --meta-violet: #8a3ffc;
+  --line: var(--color-border);
+  --card-shadow: 0 1px 2px rgb(30 50 90 / 0.06), 0 6px 20px rgb(30 50 90 / 0.07);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.page > * + * {
+  margin-top: 72px;
+}
+
+.page {
+  position: relative;
+  margin-inline: auto;
+  width: 100%;
+  padding-bottom: 48px;
+}
+
+.block {
+  scroll-margin-top: 96px;
+}
+
+/* Logo is 16:9 — keep its ratio, never squash */
+.nav-logo {
+  height: 22px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Soft glow, kept subtle and off to the side */
+.glow {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 640px;
+  pointer-events: none;
+  background:
+    radial-gradient(35% 45% at 15% 15%, color-mix(in srgb, var(--color-accent) 8%, transparent), transparent 70%),
+    radial-gradient(30% 40% at 85% 30%, color-mix(in srgb, var(--color-accent) 6%, transparent), transparent 70%);
+  filter: blur(24px);
+}
+
+/* Hero: text left, visual stack right */
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+  min-height: calc(100vh - 160px);
+  padding-block: 40px;
+}
+
+.hero > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.hero-title {
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.accent {
+  color: var(--meta-blue);
+}
+
+.hero-sub {
+  max-width: 560px;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--color-text-secondary, inherit);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--meta-blue);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
+}
+
+/* Pill composer, like meta.ai's prompt bar */
+.prompt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 560px;
+  padding: 8px 8px 8px 22px;
+  border-radius: 999px;
+  background: var(--color-background-card);
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 0.06);
+  color: var(--color-text-secondary, inherit);
+  text-decoration: none;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.prompt:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  box-shadow: 0 10px 36px color-mix(in srgb, var(--color-accent) 12%, transparent);
+}
+
+.prompt-text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.prompt-send {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--meta-blue);
+  color: #fff;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: var(--color-background-card);
+  border: 1px solid var(--line);
+  color: var(--color-text-primary, inherit);
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.chip:hover {
+  background: var(--meta-blue-soft);
+  border-color: transparent;
+  color: var(--meta-blue);
+}
+
+/* Right column: "now" card + project tiles, like meta.ai's discover grid */
+.hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.now-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--color-background-card);
+  border: 1px solid var(--line);
+}
+
+.tile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.tile {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.tile:hover img {
+  transform: scale(1.04);
+}
+
+.tile-label {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgb(0 0 0 / 0.6);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.section-head .astryx-text,
+.section-head {
+  text-align: left;
+}
+
+.soft-card,
+.now-card,
+.tile {
+  border: 1px solid var(--line) !important;
+  box-shadow: var(--card-shadow);
+}
+
+.soft-card {
+  border-radius: 12px !important;
+  overflow: hidden;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.soft-card:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 35%, var(--line)) !important;
+  box-shadow: 0 2px 4px rgb(30 50 90 / 0.06), 0 14px 36px color-mix(in srgb, var(--color-accent) 14%, transparent);
+}
+
+.logo-tile {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  flex: none;
+}
+
+.logo-tile img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.contact-card {
+  background:
+    radial-gradient(50% 90% at 100% 0%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 70%),
+    radial-gradient(40% 80% at 90% 100%, rgb(138 63 252 / 0.1), transparent 70%),
+    var(--color-background-card) !important;
+}
+
+.pill {
+  border-radius: 999px !important;
+}
+
+.footer {
+  display: block;
+}
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: auto;
+    gap: 32px;
+    padding-block: 24px;
+  }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.02em;
+}
+
+/* Blue as a quiet thread through the page, not a flood at the top */
+.eyebrow {
+  color: var(--meta-blue) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+
+.btn-blue {
+  background: var(--meta-blue) !important;
+  border-color: var(--meta-blue) !important;
+  color: #fff !important;
+}
+
+.btn-blue:hover {
+  background: color-mix(in srgb, var(--color-accent) 85%, black) !important;
+}
+
+/* Sections: title on the left, cards on the right */
+.split {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.split-head {
+  position: sticky;
+  top: 96px;
+}
+
+@media (max-width: 860px) {
+  .split {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .split-head {
+    position: static;
+  }
+}
+
+/* Stack: brand-tinted logo chips */
+.stack-card {
+  position: relative;
+}
+
+.stack-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent), color-mix(in srgb, var(--color-accent) 20%, transparent));
+}
+
+.stack-index {
+  color: color-mix(in srgb, var(--color-accent) 55%, var(--line)) !important;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+}
+
+.stack-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px 5px 5px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--brand) 6%, var(--color-background-card));
+  border: 1px solid color-mix(in srgb, var(--brand) 22%, var(--line));
+  color: var(--color-text-primary, inherit);
+  font-size: 13px;
+  font-weight: 500;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.stack-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--brand) 22%, transparent);
+}
+
+.stack-logo {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: var(--color-background-card);
+  border: 1px solid var(--line);
+  flex: none;
+}
+
+.stack-logo svg {
+  width: 15px;
+  height: 15px;
+  fill: var(--brand);
+}
+
+.stack-mono {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--brand);
+}
+
+/* Keep the hero tile stack from ballooning on wide screens */
+.hero-side {
+  max-width: 560px;
+  justify-self: end;
+  width: 100%;
+}
+
+.no-shrink {
+  flex: none;
+}
